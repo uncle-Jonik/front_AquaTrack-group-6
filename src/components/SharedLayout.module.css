@@ -1,8 +1,10 @@
 .LayoutWrupper {
   display: flex;
+  gap: 35px;
 }
 
 .mainWrapper {
+  padding: 35px;
   width: 1440px;
   height: 800px;
   background: #fff;
