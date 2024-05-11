@@ -1,0 +1,28 @@
+.container{
+    display: flex;
+    align-items: center;
+    width: 179px;
+    justify-content: space-between;
+    height: 20px;
+}
+
+.text{
+    font-family: "Poppins", sans-serif;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 129%;
+    letter-spacing: -0.01em;
+    text-align: center;
+    color: #323f47;
+}
+
+.button{
+    border: none;
+    background-color: transparent;
+    align-content: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20px;
+    height: 20px;
+}
