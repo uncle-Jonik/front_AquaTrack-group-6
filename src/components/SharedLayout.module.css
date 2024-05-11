@@ -1,0 +1,9 @@
+.LayoutWrupper {
+  display: flex;
+}
+
+.mainWrapper {
+  width: 1440px;
+  height: 800px;
+  background: #fff;
+}
