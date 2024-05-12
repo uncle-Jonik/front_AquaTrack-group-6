@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
-import { setCurrentDate } from '../../redux/Calendar/CalendarSlice';
+import { setActiveDay, setCurrentDate } from '../../redux/Calendar/CalendarSlice';
 import css from './CalendarPagination.module.css';
 
 const months = [
@@ -15,12 +15,14 @@ const CalendarPagination = () => {
     const goToPreviousMonth = () => {
         const newDate = new Date(currentDate);
         newDate.setMonth(newDate.getMonth() - 1);
+        dispatch(setActiveDay(null));
         dispatch(setCurrentDate(newDate.getTime()));
     };
 
     const goToNextMonth = () => {
         const newDate = new Date(currentDate);
         newDate.setMonth(newDate.getMonth() + 1);
+        dispatch(setActiveDay(null));
         dispatch(setCurrentDate(newDate.getTime()));
     };
 
