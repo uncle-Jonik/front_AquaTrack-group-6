@@ -20,3 +20,29 @@
     align-items: center;
     height: 24px;
 }
+
+
+@media only screen and (min-width: 320px) and (max-width: 374px) {
+
+}
+
+@media only screen and (min-width: 375px) {
+    
+}
+
+@media only screen and (min-width: 768px) {
+    .monthSectionInfo{
+        max-width: 640px;
+    }
+    
+    .monthTitle{
+        font-size: 28px;
+        line-height: 114%;
+    }
+}
+
+@media only screen and (min-width: 1440px) {
+    .monthSectionInfo{
+        max-width: 608px;
+    }
+}

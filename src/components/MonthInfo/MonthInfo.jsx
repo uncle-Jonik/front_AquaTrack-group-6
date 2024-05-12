@@ -7,7 +7,7 @@ const MonthInfo = () => {
     return (
         <section className={css.monthSectionInfo}>
             <div className={css.monthPaginationContainer}>
-                <h3>Month</h3>
+                <h3 className={css.monthTitle}>Month</h3>
                 <CalendarPagination />
             </div>
             
