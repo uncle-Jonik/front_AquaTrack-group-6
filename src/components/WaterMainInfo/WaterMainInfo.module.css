@@ -57,3 +57,29 @@ button {
 .img {
   margin: 0 auto 40px;
 }
+.waterProgressBar {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 100%);
+
+  border-radius: 15px;
+  padding: 20px;
+  width: 295px;
+  height: 106px;
+  box-shadow: 0 4px 50px 0 rgba(0, 0, 0, 0.1);
+  background: #fff;
+}
+.barTitle {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 1.49333;
+  color: #323f47;
+}
+.rangeInput {
+  border-radius: 9px;
+  width: 255px;
+  height: 8px;
+  background: #f0eff4;
+}
