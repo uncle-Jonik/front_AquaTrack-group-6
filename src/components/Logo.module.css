@@ -7,3 +7,13 @@
   margin-top: 40px;
   margin-left: 32px;
 }
+
+/* --------- Tablet styles --------- */
+
+@media only screen and (min-width: 768px) {
+  .logoFont {
+    font-size: 24px;
+    margin-top: 64px;
+    margin-left: 64px;
+  }
+}
