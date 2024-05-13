@@ -5,16 +5,16 @@ import { Route, Routes } from "react-router-dom";
 import { Layout } from "./components/Layout/Layout";
 
 const HomePage = lazy(() => import("./pages/HomePage"));
-const RegisterPage = lazy(() => import("./pages/Register"));
-const LoginPage = lazy(() => import("./pages/Login"));
+const SignUpPage = lazy(() => import("./pages/Register"));
+const SignInPage = lazy(() => import("./pages/Login"));
 
 export const App = () => {
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<HomePage />} />
-        <Route path="/registration" element={<RegisterPage />}></Route>
-        <Route path="/login" element={<LoginPage />}></Route>
+        <Route path="/signup" element={<SignUpPage />}></Route>
+        <Route path="/signin" element={<SignInPage />}></Route>
       </Route>
     </Routes>
   );

@@ -1,30 +1,34 @@
 import { useDispatch } from "react-redux";
-import { register } from "../../redux/auth/operations";
-import { Link, NavLink } from "react-router-dom";
-import css from "./RegisterForm.module.css";
+import { logIn } from "../../redux/auth/operations";
+import { NavLink } from "react-router-dom";
+import css from "./SignInForm.module.css";
 
-export const RegisterForm = () => {
+export const SignInForm = () => {
   const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.currentTarget;
     dispatch(
-      register({
-        name: form.elements.name.value,
+      logIn({
         email: form.elements.email.value,
         password: form.elements.password.value,
-        // repeat password:form.elements.repeat password.value,
       })
     );
+    // .unwrap()
+    // .then(() => {
+    //   console.log("login success");
+    // })
+    // .catch(() => {
+    //   console.log("login error");
+    // });
     form.reset();
   };
 
   return (
     <div className={css.wrapper}>
-      <Link to="/">Home</Link>
       <div className={css.formContainer}>
-        <h1 className={css.title}>Sign Up</h1>
+        <h1 className={css.title}>Sign In</h1>
         <form className={css.form} onSubmit={handleSubmit} autoComplete="off">
           <label className={css.label}>
             Email
@@ -44,23 +48,15 @@ export const RegisterForm = () => {
               placeholder="Enter your password"
             />
           </label>
-          <label className={css.label}>
-            Repeat Password
-            <input
-              className={css.input}
-              type="password"
-              name="repeat password"
-              placeholder="Repeat password"
-            />
-          </label>
+
           <button className={css.button} type="submit">
-            Sign Up
+            Sign In
           </button>
         </form>
         <p className={css.description}>
           Already have an account?&nbsp;
-          <NavLink className={css.link} to={"/login"}>
-            Sign In
+          <NavLink className={css.link} to={"/signup"}>
+            Sign Up
           </NavLink>
         </p>
       </div>
