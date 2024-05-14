@@ -13,7 +13,7 @@
 @media only screen and (min-width: 768px) {
   .logoFont {
     font-size: 24px;
-    padding-top: 64px;
-    padding-left: 64px;
+    padding-top: 32px;
+    padding-left: 32px;
   }
 }
