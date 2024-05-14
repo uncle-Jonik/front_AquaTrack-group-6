@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import { setActiveDay, setCurrentDate } from '../../redux/Calendar/CalendarSlice';
 import css from './CalendarPagination.module.css';
+import sprite from '../../assets/sprite.svg'
 
 const months = [
     "January", "February", "March", "April", "May", "June", 
@@ -28,9 +28,17 @@ const CalendarPagination = () => {
 
     return (
         <div className={css.container}>
-            <button className={css.button} type="button" onClick={goToPreviousMonth}><FaChevronLeft /></button>
+            <button className={css.button} type="button" onClick={goToPreviousMonth}>
+                <svg  className={css.icons} >
+                    <use width={18} height={18}  xlinkHref={`${sprite}#icon-left`} />
+                </svg>
+            </button>
             <p>{months[new Date(currentDate).getMonth()]}, {new Date(currentDate).getFullYear()}</p>
-            <button className={css.button} type="button" onClick={goToNextMonth}><FaChevronRight /></button>
+            <button className={css.button} type="button" onClick={goToNextMonth}>
+                <svg  className={css.icons} >
+                    <use width={18} height={18}  xlinkHref={`${sprite}#icon-right`} />
+                </svg>
+            </button>
         </div>
     );
 };
