@@ -1,3 +1,3 @@
 export const App = () => {
-  return <>App skjnfdksnmlsdkmflsdm flsdmlfksmslkdmfdslkmf</>;
+  return <>App</>;
 };
