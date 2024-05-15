@@ -22,6 +22,7 @@ export const App = () => {
   return (
     <>
       <HomePage />
-      <b>s</b>
+      <b>tesst</b>
     </>
-
+  );
+};
