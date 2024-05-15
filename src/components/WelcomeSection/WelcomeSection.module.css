@@ -123,6 +123,7 @@
     border-radius: 30px;
     letter-spacing: 1px;
     border: 0;
+    transition: var(--animation);
   }
 
   .welcomeButton_tracker:hover {
@@ -147,6 +148,7 @@
     letter-spacing: 1px;
     margin-left: 16px;
     border-width: 1px;
+    transition: var(--animation);
   }
 
   .welcomeButton_sign:hover {
