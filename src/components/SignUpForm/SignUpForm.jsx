@@ -1,57 +1,92 @@
-import { useDispatch } from "react-redux";
-import { register } from "../../redux/auth/operations";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import css from "./SignUpForm.module.css";
+import React from "react";
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { useForm } from "react-hook-form";
 
-export const SignUpForm = () => {
-  const dispatch = useDispatch();
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const form = e.currentTarget;
-    dispatch(
-      register({
-        email: form.elements.email.value,
-        password: form.elements.password.value,
-        repeat: form.elements.repeat.value,
-      })
-    );
-    form.reset();
-  };
+const schema = yup.object().shape({
+  email: yup
+    .string()
+    .email("Введіть дійсну email адресу")
+    .required("Поле Email є обов'язковим"),
+  password: yup
+    .string()
+    .required("Поле Password є обов'язковим")
+    .min(6, "Пароль має містити принаймні 6 символів"),
+  repeatPassword: yup
+    .string()
+    .oneOf([yup.ref("password"), null], "Паролі повинні співпадати"),
+});
+export function SignUpForm() {
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+    reset,
+  } = useForm({
+    resolver: yupResolver(schema),
+    mode: "onChange",
+    defaultValues: {
+      email: "",
+      password: "",
+    },
+  });
+  const password = React.useRef({});
+  password.current = watch("password", "");
 
   return (
     <div className={css.wrapper}>
-      <Link to="/">Home</Link>
       <div className={css.formContainer}>
         <h1 className={css.title}>Sign Up</h1>
-        <form className={css.form} onSubmit={handleSubmit} autoComplete="off">
-          <label className={css.label}>
-            Email
-            <input
-              className={css.input}
-              type="email"
-              name="email"
-              placeholder="Enter your email"
-            />
-          </label>
-          <label className={css.label}>
-            Password
-            <input
-              className={css.input}
-              type="password"
-              name="password"
-              placeholder="Enter your password"
-            />
-          </label>
-          <label className={css.label}>
-            Repeat Password
-            <input
-              className={css.input}
-              type="password"
-              name="repeat password"
-              placeholder="Repeat password"
-            />
-          </label>
+        <form
+          className={css.form}
+          onSubmit={handleSubmit((data) => {
+            console.log(data);
+            reset();
+          })}
+        >
+          <label className={css.label}>Email</label>
+          <input
+            className={css.input}
+            type="email"
+            {...register("email", {
+              pattern: {
+                value: /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/,
+                message: "Please enter valid email",
+              },
+            })}
+            placeholder="Enter your email"
+          />
+          {errors.email && (
+            <span style={{ color: "red" }}>{errors.email.message}</span>
+          )}
+
+          <label className={css.label}>Password</label>
+          <input
+            className={css.input}
+            type="password"
+            {...register("password")}
+            placeholder="Enter your Password"
+          />
+          {errors.password && (
+            <span style={{ color: "red" }}>{errors.password.message}</span>
+          )}
+
+          <label className={css.label}>Repeat Password</label>
+          <input
+            className={css.input}
+            type="password"
+            {...register("repeatPassword")}
+            placeholder="Repeat Password"
+          />
+          {errors.repeatPassword && (
+            <span style={{ color: "red" }}>
+              {errors.repeatPassword.message}
+            </span>
+          )}
+
           <button className={css.button} type="submit">
             Sign Up
           </button>
@@ -65,4 +100,4 @@ export const SignUpForm = () => {
       </div>
     </div>
   );
-};
+}
