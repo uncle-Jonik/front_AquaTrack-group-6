@@ -5,7 +5,7 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
-import { registerUsers } from "../../redux/auth/operations";
+import { registerUser } from "../../redux/user/userOperations";
 
 const schema = yup.object().shape({
   email: yup
@@ -48,7 +48,7 @@ export function SignUpForm() {
           className={css.form}
           onSubmit={handleSubmit((data) => {
             console.log(data);
-            dispatch(registerUsers(data));
+            dispatch(registerUser(data));
             reset();
           })}
         >
