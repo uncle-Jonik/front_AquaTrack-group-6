@@ -1,3 +1,9 @@
+import { HomePage } from './pages/HomePage/HomePage'
+
 export const App = () => {
-  return <>App</>;
-};
+  return (
+    <div>
+      <HomePage />
+    </div>
+  )
+}
