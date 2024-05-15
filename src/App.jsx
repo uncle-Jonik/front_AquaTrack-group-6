@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { fetchRegister } from "./api/usersAPI";
+import { HomePage } from "./pages/HomePage/HomePage";
 
 export const App = () => {
   const [data, setData] = useState([]);
@@ -20,7 +21,7 @@ export const App = () => {
   console.log(data);
   return (
     <>
+      <HomePage />
       <b>s</b>
     </>
-  );
-};
+
