@@ -1,0 +1,44 @@
+/* --------- Mobile styles --------- */
+
+.advantagesSection {
+  margin-top: 16px;
+  margin-left: 16px;
+  margin-right: 16px;
+}
+
+.advantagesPhoto {
+  position: relative;
+  margin-bottom: 16px;
+}
+
+.advantagesUsers {
+  position: absolute;
+  left: 32px;
+  top: 668px;
+  /* bottom: -96px;
+  transform: translateX(50%); */
+
+  background-color: white;
+  border-radius: 30px;
+  width: 200px;
+}
+
+.advantagesBlock {
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.advantagesText {
+  font-family: 'Poppins';
+  color: #323f47;
+  font-weight: 700;
+  font-size: 12px;
+  margin-left: 4px;
+  columns: 66px 2;
+}
+
+.advantagesSpan {
+  color: #9be1a0;
+}
