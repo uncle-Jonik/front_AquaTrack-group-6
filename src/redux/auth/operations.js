@@ -1,7 +1,7 @@
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-axios.defaults.baseURL = "https://back-aquatrack-group-6.onrender.com/";
+axios.defaults.baseURL = "https://back-aquatrack-group-6.onrender.com/api";
 
 const setAuthHeader = (token) => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
@@ -14,13 +14,13 @@ const clearAuthHeader = () => {
  * POST @ /users/signup
  * body: { email, password }
  */
-export const register = createAsyncThunk(
+export const registerUsers = createAsyncThunk(
   "auth/register",
-  async (data, thunkAPI) => {
+  async ({ email, password }, thunkAPI) => {
     try {
-      const res = await axios.post("/users/register", data);
+      const res = await axios.post("/users/register", { email, password });
       // After successful registration, add the token to the HTTP header
-      setAuthHeader(res.data.token);
+      // setAuthHeader(res.data.token);
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
