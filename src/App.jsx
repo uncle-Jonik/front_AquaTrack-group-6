@@ -1,20 +1,16 @@
 import { useEffect, useState } from "react";
-import { fetchPing } from "./api/pingAPI";
 
 export const App = () => {
-  const [articles, setArticles] = useState([]);
+  const [data, setData] = useState([]);
 
   useEffect(() => {
-    async function fetchArticles() {
-      const response = await fetchPing();
-      setArticles(response.data);
-    }
+    async function testing() {}
 
-    fetchArticles();
+    testing();
   }, []);
   return (
     <>
-      <b>{articles.text}</b>
+      <b>s</b>
     </>
   );
 };
