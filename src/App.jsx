@@ -1,7 +1,3 @@
-// export const App = () => {
-//   return <>App </>
-// }
-
 import { HomePage } from './pages/HomePage/HomePage'
 
 export const App = () => {
