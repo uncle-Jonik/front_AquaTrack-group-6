@@ -5,12 +5,12 @@ import { WaterList } from "../WaterList/WaterList.jsx";
 
 export function DailyInfo() {
   return (
-    <>
-      <div>
+    <div style={{ marginBottom: "40px" }}>
+      <div className={css.wrapper}>
         <ChooseDate />
         {/* <AddWaterBtn /> */}
       </div>
       <WaterList />
-    </>
+    </div>
   );
 }

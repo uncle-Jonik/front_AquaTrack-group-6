@@ -5,7 +5,7 @@ export function UserPanel() {
   return (
     <div className={css.userPanel}>
       <h1 className={css.greeting}>
-        Hello<b>, Name!</b>
+        Hello<b>, Mia!</b>
       </h1>
       <UserBar />
     </div>

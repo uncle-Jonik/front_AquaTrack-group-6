@@ -3,6 +3,7 @@
   border-radius: 15px;
   padding: 14px 20px;
   width: 100%;
+  min-width: fit-content;
   box-sizing: border-box;
   max-height: fit-content;
   top: 54px;
@@ -22,6 +23,8 @@
 }
 
 .icon {
+  min-width: 16px;
+  min-height: 16px;
   width: 16px;
   height: 16px;
   fill: none;
@@ -35,6 +38,24 @@
   font-size: 14px;
   line-height: 1.3;
   max-width: 100%;
+  color: #323f47;
+}
+
+.logOutBtn {
+  color: rgba(50, 63, 71, 0.4);
+  transition: color var(--animation);
+}
+
+.logOutBtn:hover {
+  color: #323f47;
+}
+
+.logOutBtn svg {
+  stroke: rgba(50, 63, 71, 0.4);
+  transition: stroke var(--animation);
+}
+.logOutBtn:hover svg {
+  stroke: #323f47;
 }
 
 @media only screen and (min-width: 768px) {
