@@ -23,6 +23,7 @@
   padding-top: 16px;
   padding-left: 16px;
   line-height: 38px;
+  max-width: 311px;
 }
 
 .welcomeButton_blok {
@@ -103,6 +104,7 @@
     padding-top: 16px;
     padding-left: 64px;
     line-height: 70px;
+    max-width: 547px;
   }
 
   .welcomeButton_blok {
@@ -185,6 +187,7 @@
     padding-top: 16px;
     padding-left: 64px;
     line-height: 76px;
+    max-width: 547px;
   }
 
   /* .welcomeButton_blok {
