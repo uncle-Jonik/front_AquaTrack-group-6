@@ -1,6 +1,12 @@
 .signUpPageWrapper {
   margin: 16px;
 }
+@media only screen and (min-width: 768px) {
+  .signUpPageWrapper {
+    margin: 32px;
+  }
+}
+
 .signUpPageContainer {
   max-width: 343px;
 
@@ -8,4 +14,12 @@
   padding: 24px 16px;
   border-radius: 30px;
   background-color: #f0eff4;
+}
+
+@media only screen and (min-width: 768px) {
+  .signUpPageContainer {
+    max-width: 640px;
+
+    padding: 32px;
+  }
 }
