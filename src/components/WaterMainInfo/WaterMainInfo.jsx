@@ -24,7 +24,11 @@ const WaterMainInfo = () => {
       </div>
 
       <div className={css.waterProgressBar}>
-        <h2 className={css.barTitle}>Today</h2>
+        <div className={css.titleBarBox}>
+          <h2 className={css.barTitle}>Today</h2>
+          <span className={css.progressLabel}>{waterLevel}%</span>
+        </div>
+
         <input
           type="range"
           className={css.rangeInput}
@@ -33,7 +37,12 @@ const WaterMainInfo = () => {
           value={waterLevel}
           onChange={(e) => setWaterLevel(e.target.value)}
         />
-        <span className={css.progressLabel}>{waterLevel}%</span>
+
+        <div className={css.labels}>
+          <span className={css.label}>0%</span>
+          <span className={css.label}>50%</span>
+          <span className={css.label}>100%</span>
+        </div>
       </div>
 
       <button onClick={handleAddWater}>

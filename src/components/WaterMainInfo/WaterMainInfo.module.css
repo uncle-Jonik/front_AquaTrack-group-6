@@ -81,5 +81,29 @@ button {
   border-radius: 9px;
   width: 255px;
   height: 8px;
-  background: #f0eff4;
+  background: #9be1a0;
+}
+.titleBarBox {
+  display: flex;
+  justify-content: space-between;
+}
+.progressLabel {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 1.8;
+  color: #9be1a0;
+}
+.labels {
+  display: flex;
+  justify-content: space-between;
+  width: 255px; /* Match the width of the range input */
+  padding-top: 5px; /* Add some space between the range input and the labels */
+}
+
+.label {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-size: 10px;
+  color: #323f47;
 }
