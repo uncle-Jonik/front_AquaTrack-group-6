@@ -1,18 +1,14 @@
-import React, { useCallback, useEffect } from "react";
+import { useCallback, useEffect } from "react";
 import Modal from "react-modal";
 import css from "./globalModal.module.css";
 import { MdClose } from "react-icons/md";
 
 const customStyles = {
   content: {
-    top: "50%",
-    left: "50%",
-    right: "auto",
-    bottom: "auto",
-    marginRight: "-50%",
     transform: "translate(-50%, -50%)",
     backgroundColor: "#FFFFFF",
     borderRadius: "10px",
+    width: "293px",
   },
   overlay: {
     position: "fixed",
@@ -65,10 +61,10 @@ export const GlobalModal = ({
           <MdClose onClick={onRequestClose} size={"24px"} />
         </div>
       </div>
-      {children}
-      <btn className={css.saveBtn} onClick={onRequestSave}>
+      <div className={css.modalContent}>{children}</div>
+      <button className={css.saveBtn} onClick={onRequestSave}>
         <p className={css.saveBtnText}>Save</p>
-      </btn>
+      </button>
     </Modal>
   );
 };
