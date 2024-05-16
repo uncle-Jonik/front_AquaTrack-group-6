@@ -6,6 +6,11 @@
     padding: 171px 102px 227px;
   }
 }
+@media only screen and (min-width: 1440px) {
+  .formContainer {
+    padding: 74px 86px 100px;
+  }
+}
 
 .title {
   font-weight: 700;
@@ -15,11 +20,15 @@
 
   margin-bottom: 32px;
 }
-
 @media only screen and (min-width: 768px) {
   .title {
     font-size: 36px;
     line-height: 106%;
+  }
+}
+@media only screen and (min-width: 1440px) {
+  .title {
+    font-size: 36px;
   }
 }
 

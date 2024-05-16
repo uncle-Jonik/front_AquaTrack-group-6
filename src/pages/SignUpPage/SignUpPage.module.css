@@ -23,3 +23,9 @@
     padding: 32px;
   }
 }
+@media only screen and (min-width: 1440px) {
+  .signUpPageContainer {
+    max-width: 608px;
+    margin: 0;
+  }
+}
