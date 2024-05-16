@@ -4,8 +4,8 @@
   color: #323f47;
   font-weight: bold;
   font-size: 18px;
-  padding-top: 24px;
-  padding-left: 16px;
+  /* padding-top: 24px;
+  padding-left: 16px; */
 }
 
 /* --------- Tablet styles --------- */
@@ -13,7 +13,7 @@
 @media only screen and (min-width: 768px) {
   .logoFont {
     font-size: 24px;
-    padding-top: 32px;
-    padding-left: 32px;
+    /* padding-top: 32px;
+    padding-left: 32px; */
   }
 }
