@@ -1,0 +1,11 @@
+.signUpPageWrapper {
+  margin: 16px;
+}
+.signUpPageContainer {
+  max-width: 343px;
+
+  margin: 0 auto;
+  padding: 24px 16px;
+  border-radius: 30px;
+  background-color: #f0eff4;
+}

@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import css from "./SignUpForm.module.css";
 import React from "react";
 import * as yup from "yup";
@@ -43,7 +43,7 @@ export function SignUpForm() {
   return (
     <div className={css.wrapper}>
       <div className={css.formContainer}>
-        <h1 className={css.title}>Sign Up</h1>
+        <p className={css.title}>Sign Up</p>
         <form
           className={css.form}
           onSubmit={handleSubmit((data) => {
@@ -98,9 +98,7 @@ export function SignUpForm() {
         </form>
         <p className={css.description}>
           Already have an account?&nbsp;
-          <NavLink className={css.link} to={"/signin"}>
-            Sign In
-          </NavLink>
+          <Link to={"/signin"}>Sign In</Link>
         </p>
       </div>
     </div>
