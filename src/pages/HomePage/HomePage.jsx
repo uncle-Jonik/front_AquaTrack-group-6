@@ -1,9 +1,9 @@
-import { WelcomeSection } from '../../components/WelcomeSection/WelcomeSection'
+import { WelcomeSection } from "../../components/WelcomeSection/WelcomeSection";
 
-export const HomePage = () => {
+export default function HomePage() {
   return (
     <div>
       <WelcomeSection />
     </div>
-  )
+  );
 }

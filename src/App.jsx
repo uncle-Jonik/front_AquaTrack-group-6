@@ -1,28 +1,25 @@
-import { useEffect, useState } from "react";
-import { fetchRegister } from "./api/usersAPI";
-import { HomePage } from "./pages/HomePage/HomePage";
+import { lazy, Suspense } from "react";
+import { Route, Routes } from "react-router-dom";
+
+const HomePage = lazy(() => import("./pages/HomePage/HomePage"));
+const SignUpPage = lazy(() => import("./pages/SignUpPage/SignUpPage"));
+const LoginPage = lazy(() => import("./pages/SignInPage/SignInPage"));
+const TrackerPage = lazy(() => import("./pages/TrackerPage/TrackerPage"));
+const NotFoundPage = lazy(() => import("./pages/NotFoundPage/NotFoundPage"));
 
 export const App = () => {
-  const [data, setData] = useState([]);
-
-  useEffect(() => {
-    const controller = new AbortController();
-    const a = { email: "bob@i.ua", password: "Bob_2024" };
-
-    async function testing() {
-      const res = await fetchRegister(a, { abortController: controller });
-
-      setData(res.data);
-    }
-
-    testing();
-  }, []);
-
-  console.log(data);
   return (
-    <>
-      <HomePage />
-      <b>tesst</b>
-    </>
+    <div>
+      <Suspense fallback={<div>Loading...</div>}>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/signup" element={<SignUpPage />} />
+          <Route path="/signin" element={<LoginPage />} />
+          <Route path="/tracker" element={<TrackerPage />} />
+
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
+      </Suspense>
+    </div>
   );
 };

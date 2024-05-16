@@ -1,7 +1,7 @@
-// import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom";
 
-import { Logo } from '../Logo'
-import css from './WelcomeSection.module.css'
+import { Logo } from "../Logo";
+import css from "./WelcomeSection.module.css";
 
 export const WelcomeSection = () => {
   return (
@@ -12,13 +12,13 @@ export const WelcomeSection = () => {
         <h1 className={css.welcomeName}>Water consumption tracker</h1>
         <div className={css.welcomeButton_blok}>
           <button className={css.welcomeButton_tracker}>
-            <p>Try tracker</p>
+            <Link to="/signup">Try tracker</Link>
           </button>
           <button className={css.welcomeButton_sign}>
-            <p>Sign In</p>
+            <Link to="/signin">Sign In</Link>
           </button>
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
