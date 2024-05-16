@@ -1,5 +1,183 @@
+.loginContainer {
+  height: 780px;
+  margin: 16px;
+  border-radius: 30px;
+  opacity: 0px;
+  background-color: #f0eff4;
+}
+
+.formContainer {
+  margin-left: 16px;
+  padding-top: 172px;
+}
+.title {
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 32px;
+  letter-spacing: -0.01em;
+  text-align: left;
+  color: #323f47;
+  margin-bottom: 32px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-bottom: 16px;
+}
+.label {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: -0.01em;
+  text-align: left;
+  color: #2f2f2f;
+}
+.input {
+  font-weight: 400;
+  height: 50px;
+
+  margin-top: 8px;
+  margin-bottom: 16px;
+  margin-right: 16px;
+  border-radius: 15px;
+  border: 1px solid #2f2f2f33;
+  opacity: 0px;
+
+  outline: none;
+  background-color: #f0eff4;
+}
+
+.input::placeholder {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+  text-align: left;
+  padding-left: 16px;
+  letter-spacing: -0.01em;
+  color: #2f2f2f99;
+}
+
+.button {
+  height: 50px;
+  border-radius: 30px;
+  border: none;
+  color: #323f47;
+
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 18px;
+  background-color: #9be1a0;
+  margin-top: 32px;
+  cursor: pointer;
+  opacity: 0px;
+  margin-right: 16px;
+}
+
+.description {
+  font-family: Gilroy;
+  color: rgba(47, 47, 47, 0.5);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: -0.01em;
+  text-align: center;
+}
+
+.link {
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 18px;
+  letter-spacing: -0.01em;
+  color: #2f2f2f;
+}
+@media screen and (min-width: 768px) {
+  .loginContainer {
+    height: 960px;
+    margin: 32px;
+  }
+  .formContainer {
+    padding-top: 225px;
+    padding-left: 134px;
+    padding-right: 134px;
+    opacity: 0px;
+  }
+
+  .title {
+    font-size: 36px;
+    line-height: 38px;
+    color: #323f47;
+    margin-bottom: 32px;
+  }
+
+  .form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-bottom: 16px;
+  }
+  .label {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;
+    color: #2f2f2f;
+  }
+  .input {
+    font-weight: 400;
+
+    margin-top: 8px;
+    margin-bottom: 16px;
+    border-radius: 15px;
+    border: 1px solid #2f2f2f33;
+    opacity: 0px;
+    gap: 10px;
+    outline: none;
+    background-color: #f0eff4;
+  }
+
+  .input::placeholder {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: #2f2f2f99;
+  }
+
+  .button {
+    height: 60px;
+    border-radius: 30px;
+    border: none;
+    color: #323f47;
+
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+    background-color: #9be1a0;
+    margin-top: 32px;
+    cursor: pointer;
+    opacity: 0px;
+  }
+
+  .description {
+    font-family: Gilroy;
+    color: rgba(47, 47, 47, 0.5);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 18px;
+    letter-spacing: -0.01em;
+    text-align: center;
+  }
+
+  .link {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+    letter-spacing: -0.01em;
+    color: #2f2f2f;
+  }
+}
 @media screen and (min-width: 1440px) {
-  .wrapper {
+  .loginContainer {
     padding: 0;
     padding-left: 150px;
   }
@@ -19,7 +197,7 @@
   .form {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+
     justify-content: center;
   }
   .label {
@@ -30,8 +208,6 @@
     gap: 10px;
   }
   .input {
-    padding: 16px 293px 16px 16px;
-
     border-radius: 15px;
     border: 1px solid rgba(47, 47, 47, 0.2);
     opacity: 0px;
@@ -39,18 +215,17 @@
   }
 
   .input::placeholder {
-    font-size: 16px;
     font-weight: 400;
+    font-size: 16px;
     line-height: 24px;
-    letter-spacing: 0em;
+    color: #2f2f2f99;
     text-align: left;
-    color: rgba(47, 47, 47, 0.6);
   }
   .button {
     height: 60px;
     border-radius: 30px;
     border: none;
-    color: rgba(50, 63, 71, 1);
+    color: #323f47;
     font-size: 16px;
     font-weight: 700;
     line-height: 24px;
@@ -73,6 +248,6 @@
     font-weight: 700;
     line-height: 24px;
     letter-spacing: -0.01em;
-    color: rgba(47, 47, 47, 0.5);
+    color: #2f2f2f;
   }
 }
