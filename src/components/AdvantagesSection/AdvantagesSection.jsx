@@ -25,7 +25,21 @@ export const AdvantagesSection = () => {
         </div>
       </div>
 
-      <div></div>
+      <div className={css.advantagesHabits}>
+        <div className={css.advantagesHabits_inoneline}>
+          <div className={css.advantagesHabits_1}>
+            <div className={css.advantagesHabits_1_sircle}></div>
+            <p className={css.advantagesHabits_1_text}>Habit drive</p>
+          </div>
+          <div className={css.advantagesHabits_2}>
+            <p className={css.advantagesHabits_2_text}>View statistics</p>
+          </div>
+        </div>
+
+        <div className={css.advantagesHabits_3}>
+          <p className={css.advantagesHabits_3_text}>Personal rate setting</p>
+        </div>
+      </div>
     </div>
   )
 }
