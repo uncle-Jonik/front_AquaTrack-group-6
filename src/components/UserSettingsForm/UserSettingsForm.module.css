@@ -24,11 +24,24 @@
 }
 
 .radioText {
-  font-family: "Poppins", sans-serif;
+  font-family: "Poppins";
+  font-style: normal;
   font-weight: 400;
-  font-size: 16px;
-  line-height: 24px;
+  font-size: 14px;
+  line-height: 18px;
   letter-spacing: -0.01em;
+
+  color: #2f2f2f;
+}
+
+.radioText1 {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: -0.01em;
+  padding-top: 24px;
 
   color: #2f2f2f;
 }
@@ -42,19 +55,18 @@ input[type="file"] {
 }
 
 .error {
-  color: red;
-  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: -0.01em;
+  color: #ef5050;
 }
 
 .backend-error {
   margin-top: 15px;
   color: red;
   font-size: 14px;
-}
-
-.recommended-water {
-  font-weight: bold;
-  color: #1e90ff;
 }
 
 .save-button {
@@ -189,9 +201,102 @@ input[type="file"] {
   align-items: center;
   gap: 10px;
   justify-items: center;
+  padding-bottom: 10px;
 }
 
-.contentBox {
-  max-height: 505px;
-  overflow: auto;
+.recWater {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 18px;
+  color: #9be1a0;
+  margin-top: 5px;
+}
+
+.lastInput {
+  margin-bottom: 40px;
+}
+
+.box {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 768px) {
+  .dataBoxGender {
+    flex-direction: row;
+    gap: 28px;
+  }
+  .box {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    align-items: flex-end;
+  }
+}
+
+@media (min-width: 1440px) {
+  .contentBox {
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+    justify-content: space-between;
+  }
+  .smallBox {
+    max-width: 400px;
+  }
+  .avatar {
+    width: 140px;
+    height: 140px;
+  }
+  .uploadBoxText {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+
+    letter-spacing: -0.01em;
+
+    color: #2f2f2f;
+  }
+  .titleText {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 24px;
+    margin-bottom: 10px;
+  }
+  .radioText {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+  }
+  input[type="text"],
+  input[type="email"],
+  input[type="number"],
+  input[type="file"] {
+    margin-top: 3px;
+    border-radius: 15px;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    padding-left: 16px;
+    padding-right: 16px;
+    border: 1px solid rgba(47, 47, 47, 0.15);
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+  }
+  .formulaText {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;
+  }
+  .explainText {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+  }
+  .explainBox {
+    margin-top: 14px;
+    padding: 16px;
+  }
 }

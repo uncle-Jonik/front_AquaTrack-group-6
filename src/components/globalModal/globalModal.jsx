@@ -4,12 +4,6 @@ import css from "./globalModal.module.css";
 import { MdClose } from "react-icons/md";
 
 const customStyles = {
-  content: {
-    transform: "translate(-50%, -50%)",
-    backgroundColor: "#FFFFFF",
-    borderRadius: "10px",
-    width: "293px",
-  },
   overlay: {
     position: "fixed",
     top: 0,
@@ -22,13 +16,7 @@ const customStyles = {
 
 Modal.setAppElement("#root");
 
-export const GlobalModal = ({
-  isOpen,
-  onRequestClose,
-  children,
-  title,
-  onRequestSave,
-}) => {
+export const GlobalModal = ({ isOpen, onRequestClose, children, title }) => {
   const handleKeyDown = useCallback(
     (event) => {
       if (event.key === "Escape") {
@@ -50,7 +38,7 @@ export const GlobalModal = ({
       isOpen={isOpen}
       onRequestClose={onRequestClose}
       shouldCloseOnOverlayClick={true}
-      className={css.box}
+      className={css.content}
       style={customStyles}
     >
       <div className={css.modalHeader}>
@@ -62,9 +50,6 @@ export const GlobalModal = ({
         </div>
       </div>
       <div className={css.modalContent}>{children}</div>
-      <button className={css.saveBtn} onClick={onRequestSave}>
-        <p className={css.saveBtnText}>Save</p>
-      </button>
     </Modal>
   );
 };

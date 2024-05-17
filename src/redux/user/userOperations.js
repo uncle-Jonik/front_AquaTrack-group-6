@@ -48,3 +48,20 @@ export const RefreshUser = createAsyncThunk(
     ///////////////////
   }
 );
+
+export const updateUser = createAsyncThunk(
+  "auth/update",
+  async (data, thunkAPI) => {
+    try {
+      const res = await axios.put("users/current", data, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+
+      return res.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);

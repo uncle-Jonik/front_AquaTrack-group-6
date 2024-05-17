@@ -16,7 +16,7 @@ export default function TrackerPage() {
         title={"Setting"}
         onRequestClose={handleCloseModal}
       >
-        <UserSettingsForm />
+        <UserSettingsForm onClose={handleCloseModal} />
       </GlobalModal>
     </div>
   );
