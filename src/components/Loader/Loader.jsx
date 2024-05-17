@@ -1,10 +1,10 @@
 import css from "./Loader.module.css";
-import { BounceLoader } from "react-spinners";
+import { PuffLoader } from "react-spinners";
 
 export const Loader = () => {
   return (
     <div className={css.container}>
-      <BounceLoader color="#9BE1A0" size={150} />
+      <PuffLoader color="#9BE1A0" size={150} speedMultiplier={2} />
     </div>
   );
 };
