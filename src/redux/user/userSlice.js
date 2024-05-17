@@ -49,10 +49,12 @@ const userSlice = createSlice({
       .addCase(refreshUser.pending, (state, action) => {
         //////////////////////////////
         // ТУТ МАЄ ВАШ ЛОУДЕР;
+        state.isRefreshing = true;
       })
       .addCase(refreshUser.fulfilled, (state, action) => {
         //////////////////////////////
         state.isLoggedIn = true;
+        state.isRefreshing = false;
       })
       .addCase(updateUser.fulfilled, (state, action) => {
         state.error = null;
