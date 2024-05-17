@@ -58,7 +58,7 @@ export const SignInForm = () => {
               },
             })}
             placeholder="Enter your email"
-            autoComplete="off"
+            autoComplete="on"
           />
           {errors.email && (
             <span style={{ color: "red" }}>{errors.email.message}</span>

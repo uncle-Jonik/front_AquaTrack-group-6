@@ -38,6 +38,9 @@ const userSlice = createSlice({
         state.isLoggedIn = true;
         state.accessToken = action.payload.accessToken;
         state.refreshToken = action.payload.refreshToken;
+
+        console.log(action.payload);
+        state.userInfo = action.payload.user;
       })
       .addCase(logoutUser.fulfilled, (state) => {
         state.isLoggedIn = false;
