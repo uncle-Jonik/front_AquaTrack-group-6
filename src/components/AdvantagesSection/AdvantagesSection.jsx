@@ -6,7 +6,7 @@ export const AdvantagesSection = () => {
       <img
         className={css.advantagesPhoto}
         src="../../../src/assets/img/baner@1x.jpg"
-        srcSet="../../../src/assets/img/baner@1x.jpg 1x, ../../baner@2x.jpg 2x"
+        srcSet="../../../src/assets/img/baner@1x.jpg 1x, ../../baner@2x.jpg"
         alt="Woman drink water"
         loading="lazy"
       />
