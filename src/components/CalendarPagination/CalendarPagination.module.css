@@ -23,15 +23,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 20px;
-    height: 20px;
 }
 
 .icons{
     width: 18px;
     height: 18px;
-    /* fill: #000; */
-    /* color: #000; */
     stroke: black;
     fill: none;
     align-items: center;
