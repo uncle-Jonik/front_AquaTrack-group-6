@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import {
-  RefreshUser,
+  refreshUser,
   loginUser,
   logoutUser,
   registerUser,
@@ -46,8 +46,13 @@ const userSlice = createSlice({
         state.isLoggedIn = false;
         //////////////////////////////
       })
-      .addCase(RefreshUser.fulfilled, (state, action) => {
+      .addCase(refreshUser.pending, (state, action) => {
         //////////////////////////////
+        // ТУТ МАЄ ВАШ ЛОУДЕР;
+      })
+      .addCase(refreshUser.fulfilled, (state, action) => {
+        //////////////////////////////
+        state.isLoggedIn = true;
       })
       .addCase(updateUser.fulfilled, (state, action) => {
         state.error = null;
@@ -64,7 +69,7 @@ const userSlice = createSlice({
         state.error = action.payload;
       })
 
-      .addCase(RefreshUser.rejected, (state) => {
+      .addCase(refreshUser.rejected, (state) => {
         //////////////////////////////
       }),
 });
