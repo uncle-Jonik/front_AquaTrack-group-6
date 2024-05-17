@@ -55,6 +55,7 @@
 }
 
 .form > input {
+  background-color: transparent;
   border: 1px solid rgba(47, 47, 47, 0.2);
   border-radius: 15px;
   padding: 16px;
@@ -83,7 +84,7 @@
 
 .form > button {
   border-radius: 30px;
-  padding: 16px 129px;
+  padding: 16px 100px;
   background: #9be1a0;
   border: none;
 

@@ -4,6 +4,7 @@
   border-radius: 30px;
   opacity: 0px;
   background-color: #f0eff4;
+  padding: 24px 16px;
 }
 
 .formContainer {
@@ -36,7 +37,7 @@
 }
 .input {
   font-weight: 400;
-  height: 50px;
+  padding: 16px;
 
   margin-top: 8px;
   margin-bottom: 16px;
@@ -73,6 +74,12 @@
   cursor: pointer;
   opacity: 0px;
   margin-right: 16px;
+  transition: var(--animation);
+}
+
+.button:hover,
+.button:focus {
+  background: #87d28d;
 }
 
 .description {
@@ -86,6 +93,7 @@
 }
 
 .link {
+  text-decoration: underline;
   font-size: 14px;
   font-weight: 700;
   line-height: 18px;
@@ -96,6 +104,7 @@
   .loginContainer {
     height: 960px;
     margin: 32px;
+    padding: 32px;
   }
   .formContainer {
     padding-top: 113px;

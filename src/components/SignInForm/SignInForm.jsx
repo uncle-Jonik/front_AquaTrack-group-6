@@ -73,9 +73,9 @@ export const SignInForm = () => {
             placeholder="Enter your Password"
           />
           <div className={css.messageInput}>
-            <svg className={css.eyeIcon}>
+            {/* <svg className={css.eyeIcon}>
               <use width={20} height={20} xlinkHref={`${sprite}#icon-eye`} />
-            </svg>
+            </svg> */}
           </div>
           {errors.password && (
             <span style={{ color: "red" }}>{errors.password.message}</span>
