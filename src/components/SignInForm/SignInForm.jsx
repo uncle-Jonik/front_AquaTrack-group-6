@@ -60,12 +60,11 @@ export const SignInForm = () => {
             autoComplete="off"
           />
           {errors.email && (
-            <span style={{ color: "rgba(239, 80, 80, 1)" }}>
-              {errors.email.message}
-            </span>
+            <span style={{ color: "red" }}>{errors.email.message}</span>
           )}
 
           <label className={css.label}>Password</label>
+
           <input
             className={css.input}
             type="password"
@@ -75,6 +74,7 @@ export const SignInForm = () => {
           {errors.password && (
             <span style={{ color: "red" }}>{errors.password.message}</span>
           )}
+
           <button className={css.button} type="submit">
             Sign In
           </button>

@@ -8,7 +8,7 @@
 
 .formContainer {
   margin-left: 16px;
-  padding-top: 172px;
+  padding-top: 126px;
 }
 .title {
   font-weight: 700;
@@ -98,7 +98,7 @@
     margin: 32px;
   }
   .formContainer {
-    padding-top: 225px;
+    padding-top: 113px;
     padding-left: 134px;
     padding-right: 134px;
     opacity: 0px;
@@ -107,8 +107,6 @@
   .title {
     font-size: 36px;
     line-height: 38px;
-    color: #323f47;
-    margin-bottom: 32px;
   }
 
   .form {
@@ -160,10 +158,10 @@
 
   .description {
     font-family: Gilroy;
-    color: rgba(47, 47, 47, 0.5);
-    font-size: 14px;
+    color: #2f2f2f80;
+    font-size: 16px;
     font-weight: 400;
-    line-height: 18px;
+    line-height: 24px;
     letter-spacing: -0.01em;
     text-align: center;
   }
@@ -178,76 +176,24 @@
 }
 @media screen and (min-width: 1440px) {
   .loginContainer {
-    padding: 0;
-    padding-left: 150px;
+    height: 736px;
+    width: 672px;
   }
   .formContainer {
     width: 100%;
     max-width: 436px;
     margin: 0;
-    padding-top: 201px;
+    padding-top: 169px;
   }
-  .title {
-    width: 700;
-    font-size: 36px;
-    line-height: 38px;
-    margin-bottom: 20px;
-    color: rgba(50, 63, 71, 1);
-  }
+
   .form {
     display: flex;
     flex-direction: column;
 
     justify-content: center;
   }
-  .label {
-    font-weight: 700;
-    line-height: 24px;
-    letter-spacing: -0.01em;
-    text-align: left;
-    gap: 10px;
-  }
-  .input {
-    border-radius: 15px;
-    border: 1px solid rgba(47, 47, 47, 0.2);
-    opacity: 0px;
-    gap: 10px;
-  }
 
-  .input::placeholder {
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 24px;
-    color: #2f2f2f99;
-    text-align: left;
-  }
   .button {
-    height: 60px;
-    border-radius: 30px;
-    border: none;
-    color: #323f47;
-    font-size: 16px;
-    font-weight: 700;
-    line-height: 24px;
-    letter-spacing: 0em;
-    background-color: rgba(155, 225, 160, 1);
-    gap: 16px;
-    cursor: pointer;
-  }
-  .description {
-    color: rgba(47, 47, 47, 0.5);
-    font-size: 16px;
-    font-weight: 240;
-    line-height: 24px;
-    letter-spacing: 0px;
-    text-align: center;
-    gap: 32px;
-  }
-  .link {
-    font-size: 16px;
-    font-weight: 700;
-    line-height: 24px;
-    letter-spacing: -0.01em;
-    color: #2f2f2f;
+    margin-top: 32px;
   }
 }
