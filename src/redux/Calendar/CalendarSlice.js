@@ -18,4 +18,5 @@ const calendarSlice = createSlice({
 });
 
 export const { setCurrentDate, setActiveDay } = calendarSlice.actions;
-export default calendarSlice.reducer;
+
+export const calendarReducer = calendarSlice.reducer;
