@@ -10,6 +10,17 @@ const TrackerPage = lazy(() => import("./pages/TrackerPage/TrackerPage"));
 const NotFoundPage = lazy(() => import("./pages/NotFoundPage/NotFoundPage"));
 
 export const App = () => {
+  // юзер рефреш
+  // const dispatch = useDispatch();
+  // const { isRefreshing } = useSelector(selectIsRefreshing);
+
+  // useEffect(() => {
+  //   dispatch(refreshUser());
+  // }, [dispatch]);
+  // return isRefreshing ? (
+  //   <b>Refreshing user...</b>
+  // ) : (
+
   return (
     <div>
       <Suspense fallback={<div>Loading...</div>}>
