@@ -1,6 +1,6 @@
 import { UserPanel } from "../UserPanel/UserPanel.jsx";
 import { DailyInfo } from "../DailyInfo/DailyInfo.jsx";
-// import { MonthInfo } from "../MonthInfo/MonthInfo.jsx";
+import MonthInfo from "../MonthInfo/MonthInfo.jsx";
 import css from "./WaterDetailedInfo.module.css";
 
 export function WaterDetailedInfo() {
@@ -8,7 +8,7 @@ export function WaterDetailedInfo() {
     <div className={css.wrapper}>
       <UserPanel />
       <DailyInfo />
-      {/* <MonthInfo/> */}
+      <MonthInfo />
     </div>
   );
 }
