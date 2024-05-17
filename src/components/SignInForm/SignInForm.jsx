@@ -6,6 +6,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { loginUser } from "../../redux/user/userOperations";
+import sprite from "../../assets/sprite.svg";
 
 const schema = yup.object().shape({
   email: yup
@@ -71,6 +72,11 @@ export const SignInForm = () => {
             {...register("password")}
             placeholder="Enter your Password"
           />
+          <div className={css.messageInput}>
+            <svg className={css.eyeIcon}>
+              <use width={20} height={20} xlinkHref={`${sprite}#icon-eye`} />
+            </svg>
+          </div>
           {errors.password && (
             <span style={{ color: "red" }}>{errors.password.message}</span>
           )}
