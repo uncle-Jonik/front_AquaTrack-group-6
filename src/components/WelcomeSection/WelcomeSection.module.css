@@ -1,0 +1,199 @@
+/* --------- Mobile styles --------- */
+
+.welcomeBox {
+  height: 411px;
+  margin-top: 16px;
+  margin-left: 16px;
+  margin-right: 16px;
+  padding-top: 24px;
+  padding-left: 16px;
+  background-color: #f0eff4;
+  border-radius: 30px;
+}
+
+.welcomePhrase {
+  color: #2f2f2f;
+  font-size: 14px;
+  padding-top: 74px;
+  padding-left: 16px;
+}
+
+.welcomeName {
+  color: #323f47;
+  font-weight: bold;
+  font-size: 38px;
+  padding-top: 16px;
+  padding-left: 16px;
+  line-height: 38px;
+  max-width: 311px;
+}
+
+.welcomeButton_blok {
+  padding-top: 32px;
+  padding-left: 16px;
+}
+
+.welcomeButton_tracker {
+  color: #323f47;
+  background-color: #9be1a0;
+  font-weight: bold;
+  font-size: 14px;
+  /* align-items: center; */
+  padding: 14px 19px;
+  line-height: 18px;
+  border-radius: 30px;
+  letter-spacing: 1px;
+  border: 0;
+}
+
+.welcomeButton_tracker:hover {
+  background-color: #87d28d;
+}
+
+.welcomeButton_tracker:focus {
+  color: #bcbcbc;
+  background-color: #e6e6e6;
+}
+
+/* --------- */
+
+.welcomeButton_sign {
+  color: #323f47;
+  font-weight: bold;
+  font-size: 14px;
+  /* align-items: center; */
+  padding: 14px 28px;
+  line-height: 18px;
+  border-radius: 30px;
+  letter-spacing: 1px;
+  margin-left: 10px;
+  border-width: 1px;
+  border: 1px solid #323f47;
+}
+
+.welcomeButton_sign:hover {
+  color: #87d28d;
+  border-color: #87d28d;
+}
+
+.welcomeButton_sign:focus {
+  color: #bcbcbc;
+  border-color: #e6e6e6;
+}
+
+/* --------- Tablet styles --------- */
+
+@media only screen and (min-width: 768px) {
+  .welcomeBox {
+    height: 498px;
+    margin-top: 32px;
+    margin-left: 32px;
+    margin-right: 32px;
+    padding-top: 32px;
+    padding-left: 32px;
+    background-color: #f0eff4;
+    border-radius: 30px;
+  }
+
+  .welcomePhrase {
+    color: #2f2f2f;
+    font-size: 16px;
+    padding-top: 50px;
+    padding-left: 64px;
+  }
+
+  .welcomeName {
+    color: #323f47;
+    font-weight: bold;
+    font-size: 64px;
+    padding-top: 16px;
+    padding-left: 64px;
+    line-height: 70px;
+    max-width: 547px;
+  }
+
+  .welcomeButton_blok {
+    padding-top: 32px;
+    padding-left: 64px;
+  }
+
+  .welcomeButton_tracker {
+    color: #323f47;
+    background-color: #9be1a0;
+    font-weight: bold;
+    font-size: 16px;
+    /* align-items: center; */
+    padding: 18px 40px;
+    line-height: 24px;
+    border-radius: 30px;
+    letter-spacing: 1px;
+    border: 0;
+    transition: var(--animation);
+  }
+
+  .welcomeButton_tracker:hover {
+    background-color: #87d28d;
+  }
+
+  .welcomeButton_tracker:focus {
+    color: #bcbcbc;
+    background-color: #e6e6e6;
+  }
+
+  /* --------- */
+
+  .welcomeButton_sign {
+    color: #323f47;
+    font-weight: bold;
+    font-size: 16px;
+    /* align-items: center; */
+    padding: 18px 40px;
+    line-height: 24px;
+    border-radius: 30px;
+    letter-spacing: 1px;
+    margin-left: 16px;
+    border-width: 1px;
+    transition: var(--animation);
+  }
+
+  .welcomeButton_sign:hover {
+    color: #87d28d;
+    border-color: #87d28d;
+  }
+
+  .welcomeButton_sign:focus {
+    color: #bcbcbc;
+    border-color: #e6e6e6;
+  }
+}
+
+/* --------- Desctop styles --------- */
+
+@media only screen and (min-width: 1440px) {
+  .welcomeBox {
+    height: 736px;
+    width: 672px;
+    margin-top: 32px;
+    margin-left: 32px;
+    margin-bottom: 32px;
+    background-color: #f0eff4;
+    border-radius: 30px;
+  }
+
+  .welcomePhrase {
+    color: #2f2f2f;
+    font-size: 16px;
+    padding-top: 132px;
+    padding-left: 64px;
+  }
+
+  .welcomeName {
+    color: #323f47;
+    font-weight: bold;
+    font-size: 80px;
+    padding-top: 16px;
+    padding-left: 64px;
+    line-height: 76px;
+    max-width: 547px;
+  }
+}

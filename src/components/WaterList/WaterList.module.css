@@ -1,0 +1,20 @@
+.waterList {
+  display: flex;
+  overflow-x: auto;
+  flex-wrap: nowrap;
+  padding-bottom: 32px;
+}
+.waterList::-webkit-scrollbar {
+  height: 8px;
+  border-radius: 9px;
+}
+
+.waterList::-webkit-scrollbar-thumb {
+  border-radius: 9px;
+  background-color: #323f47;
+}
+
+.waterList::-webkit-scrollbar-track {
+  border-radius: 9px;
+  background-color: #fff;
+}
