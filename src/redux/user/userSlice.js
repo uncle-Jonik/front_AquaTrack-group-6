@@ -30,13 +30,16 @@ const userSlice = createSlice({
   extraReducers: (builder) =>
     builder
       .addCase(registerUser.fulfilled, (state, action) => {
+        state.isLoggedIn = true;
         //////////////////////////////
       })
       .addCase(loginUser.fulfilled, (state, action) => {
+        state.isLoggedIn = true;
         state.accessToken = action.payload.accessToken;
         state.refreshToken = action.payload.refreshToken;
       })
       .addCase(logoutUser.fulfilled, (state) => {
+        state.isLoggedIn = false;
         //////////////////////////////
       })
       .addCase(RefreshUser.fulfilled, (state, action) => {
