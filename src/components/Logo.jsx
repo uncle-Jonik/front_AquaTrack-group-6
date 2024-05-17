@@ -1,5 +1,10 @@
-import css from './Logo.module.css'
+import css from "./Logo.module.css";
+import { Link } from "react-router-dom";
 
 export const Logo = () => {
-  return <p className={css.logoFont}>AQUATRACK</p>
-}
+  return (
+    <Link to="/" className={css.logoFont}>
+      AQUATRACK
+    </Link>
+  );
+};
