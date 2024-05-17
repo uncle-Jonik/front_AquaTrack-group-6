@@ -166,7 +166,8 @@
     width: 672px;
     margin-top: 32px;
     margin-left: 32px;
-    margin-bottom: 32px;
+    margin-right: 0;
+    margin-bottom: 0;
     background-color: #f0eff4;
     border-radius: 30px;
   }

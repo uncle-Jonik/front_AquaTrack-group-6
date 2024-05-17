@@ -249,3 +249,128 @@
     font-weight: 700;
   }
 }
+
+/* --------- Desctop styles --------- */
+
+@media only screen and (min-width: 1440px) {
+  .advantagesSection {
+    margin-top: 32px;
+    margin-left: 0;
+    margin-right: 32px;
+  }
+
+  .advantagesPhoto {
+    position: relative;
+    /* <------ */
+    width: 704px;
+    height: 736px;
+    /* <------ */
+  }
+
+  .advantagesUsers {
+    position: absolute;
+    left: 770px;
+    top: 560px;
+    background-color: white;
+    border-radius: 30px;
+    width: 260px;
+  }
+
+  /* .advantagesBlock {
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  } */
+
+  .advantagesText {
+    /* font-family: 'Poppins';
+    color: #323f47; */
+    font-weight: 700;
+    font-size: 19px;
+    margin-left: 4px;
+    columns: 66px 2;
+  }
+
+  /* .advantagesSpan {
+    color: #9be1a0;
+  } */
+
+  /* --------- */
+
+  .advantagesHabits {
+    position: absolute;
+    left: 1080px;
+    top: 600px;
+  }
+
+  .advantagesHabits_inoneline {
+    /* display: flex;
+    align-items: center;
+    justify-content: center; */
+    gap: 10px;
+  }
+
+  .advantagesHabits_1 {
+    /* background-color: #323f47;
+    color: #ffffff; */
+    border-radius: 30px;
+    padding: 11px 16px;
+    height: 26px;
+    width: 110px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+  }
+
+  /* .advantagesHabits_1_sircle {
+    background-color: #9be1a0;
+    border-radius: 360px;
+    width: 12px;
+    height: 12px;
+  } */
+
+  .advantagesHabits_1_text {
+    font-size: 16px;
+    font-weight: 700;
+  }
+
+  /* ------- */
+
+  .advantagesHabits_2 {
+    /* background-color: #9be1a0;
+    color: #323f47; */
+    border-radius: 30px;
+    padding: 11px 16px;
+    width: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .advantagesHabits_2_text {
+    font-size: 16px;
+    font-weight: 700;
+  }
+
+  /* ------- */
+
+  .advantagesHabits_3 {
+    /* background-color: #ffffff;
+    color: #323f47; */
+    border-radius: 30px;
+    padding: 11px 16px;
+    height: 26px;
+    width: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+  }
+
+  .advantagesHabits_3_text {
+    font-size: 16px;
+    font-weight: 700;
+  }
+}
