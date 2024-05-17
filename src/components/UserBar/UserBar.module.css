@@ -1,0 +1,61 @@
+.button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 30px;
+  padding: 6px 12px;
+  max-width: 100%;
+  height: 50px;
+  background-color: #323f47;
+  border: none;
+}
+
+@media only screen and (min-width: 768px) {
+  .button {
+    height: 56px;
+    gap: 10px;
+  }
+}
+
+.name {
+  font-family: var(--main-font);
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  color: #fff;
+}
+@media only screen and (min-width: 768px) {
+  .name {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+}
+
+.avatar {
+  border-radius: 100%;
+  width: 38px;
+  height: 38px;
+  background-color: #fff;
+}
+
+@media only screen and (min-width: 768px) {
+  .avatar {
+    width: 44px;
+    height: 44px;
+  }
+}
+
+.icon {
+  fill: #fff;
+  width: 10px;
+  height: auto;
+  padding: 3px;
+}
+
+@media only screen and (min-width: 768px) {
+  .icon {
+    width: 12px;
+    padding: 4px;
+  }
+}
