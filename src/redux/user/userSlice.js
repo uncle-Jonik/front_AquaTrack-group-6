@@ -74,9 +74,9 @@ const userSlice = createSlice({
 
       .addCase(refreshUser.rejected, (state) => {
         //////////////////////////////
-      })
-
+      }),
 });
+// ТЕСТ
 
 export const {
   //////////////////////////////
