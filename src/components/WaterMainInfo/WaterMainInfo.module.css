@@ -29,6 +29,8 @@ button {
   color: #fff;
 }
 .wrapper {
+  box-sizing: border-box;
+
   position: absolute;
   top: 200px;
   left: 130px;
