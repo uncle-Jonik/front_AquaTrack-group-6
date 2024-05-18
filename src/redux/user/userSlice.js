@@ -51,6 +51,7 @@ const userSlice = createSlice({
         // ТУТ МАЄ ВАШ ЛОУДЕР;
         state.isRefreshing = true;
       })
+
       .addCase(refreshUser.fulfilled, (state, action) => {
         //////////////////////////////
         state.user = action.payload;
@@ -59,8 +60,16 @@ const userSlice = createSlice({
         state.accessToken = action.payload.accessToken;
         state.refreshToken = action.payload.refreshToken;
       })
+
+      .addCase(updateUser.pending, (state, action) => {
+        //////////////////////////////
+        // ТУТ МАЄ ВАШ ЛОУДЕР;
+        state.isRefreshing = true;
+      })
+
       .addCase(updateUser.fulfilled, (state, action) => {
         state.error = "";
+        state.isRefreshing = false;
 
         state.userInfo.email = action.payload.email;
         state.userInfo.name = action.payload.name;
