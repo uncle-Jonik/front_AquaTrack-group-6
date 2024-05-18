@@ -58,7 +58,7 @@ const userSlice = createSlice({
         state.isRefreshing = false;
       })
       .addCase(updateUser.fulfilled, (state, action) => {
-        state.error = null;
+        state.error = "";
 
         state.userInfo.email = action.payload.email;
         state.userInfo.name = action.payload.name;
@@ -74,8 +74,8 @@ const userSlice = createSlice({
 
       .addCase(refreshUser.rejected, (state) => {
         //////////////////////////////
-        state.isRefreshing = false;
-      }),
+      })
+
 });
 
 export const {
