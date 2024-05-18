@@ -1,5 +1,8 @@
 import { lazy, Suspense, useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
+import toast from "react-hot-toast";
+import { Toaster } from "react-hot-toast";
+import { selectUserError } from "./redux/user/userSelectors";
 import { RestrictedRoute } from "./RestrictedRoute";
 import { PrivateRoute } from "./PrivateRoute";
 import { useDispatch, useSelector } from "react-redux";
@@ -14,17 +17,26 @@ const TrackerPage = lazy(() => import("./pages/TrackerPage/TrackerPage"));
 const NotFoundPage = lazy(() => import("./pages/NotFoundPage/NotFoundPage"));
 
 export const App = () => {
-  // юзер рефреш
+  const error = useSelector(selectUserError);
+
   const dispatch = useDispatch();
+
   const { isRefreshing } = useSelector(selectIsRefreshing);
 
   useEffect(() => {
     dispatch(refreshUser());
-  }, [dispatch]);
+
+    if (error.length > 0) {
+      console.log(error);
+      toast.error(error);
+    }
+  }, [dispatch, error]);
+
   return isRefreshing ? (
     <Loader />
   ) : (
     <div>
+      <Toaster position="top-right"></Toaster>
       <Suspense fallback={<Loader />}>
         <Routes>
           <Route path="/" element={<HomePage />} />

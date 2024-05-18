@@ -8,8 +8,11 @@ export function UserBar() {
   const [showPopOver, setShowPopOver] = useState(false);
 
   const handleOutsideClick = (e) => {
+    const isClickInsideModal = e.target.closest("#userSettingsModal");
+
     if (
       showPopOver &&
+      !isClickInsideModal &&
       !e.target.closest("#userBar") &&
       e.target.tagName.toLowerCase() !== "svg"
     ) {
