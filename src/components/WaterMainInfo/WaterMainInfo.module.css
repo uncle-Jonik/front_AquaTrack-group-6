@@ -7,7 +7,7 @@
   height: 736px;
   background: #9be1a0;
 }
-button {
+.addWaterButton {
   position: absolute;
   bottom: 36px;
   right: -49px;
@@ -27,6 +27,9 @@ button {
   letter-spacing: -0.01em;
   text-align: center;
   color: #fff;
+}
+.addWaterButton:hover {
+  color: #9be1a0;
 }
 .wrapper {
   box-sizing: border-box;

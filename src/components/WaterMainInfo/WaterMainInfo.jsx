@@ -74,7 +74,7 @@ const WaterMainInfo = () => {
         </div>
       </div>
 
-      <button onClick={handleAddWater}>
+      <button className={css.addWaterButton} onClick={handleAddWater}>
         <TiPlus />
         Add water
       </button>
