@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import {
-  RefreshUser,
+  refreshUser,
   loginUser,
   logoutUser,
   registerUser,
@@ -35,20 +35,28 @@ const userSlice = createSlice({
         //////////////////////////////
       })
       .addCase(loginUser.fulfilled, (state, action) => {
+        state.isLoggedIn = true;
         state.accessToken = action.payload.accessToken;
         state.refreshToken = action.payload.refreshToken;
+
+        console.log(action.payload);
+        state.userInfo = action.payload.user;
       })
       .addCase(logoutUser.fulfilled, (state) => {
+        state.isLoggedIn = false;
         //////////////////////////////
       })
-      .addCase(RefreshUser.fulfilled, (state, action) => {
+      .addCase(refreshUser.pending, (state, action) => {
         //////////////////////////////
+        // ТУТ МАЄ ВАШ ЛОУДЕР;
+        state.isRefreshing = true;
       })
-
-      .addCase(RefreshUser.rejected, (state) => {
+      .addCase(refreshUser.fulfilled, (state, action) => {
         //////////////////////////////
+        state.user = action.payload;
+        state.isLoggedIn = true;
+        state.isRefreshing = false;
       })
-
       .addCase(updateUser.fulfilled, (state, action) => {
         state.error = null;
 
@@ -60,10 +68,14 @@ const userSlice = createSlice({
         state.userInfo.sportsActivity = action.payload.sportsActivity;
         state.userInfo.waterRate = action.payload.waterRate;
       })
-
       .addCase(updateUser.rejected, (state, action) => {
         state.error = action.payload;
-      }),
+      })
+
+      .addCase(refreshUser.rejected, (state) => {
+        //////////////////////////////
+      })
+
 });
 
 export const {

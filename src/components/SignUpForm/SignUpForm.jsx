@@ -1,11 +1,11 @@
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import css from "./SignUpForm.module.css";
 import React from "react";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
-import { registerUser } from "../../redux/user/userOperations";
+import { registerUser, loginUser } from "../../redux/user/userOperations";
 
 const schema = yup.object().shape({
   email: yup
@@ -43,12 +43,22 @@ export function SignUpForm() {
   return (
     <div className={css.wrapper}>
       <div className={css.formContainer}>
-        <h1 className={css.title}>Sign Up</h1>
+        <p className={css.title}>Sign Up</p>
         <form
           className={css.form}
           onSubmit={handleSubmit((data) => {
             console.log(data);
-            dispatch(registerUser(data));
+            dispatch(registerUser(data))
+              .then((res) => {
+                console.log(res);
+                if (res.type === "auth/register/rejected")
+                  throw new Error(res.payload);
+                dispatch(loginUser(data));
+              })
+              .catch((err) => {
+                console.log(err);
+              });
+
             reset();
           })}
         >
@@ -98,9 +108,7 @@ export function SignUpForm() {
         </form>
         <p className={css.description}>
           Already have an account?&nbsp;
-          <NavLink className={css.link} to={"/signin"}>
-            Sign In
-          </NavLink>
+          <Link to={"/signin"}>Sign In</Link>
         </p>
       </div>
     </div>
