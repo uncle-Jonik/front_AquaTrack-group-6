@@ -1,4 +1,5 @@
 import { WaterDetailedInfo } from "../../components/WaterDetailedInfo/WaterDetailedInfo.jsx";
+import WaterMainInfo from "../../components/WaterMainInfo/WaterMainInfo.jsx";
 // import { WaterMainInfo } from "../../components/WaterMainInfo/WaterMainInfo.jsx";
 // import { useDispatch } from "react-redux";
 // import { useEffect } from "react";
@@ -20,7 +21,7 @@ export default function TrackerPage() {
 
   return (
     <>
-      {/* <WaterMainInfo /> */}
+      <WaterMainInfo />
       <WaterDetailedInfo />
     </>
   );
