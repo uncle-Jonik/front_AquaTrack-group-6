@@ -1,7 +1,19 @@
+import { useState } from "react";
 import css from "./WaterItem.module.css";
 import sprite from "../../assets/sprite.svg";
+import { BaseModal } from "../BaseModal/BaseModal";
+import { WaterModal } from "../WaterModal/WaterModal";
 
 export function WaterItem({ item }) {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const openModal = () => {
+    setIsOpen(true);
+  };
+  const closeModal = () => {
+    setIsOpen(false);
+  };
+
   const water =
     item.waterValue >= 999
       ? Math.round((item.waterValue / 1000) * 100) / 100 + " L"
@@ -17,7 +29,7 @@ export function WaterItem({ item }) {
         <p className={css.time}>{item.localTime}</p>
       </div>
       <div className={css.btnBox}>
-        <button className={css.button} type="button">
+        <button className={css.button} type="button" onClick={openModal}>
           <svg className={css.btnIcon}>
             <use href={sprite + "#icon-edit"}></use>
           </svg>
@@ -27,6 +39,12 @@ export function WaterItem({ item }) {
             <use href={sprite + "#icon-trash"}></use>
           </svg>
         </button>
+      </div>
+
+      <div>
+        <BaseModal isOpen={isOpen} onClose={closeModal}>
+          <WaterModal mode={"edit"} onClose={closeModal} water={item} />
+        </BaseModal>
       </div>
     </div>
   );
