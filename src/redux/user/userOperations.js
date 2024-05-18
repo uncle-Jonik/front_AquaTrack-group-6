@@ -58,6 +58,8 @@ export const refreshUser = createAsyncThunk(
         refreshToken: persistedToken,
       });
 
+      SetAuthHeader(res.data.accessToken);
+
       return res.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
@@ -80,4 +82,3 @@ export const updateUser = createAsyncThunk(
     }
   }
 );
-

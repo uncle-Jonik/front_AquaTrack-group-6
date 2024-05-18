@@ -1,10 +1,14 @@
 import css from "./UserBar.module.css";
+import defaultAvatar from "../../assets/img/avatar-default.svg";
 import { UserBarPopover } from "../UserBarPopover/UserBarPopover.jsx";
 import { useState, useEffect } from "react";
 import { FaChevronDown } from "react-icons/fa6";
 import { FaChevronUp } from "react-icons/fa6";
-
+import { useAuth } from "../../hooks/useAuth.jsx";
+console.log(defaultAvatar);
 export function UserBar() {
+  const user = useAuth().user;
+
   const [showPopOver, setShowPopOver] = useState(false);
 
   const handleOutsideClick = (e) => {
@@ -34,8 +38,16 @@ export function UserBar() {
         className={css.button}
         onClick={() => setShowPopOver(!showPopOver)}
       >
-        <span className={css.name}>Mia</span>
-        <div className={css.avatar}></div>
+        <span className={css.name}>{user.name}</span>
+
+        {
+          <img
+            className={css.avatar}
+            src={!user.avatar ? defaultAvatar : user.avatar}
+            alt="AVATAR"
+          />
+        }
+
         {showPopOver ? (
           <FaChevronUp className={css.icon} />
         ) : (
