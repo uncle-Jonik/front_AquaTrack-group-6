@@ -56,6 +56,8 @@ const userSlice = createSlice({
         state.user = action.payload;
         state.isLoggedIn = true;
         state.isRefreshing = false;
+        state.accessToken = action.payload.accessToken;
+        state.refreshToken = action.payload.refreshToken;
       })
       .addCase(updateUser.fulfilled, (state, action) => {
         state.error = "";
@@ -74,8 +76,7 @@ const userSlice = createSlice({
 
       .addCase(refreshUser.rejected, (state) => {
         //////////////////////////////
-      })
-
+      }),
 });
 
 export const {
