@@ -40,6 +40,7 @@ export const GlobalModal = ({ isOpen, onRequestClose, children, title }) => {
       shouldCloseOnOverlayClick={true}
       className={css.content}
       style={customStyles}
+      id="userSettingsModal"
     >
       <div className={css.modalHeader}>
         <div className={css.textBox}>
