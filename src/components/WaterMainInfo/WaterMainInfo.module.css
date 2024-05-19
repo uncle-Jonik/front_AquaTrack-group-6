@@ -1,0 +1,64 @@
+.wrapper {
+  background-color: #9be1a0;
+
+  padding: 24px 16px 32px;
+  border-radius: 30px;
+
+  /* width: 343px; */
+  /* height: 415px;
+
+  margin: 0 auto;
+  background-image: url(../../assets/img/bottle_for_water@1x.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover; */
+}
+
+/* .statusBar {
+  width: 262px;
+  height: 335px;
+
+  margin: 0 auto;
+  background-image: url(../../assets/img/bottle_for_water@1x.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+@media only screen and (min-resolution: 192dpi) {
+  .statusBar {
+    background-image: url(../../assets/img/bottle_for_water@2x.png);
+  }
+} */
+
+.statusBar {
+  max-width: 198px;
+  margin: 0 auto;
+  padding: 12px;
+
+  border-radius: 15px;
+  background: #ffffff;
+  box-shadow: 0 4px 50px 0 rgba(0, 0, 0, 0.1);
+}
+
+.statusBar > p {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 100%;
+  color: #323f47;
+
+  margin-bottom: 8px;
+}
+.statusBar > input[type="range"] {
+  width: 100%;
+
+  margin: 0;
+}
+.labels {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  font-size: 10px;
+  line-height: 100%;
+  color: rgba(47, 47, 47, 0.6);
+}
