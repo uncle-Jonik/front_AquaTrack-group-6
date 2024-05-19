@@ -1,9 +1,11 @@
 import css from "./WaterMainInfo.module.css";
 
 import { Logo } from "../Logo";
+import { useAuth } from "../../hooks/useAuth";
 import { AddWaterBtn } from "../AddWaterBtn/AddWaterBtn";
 
 export const WaterMainInfo = () => {
+  const user = useAuth().user;
   return (
     <div className={css.wrapper}>
       <div className={css.logoBox}>
@@ -11,7 +13,7 @@ export const WaterMainInfo = () => {
       </div>
 
       <div className={css.dailyNorma}>
-        <b>100L</b>
+        <b>{user.waterRate} L</b>
         <p>My daily norma</p>
       </div>
 
