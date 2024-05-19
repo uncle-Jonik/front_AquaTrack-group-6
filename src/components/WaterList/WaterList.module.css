@@ -31,3 +31,12 @@
   line-height: 100%;
   color: #323f47;
 }
+@media only screen and (max-width: 370px) {
+  .empty {
+    padding: 26px 10px;
+  }
+
+  .empty > p {
+    font-size: 16px;
+  }
+}
