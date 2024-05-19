@@ -1,7 +1,7 @@
+import css from "./LogOutModal.module.css";
 import { useDispatch } from "react-redux";
 import { logoutUser } from "../../redux/user/userOperations";
 import { ModalBtn } from "../ModalBtn/Modalbtn";
-import css from "./LogOutModal.module.css";
 import { onLogoutUser } from "../../redux/user/userSlice";
 
 export const LogOutModal = ({ onRequestClose }) => {
