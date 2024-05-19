@@ -1,12 +1,13 @@
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import toast from "react-hot-toast";
 import { HiPlus, HiMinus } from "react-icons/hi2";
 
 import { addWater, changeWater } from "../../redux/water/waterOperations";
 import css from "./WaterForm.module.css";
+import { selectActiveDay } from "../../redux/water/waterSelectors";
 
 const schema = Yup.object().shape({
   waterValue: Yup.number()
@@ -16,13 +17,6 @@ const schema = Yup.object().shape({
     // .matches(/^([01]?[0-9]|2[0-3]):[0-5][0-9]$/, "Invalid time format (hh:mm)")
     .required("Time is required"),
 });
-
-const localDate = () => {
-  const milliseconds = Date.now();
-  const date = new Date(milliseconds);
-
-  return date.toLocaleDateString();
-};
 
 const getTimeFormat = () => {
   const date = new Date();
@@ -56,6 +50,7 @@ export const WaterForm = ({ mode, onClose, water = {} }) => {
     },
   });
 
+  const activeDay = useSelector(selectActiveDay);
   const dispatch = useDispatch();
 
   const handleClickMinus = () => {
@@ -71,7 +66,7 @@ export const WaterForm = ({ mode, onClose, water = {} }) => {
   const onSubmit = () => {
     console.log(watch("waterValue"));
     const newData = {
-      localDate: localDate(), // ----------Тут потрібно буде передавати дату, або дефолтне значення
+      localDate: activeDay,
       waterValue: watch("waterValue"),
       localTime: watch("localTime"),
     };

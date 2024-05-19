@@ -7,6 +7,13 @@ import {
   fetchWaterPerMonth,
 } from "./waterOperations";
 
+const localDate = () => {
+  const milliseconds = Date.now();
+  const date = new Date(milliseconds);
+
+  return date.toLocaleDateString();
+};
+
 function handleLoading(state) {
   state.loading = true;
   state.error = null;
@@ -29,6 +36,7 @@ const waterSlice = createSlice({
     },
     loading: false,
     error: false,
+    activeDay: localDate(),
   },
   extraReducers: (builder) =>
     builder

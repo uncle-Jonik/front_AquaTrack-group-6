@@ -5,7 +5,6 @@ import { useState, useEffect } from "react";
 import { FaChevronDown } from "react-icons/fa6";
 import { FaChevronUp } from "react-icons/fa6";
 import { useAuth } from "../../hooks/useAuth.jsx";
-console.log(defaultAvatar);
 export function UserBar() {
   const user = useAuth().user;
 
