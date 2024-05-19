@@ -35,6 +35,9 @@ const waterSlice = createSlice({
       .addCase(fetchWaterPerDay.pending, handleLoading)
       .addCase(fetchWaterPerDay.fulfilled, (state, action) => {
         const { waterRate, waterRecord } = action.payload;
+
+        console.log(action.payload);
+
         state.error = false;
         state.loading = false;
         state.waters.waterPerDay = { waterRate, waterRecord };
