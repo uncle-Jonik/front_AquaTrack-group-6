@@ -28,9 +28,15 @@ export function WaterList() {
 
   return (
     <div ref={useHorizontalScroll()} className={css.waterList}>
-      {waterRecord.map((value) => {
-        return <WaterItem key={value._id} item={value} />;
-      })}
+      {waterRecord.length > 0 ? (
+        waterRecord.map((value) => {
+          return <WaterItem key={value._id} item={value} />;
+        })
+      ) : (
+        <div className={css.empty}>
+          <p>🌵It is as dry as a desert</p>
+        </div>
+      )}
     </div>
   );
 }

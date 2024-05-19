@@ -18,3 +18,16 @@
   border-radius: 9px;
   background-color: #fff;
 }
+.empty {
+  padding: 26px;
+  margin: 0 auto;
+  border-radius: 15px;
+  background: #ffffff;
+}
+
+.empty > p {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 100%;
+  color: #323f47;
+}
