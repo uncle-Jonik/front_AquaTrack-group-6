@@ -24,6 +24,10 @@ function handleError(state, action) {
   state.loading = false;
 }
 
+// function ifDayinMonth(date) {
+//   state.waterPerMonth.waterRecord[date];
+// }
+
 const waterSlice = createSlice({
   name: "water",
   initialState: {
@@ -65,6 +69,16 @@ const waterSlice = createSlice({
           (water) => water.id === action.payload.waterRecord.id
         );
         state.waters.waterPerDay.waterRecord.splice(index, 1);
+        if (
+          state.waterPerMonth.waterRecord[action.payload.waterRecord.localDate]
+        ) {
+          const index = state.waterPerMonth.waterRecord[
+            action.payload.waterRecord.localDate
+          ].findIndex((water) => water.id === action.payload.waterRecord.id);
+          state.waterPerMonth.waterRecord[
+            action.payload.waterRecord.localDate
+          ].splice(index, 1);
+        }
       })
       .addCase(deleteWater.rejected, handleError)
       .addCase(addWater.pending, handleLoading)
@@ -72,6 +86,13 @@ const waterSlice = createSlice({
         state.loading = false;
         state.error = false;
         state.waters.waterPerDay.waterRecord.push(action.payload.waterRecord);
+        if (
+          state.waterPerMonth.waterRecord[action.payload.waterRecord.localDate]
+        ) {
+          state.waterPerMonth.waterRecord[
+            action.payload.waterRecord.localDate
+          ].push(action.payload.waterRecord);
+        }
       })
       .addCase(addWater.rejected, handleError)
       .addCase(changeWater.pending, handleLoading)
@@ -83,6 +104,17 @@ const waterSlice = createSlice({
         );
         state.waters.waterPerDay.waterRecord[index] =
           action.payload.waterRecord;
+
+        if (
+          state.waterPerMonth.waterRecord[action.payload.waterRecord.localDate]
+        ) {
+          const index = state.waterPerMonth.waterRecord[
+            action.payload.waterRecord.localDate
+          ].findIndex((water) => water.id === action.payload.waterRecord.id);
+          state.waterPerMonth.waterRecord[action.payload.waterRecord.localDate][
+            index
+          ] = action.payload.waterRecord;
+        }
       })
       .addCase(changeWater.rejected, handleError),
 });
