@@ -32,42 +32,57 @@ export const App = () => {
     }
   }, [dispatch, error]);
 
-  return isRefreshing ? (
-    <Loader />
-  ) : (
-    <div>
-      <Toaster position="top-right"></Toaster>
-      <Suspense fallback={<Loader />}>
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route
-            path="/signup"
-            element={
-              <RestrictedRoute
-                redirectTo="/tracker"
-                component={<SignUpPage />}
-              />
-            }
-          />
-          <Route
-            path="/signin"
-            element={
-              <RestrictedRoute
-                redirectTo="/tracker"
-                component={<LoginPage />}
-              />
-            }
-          />
-          <Route
-            path="/tracker"
-            element={
-              <PrivateRoute redirectTo="/signin" component={<TrackerPage />} />
-            }
-          />
+  return (
+    <>
+      {isRefreshing && (
+        <div style={{ position: "relative" }}>
+          <Loader absolute={true} />
+        </div>
+      )}
+      <div>
+        <Suspense
+          fallback={
+            <div>
+              <Loader absolute={true} />
+            </div>
+          }
+        >
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route
+              path="/signup"
+              element={
+                <RestrictedRoute
+                  redirectTo="/tracker"
+                  component={<SignUpPage />}
+                />
+              }
+            />
+            <Route
+              path="/signin"
+              element={
+                <RestrictedRoute
+                  redirectTo="/tracker"
+                  component={<LoginPage />}
+                />
+              }
+            />
+            <Route
+              path="/tracker"
+              element={
+                <PrivateRoute
+                  redirectTo="/signin"
+                  component={<TrackerPage />}
+                />
+              }
+            />
 
-          <Route path="*" element={<NotFoundPage />} />
-        </Routes>
-      </Suspense>
-    </div>
+            <Route path="*" element={<NotFoundPage />} />
+          </Routes>
+        </Suspense>
+
+        <Toaster position="top-right"></Toaster>
+      </div>
+    </>
   );
 };
