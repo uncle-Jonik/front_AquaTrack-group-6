@@ -64,13 +64,13 @@ export const WaterForm = ({ mode, onClose, water = {} }) => {
   };
 
   const onSubmit = () => {
-    console.log(watch("waterValue"));
+    // console.log(watch("waterValue"));
     const newData = {
       localDate: activeDay,
       waterValue: watch("waterValue"),
       localTime: watch("localTime"),
     };
-    console.log("newData", newData);
+    // console.log("newData", newData);
     try {
       if (mode === "add") {
         dispatch(addWater(newData));
