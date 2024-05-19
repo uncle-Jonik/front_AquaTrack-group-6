@@ -58,6 +58,15 @@
   color: rgba(50, 63, 71, 0.3);
 }
 
+@media (min-width: 768px) {
+  .logOutBtn {
+    max-width: 173px;
+  }
+  .cancelBtn {
+    max-width: 173px;
+  }
+}
+
 @media (min-width: 1440px) {
   .saveBtn {
     padding-top: 16px;

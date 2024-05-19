@@ -68,6 +68,18 @@
     width: 648px;
     padding: 40px;
   }
+  .titleHeader {
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 32px;
+    letter-spacing: -0.01em;
+    color: #323f47;
+  }
+  .logoutContent {
+    width: 476px;
+  }
 }
 
 @media (min-width: 1440px) {
