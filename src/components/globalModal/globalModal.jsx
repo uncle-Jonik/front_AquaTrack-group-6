@@ -38,18 +38,26 @@ export const GlobalModal = ({ isOpen, onRequestClose, children, title }) => {
       isOpen={isOpen}
       onRequestClose={onRequestClose}
       shouldCloseOnOverlayClick={true}
-      className={css.content}
+      className={title === "Setting" ? css.content : css.logoutContent}
       style={customStyles}
       id="userSettingsModal"
     >
       <div className={css.modalHeader}>
-        <div className={css.textBox}>
-          <p className={css.titleHeader}>{title}</p>
-        </div>
+        {title === "Setting" && (
+          <div className={css.textBox}>
+            <p className={css.titleHeader}>{title}</p>
+          </div>
+        )}
+
         <div className={css.closeBtn}>
           <MdClose onClick={onRequestClose} size={"24px"} />
         </div>
       </div>
+      {title === "Log out" && (
+        <div className={css.textBox}>
+          <p className={css.titleHeader}>{title}</p>
+        </div>
+      )}
       <div className={css.modalContent}>{children}</div>
     </Modal>
   );

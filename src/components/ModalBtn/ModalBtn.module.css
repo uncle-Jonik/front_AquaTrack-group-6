@@ -14,6 +14,30 @@
   transition: all var(--animation);
 }
 
+.logOutBtn {
+  background-color: rgba(155, 225, 160, 1);
+  padding-top: 14px;
+  padding-bottom: 14px;
+  padding-left: 40px;
+  padding-right: 40px;
+  border-radius: 30px;
+  border: none;
+  margin-top: 14px;
+  width: 304px;
+}
+
+.cancelBtn {
+  background-color: #f0eff4;
+  padding-top: 14px;
+  padding-bottom: 14px;
+  padding-left: 40px;
+  padding-right: 40px;
+  border-radius: 30px;
+  border: none;
+  margin-top: 14px;
+  width: 304px;
+}
+
 .saveBtnText {
   font-style: normal;
   font-weight: 700;
@@ -22,6 +46,25 @@
   text-align: center;
   letter-spacing: -0.01em;
   color: #323f47;
+}
+
+.cancelBtnText {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: center;
+  letter-spacing: -0.01em;
+  color: rgba(50, 63, 71, 0.3);
+}
+
+@media (min-width: 768px) {
+  .logOutBtn {
+    max-width: 173px;
+  }
+  .cancelBtn {
+    max-width: 173px;
+  }
 }
 
 @media (min-width: 1440px) {

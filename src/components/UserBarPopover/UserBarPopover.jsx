@@ -3,9 +3,12 @@ import sprite from "../../assets/sprite.svg";
 import { GlobalModal } from "../globalModal/globalModal";
 import UserSettingsForm from "../UserSettingsForm/UserSettingsForm";
 import { useState } from "react";
+import { LogOutModal } from "../LogOutModal/LogOutModal";
 
 export function UserBarPopover() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const [isLogOutModalOpen, setisLogOutModalOpen] = useState(false);
 
   const handleOpenModal = () => {
     setIsModalOpen(true);
@@ -13,6 +16,14 @@ export function UserBarPopover() {
 
   const handleCloseModal = () => {
     setIsModalOpen(false);
+  };
+
+  const handleOpenLogOutModal = () => {
+    setisLogOutModalOpen(true);
+  };
+
+  const handleCloseLogOutModal = () => {
+    setisLogOutModalOpen(false);
   };
   return (
     <>
@@ -23,7 +34,11 @@ export function UserBarPopover() {
           </svg>
           Settings
         </button>
-        <button type="button" className={`${css.button} ${css.logOutBtn}`}>
+        <button
+          type="button"
+          onClick={handleOpenLogOutModal}
+          className={`${css.button} ${css.logOutBtn}`}
+        >
           <svg className={css.icon}>
             <use href={sprite + "#icon-log-out"}></use>
           </svg>
@@ -37,6 +52,14 @@ export function UserBarPopover() {
         onRequestClose={handleCloseModal}
       >
         <UserSettingsForm onClose={handleCloseModal} />
+      </GlobalModal>
+
+      <GlobalModal
+        isOpen={isLogOutModalOpen}
+        title={"Log out"}
+        onRequestClose={handleCloseLogOutModal}
+      >
+        <LogOutModal onRequestClose={handleCloseLogOutModal} />
       </GlobalModal>
     </>
   );

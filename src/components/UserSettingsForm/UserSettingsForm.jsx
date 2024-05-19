@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -15,16 +15,13 @@ import { ModalBtn } from "../ModalBtn/Modalbtn";
 import photo from "../../assets/img/avatar-default.svg";
 import { useDispatch, useSelector } from "react-redux";
 import { updateUser } from "../../redux/user/userOperations";
-import { selectUserAvatar } from "../../redux/user/userSelectors";
+import { selectUser, selectUserAvatar } from "../../redux/user/userSelectors";
 
 const schema = yup.object().shape({
-  avatar: yup.mixed().required("Avatar is required"),
-  gender: yup.string().oneOf(["male", "female"]).required("Gender is required"),
-  name: yup.string().required("Name is required"),
-  email: yup
-    .string()
-    .email("Invalid email format")
-    .required("Email is required"),
+  avatar: yup.mixed().notRequired(),
+  gender: yup.string().oneOf(["male", "female"]).notRequired(),
+  name: yup.string().notRequired(),
+  email: yup.string().email("Invalid email format").notRequired(),
   weight: yup
     .number()
     .typeError("Weight must be a number")
@@ -32,38 +29,61 @@ const schema = yup.object().shape({
       originalValue.trim() === "" ? null : parseFloat(originalValue)
     )
     .positive("Weight must be a positive number")
-    .required("Weight is required"),
-  activeMinutes: yup
+    .notRequired(),
+  sportsActivity: yup
     .number()
     .typeError("Active minutes must be a number")
     .transform((value, originalValue) =>
       originalValue.trim() === "" ? null : parseFloat(originalValue)
     )
     .positive("Active minutes must be a positive number")
-    .required("Active minutes are required"),
-  waterConsumption: yup
+    .notRequired(),
+  waterRate: yup
     .number()
     .typeError("Water consumption must be a number")
     .transform((value, originalValue) =>
       originalValue.trim() === "" ? null : parseFloat(originalValue)
     )
     .positive("Water consumption must be a positive number")
-    .required("Water consumption is required"),
+    .notRequired(),
 });
 
 const UserSettingsForm = ({ onClose }) => {
   const dispatch = useDispatch();
+
+  const user = useSelector(selectUser);
+
   const {
     register,
     handleSubmit,
     watch,
     setValue,
+    reset,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
+    defaultValues: {
+      name: user.name,
+      email: user.email,
+      gender: user.gender,
+      weight: user.weight,
+      sportsActivity: user.sportsActivity,
+      waterRate: user.waterRate,
+    },
   });
 
-  const [gender, setGender] = useState("");
+  useEffect(() => {
+    reset({
+      name: user.name,
+      email: user.email,
+      gender: user.gender,
+      weight: user.weight,
+      sportsActivity: user.sportsActivity,
+      waterRate: user.waterRate,
+    });
+  }, [user, reset]);
+
+  const [genderLocal, setGender] = useState("");
 
   const [isAvatarSelected, setIsAvatarSelected] = useState(false);
 
@@ -75,31 +95,58 @@ const UserSettingsForm = ({ onClose }) => {
 
   const watchWeight = watch("weight", 0);
 
-  const watchActiveMinutes = watch("activeMinutes", 0);
+  const watchActiveMinutes = watch("sportsActivity", 0);
 
-  const calculateRecommendedWaterIntake = (weight, activeMinutes) => {
-    return gender === "male"
-      ? (weight * 0.04 + activeMinutes * 0.6).toFixed(1)
-      : (weight * 0.03 + activeMinutes * 0.4).toFixed(1);
+  const calculateRecommendedWaterIntake = (weight, sportsActivity) => {
+    return genderLocal === "male"
+      ? (weight * 0.04 + sportsActivity * 0.6).toFixed(1)
+      : (weight * 0.03 + sportsActivity * 0.4).toFixed(1);
   };
 
   const onSubmit = async (data) => {
     const formData = new FormData();
 
+    const hasChanged = (fieldName) => {
+      if (typeof data[fieldName] === "number") {
+        data[fieldName] = data[fieldName].toString();
+      }
+      return data[fieldName] !== user[fieldName];
+    };
+
     if (isAvatarSelected) {
       formData.append("avatar", data.avatar);
     }
+    if (hasChanged("gender")) {
+      formData.append("gender", data.gender);
+    }
+    if (hasChanged("name")) {
+      formData.append("name", data.name);
+    }
+    if (hasChanged("email")) {
+      formData.append("email", data.email);
+    }
+    if (hasChanged("weight")) {
+      formData.append("weight", data.weight);
+    }
+    if (hasChanged("waterRate")) {
+      formData.append("waterRate", data.waterRate);
+    }
+    if (hasChanged("sportsActivity")) {
+      formData.append("sportsActivity", data.sportsActivity);
+    }
 
-    formData.append("gender", data.gender);
-    formData.append("name", data.name);
-    formData.append("email", data.email);
-    formData.append("weight", data.weight);
-    formData.append("sportsActivity", data.activeMinutes);
-    formData.append("waterRate", data.waterConsumption);
-
-    dispatch(updateUser(formData));
-
-    onClose();
+    if (
+      isAvatarSelected ||
+      hasChanged("gender") ||
+      hasChanged("name") ||
+      hasChanged("email") ||
+      hasChanged("weight") ||
+      hasChanged("waterRate") ||
+      hasChanged("sportsActivity")
+    ) {
+      dispatch(updateUser(formData));
+      onClose();
+    }
   };
 
   return (
@@ -140,8 +187,11 @@ const UserSettingsForm = ({ onClose }) => {
         <p className={css.titleText}> Your gender identity</p>
         <RadioGroup
           row
-          {...register("gender")}
-          onChange={(e) => setGender(e.target.value)}
+          value={genderLocal ? genderLocal : user.gender}
+          onChange={(e) => {
+            setGender(e.target.value);
+            setValue("gender", e.target.value);
+          }}
           className={css.radioGroup}
         >
           <FormControlLabel
@@ -215,9 +265,9 @@ const UserSettingsForm = ({ onClose }) => {
             <label className={css.radioText}>
               The time of active participation in sports:
             </label>
-            <input type="text" {...register("activeMinutes")} />
-            {errors.activeMinutes && (
-              <span className={css.error}>{errors.activeMinutes.message}</span>
+            <input type="text" {...register("sportsActivity")} />
+            {errors.sportsActivity && (
+              <span className={css.error}>{errors.sportsActivity.message}</span>
             )}
           </div>
           <div className={css.box}>
@@ -225,34 +275,28 @@ const UserSettingsForm = ({ onClose }) => {
               The required amount of water in liters per day:
             </p>
             <p className={css.recWater}>
-              {gender && watchWeight && watchActiveMinutes
+              {genderLocal && watchWeight && watchActiveMinutes
                 ? calculateRecommendedWaterIntake(
                     watchWeight,
                     watchActiveMinutes,
-                    gender
+                    genderLocal
                   )
                 : 1.8}
               L
             </p>
           </div>
           <div className={css.formGroup}>
-            <label htmlFor="waterConsumption" className={css.titleText}>
+            <label htmlFor="waterRate" className={css.titleText}>
               Write down how much water you will drink:
             </label>
-            <input
-              type="text"
-              {...register("waterConsumption")}
-              placeholder="1.8"
-            />
-            {errors.waterConsumption && (
-              <span className={css.error}>
-                {errors.waterConsumption.message}
-              </span>
+            <input type="text" {...register("waterRate")} placeholder="1.8" />
+            {errors.waterRate && (
+              <span className={css.error}>{errors.waterRate.message}</span>
             )}
           </div>
         </div>
       </div>
-      <ModalBtn />
+      <ModalBtn text={"Save"} />
     </form>
   );
 };
