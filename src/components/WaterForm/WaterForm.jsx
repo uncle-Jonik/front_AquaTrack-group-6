@@ -17,12 +17,20 @@ const schema = Yup.object().shape({
     .required("Time is required"),
 });
 
+const localDate = () => {
+  const milliseconds = Date.now();
+  const date = new Date(milliseconds);
+
+  return date.toLocaleDateString();
+};
+
 const getTimeFormat = () => {
   const date = new Date();
   const hours = date.getHours();
   const min = date.getMinutes();
 
-  const timeFormatting = hours.toString().padStart(2, "0") + ":" + min.toString().padStart(2, "0");
+  const timeFormatting =
+    hours.toString().padStart(2, "0") + ":" + min.toString().padStart(2, "0");
 
   return timeFormatting;
 };
@@ -63,6 +71,7 @@ export const WaterForm = ({ mode, onClose, water = {} }) => {
   const onSubmit = () => {
     console.log(watch("waterValue"));
     const newData = {
+      localDate: localDate(), // ----------Тут потрібно буде передавати дату, або дефолтне значення
       waterValue: watch("waterValue"),
       localTime: watch("localTime"),
     };
@@ -70,10 +79,14 @@ export const WaterForm = ({ mode, onClose, water = {} }) => {
     try {
       if (mode === "add") {
         dispatch(addWater(newData));
-        toast.success(`The amount of water consumed has been added successfully.`);
+        toast.success(
+          `The amount of water consumed has been added successfully.`
+        );
       } else if (mode === "edit") {
         dispatch(changeWater(newData));
-        toast.success("The amount of water consumed has been successfully updated.");
+        toast.success(
+          "The amount of water consumed has been successfully updated."
+        );
       }
       onClose();
     } catch (error) {
@@ -97,10 +110,16 @@ export const WaterForm = ({ mode, onClose, water = {} }) => {
         {/* <span className={css.amountValue}>{`${watch("waterValue")} ml`}</span> */}
         <span className={css.amountValue}>
           {watch("waterValue") >= 999
-            ? `${(Math.round((watch("waterValue") / 1000) * 100) / 100).toFixed(2)} L`
+            ? `${(Math.round((watch("waterValue") / 1000) * 100) / 100).toFixed(
+                2
+              )} L`
             : `${watch("waterValue")} ml`}
         </span>
-        <button type="button" className={css.quantityBtn} onClick={handleClickPlus}>
+        <button
+          type="button"
+          className={css.quantityBtn}
+          onClick={handleClickPlus}
+        >
           <HiPlus size="22" />
         </button>
       </div>
@@ -117,7 +136,9 @@ export const WaterForm = ({ mode, onClose, water = {} }) => {
             name="localTime"
             id="localTime"
           />
-          {errors.localTime && <span className={css.error}>{errors.localTime.message}</span>}
+          {errors.localTime && (
+            <span className={css.error}>{errors.localTime.message}</span>
+          )}
         </div>
 
         <div className={css.valueDiv}>
@@ -130,10 +151,14 @@ export const WaterForm = ({ mode, onClose, water = {} }) => {
             step={50}
             name="value"
             id="value"
-            onChange={(e) => setValue("waterValue", Math.max(Number(e.target.value), 0))}
+            onChange={(e) =>
+              setValue("waterValue", Math.max(Number(e.target.value), 0))
+            }
           />
 
-          {errors.waterValue && <span className={css.error}>{errors.waterValue.message}</span>}
+          {errors.waterValue && (
+            <span className={css.error}>{errors.waterValue.message}</span>
+          )}
         </div>
       </div>
       <button className={css.btnSubmit} type="submit">
