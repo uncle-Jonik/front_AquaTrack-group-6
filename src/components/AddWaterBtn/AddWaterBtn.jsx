@@ -6,8 +6,8 @@ import { BaseModal } from "../BaseModal/BaseModal";
 import { WaterModal } from "../WaterModal/WaterModal";
 
 export function AddWaterBtn({ section }) {
-  const [showWaterModal, setshowWaterModal] = useState(false);
-  const closeModal = () => setshowWaterModal(false);
+  // const [showWaterModal, setshowWaterModal] = useState(false);
+  // const closeModal = () => setshowWaterModal(false);
   const classes = (mainClass) =>
     clsx(mainClass, {
       [css.waterMain]: section === "waterMain",

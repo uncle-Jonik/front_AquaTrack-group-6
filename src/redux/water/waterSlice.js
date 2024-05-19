@@ -7,6 +7,13 @@ import {
   fetchWaterPerMonth,
 } from "./waterOperations";
 
+const localDate = () => {
+  const milliseconds = Date.now();
+  const date = new Date(milliseconds);
+
+  return date.toLocaleDateString();
+};
+
 function handleLoading(state) {
   state.loading = true;
   state.error = null;
@@ -29,15 +36,18 @@ const waterSlice = createSlice({
     },
     loading: false,
     error: false,
+    activeDay: localDate(),
   },
   extraReducers: (builder) =>
     builder
       .addCase(fetchWaterPerDay.pending, handleLoading)
       .addCase(fetchWaterPerDay.fulfilled, (state, action) => {
         const { waterRate, waterRecord } = action.payload;
+
         state.error = false;
         state.loading = false;
-        state.waters.waterPerDay = { waterRate, waterRecord };
+        state.waters.waterPerDay.waterRate = waterRate;
+        state.waters.waterPerDay.waterRecord = waterRecord;
       })
       .addCase(fetchWaterPerDay.rejected, handleError)
       .addCase(fetchWaterPerMonth.pending, handleLoading)

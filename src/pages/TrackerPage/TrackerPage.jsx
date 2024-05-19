@@ -3,35 +3,38 @@ import css from "./TrackerPage.module.css";
 import { WaterDetailedInfo } from "../../components/WaterDetailedInfo/WaterDetailedInfo.jsx";
 import { useAuth } from "../../hooks/useAuth.jsx";
 import { useWater } from "../../hooks/useWater.jsx";
-// import { WaterMainInfo } from "../../components/WaterMainInfo/WaterMainInfo.jsx";
-// import { useDispatch } from "react-redux";
-// import { useEffect } from "react";
-// import { useWater } from "../../hooks/useWater.jsx";
-// import { fetchWaterPerDay } from "../../redux/water/waterOperations.js";
 import { Loader } from "../../components/Loader/Loader.jsx";
+import { WaterMainInfo } from "../../components/WaterMainInfo/WaterMainInfo.jsx";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  fetchWaterPerDay,
+  fetchWaterPerMonth,
+} from "../../redux/water/waterOperations.js";
+import { useEffect } from "react";
+import {
+  selectActiveDay,
+  // selectWaterPerMonth,
+} from "../../redux/water/waterSelectors.js";
 
 export default function TrackerPage() {
-  // const dispatch = useDispatch();
-  // const { isRefreshing } = useSelector(selectIsRefreshing);
-
   const refreshUser = useAuth().isRefreshing;
   const refreshWater = useWater().isLoading;
-  //   const water = useWater();
 
-  //   useEffect(() => {
-  //     const date = new Date();
-  //     dispatch(
-  //       fetchWaterPerDay(
-  //         `${date.getDate()}.0${date.getMonth()}.${date.getFullYear()}`
-  //       )
-  //     );
-  //   }, [dispatch]);
+  const dispatch = useDispatch();
 
+  const activeDay = useSelector(selectActiveDay);
+
+  useEffect(() => {
+    dispatch(fetchWaterPerDay(activeDay));
+    dispatch(fetchWaterPerMonth(activeDay));
+  }, [dispatch, activeDay]);
+
+  // console.log(useSelector(selectWaterPerMonth));
   return (
     <div className={css.wrapper}>
       {(refreshUser || refreshWater) && <Loader absolute={true} />}
 
-      {/* <WaterMainInfo /> */}
+      <WaterMainInfo />
       <WaterDetailedInfo />
     </div>
   );

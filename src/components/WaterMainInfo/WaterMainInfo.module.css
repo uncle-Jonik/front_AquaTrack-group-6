@@ -1,0 +1,96 @@
+.wrapper {
+  background-color: #9be1a0;
+
+  padding: 24px 16px 32px;
+  border-radius: 30px;
+
+  margin: 0 auto;
+  background-image: url(../../assets/img/bottle_for_water@1x.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: auto;
+}
+
+@media only screen and (min-resolution: 192dpi) {
+  .wrapper {
+    background-image: url(../../assets/img/bottle_for_water@2x.png);
+    background-size: contain;
+  }
+}
+
+.logoBox {
+  margin-bottom: 78px;
+}
+
+.dailyNorma {
+  border-radius: 15px;
+  padding: 12px;
+  max-width: 78px;
+
+  box-shadow: 0 4px 50px 0 rgba(0, 0, 0, 0.1);
+  background: #ffffff;
+
+  margin-bottom: 49px;
+}
+.dailyNorma > b {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 100%;
+  color: #323f47;
+
+  margin-bottom: 6px;
+}
+.dailyNorma > p {
+  font-size: 10px;
+  line-height: 100%;
+  color: rgba(47, 47, 47, 0.6);
+}
+
+.statusBar {
+  max-width: 174px;
+  margin: 0 auto;
+  padding: 12px;
+
+  border-radius: 15px;
+  background: #ffffff;
+  box-shadow: 0 4px 50px 0 rgba(0, 0, 0, 0.1);
+}
+
+.titleProsentBox {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+.titleProsentBox > p {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 100%;
+  color: #323f47;
+}
+.titleProsentBox > span {
+  font-size: 10px;
+  line-height: 100%;
+  color: #9be1a0;
+}
+.statusBar > input[type="range"] {
+  width: 100%;
+
+  margin: 0;
+}
+.labels {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  font-size: 10px;
+  line-height: 100%;
+  color: rgba(47, 47, 47, 0.6);
+}
+.btnContainer {
+  margin-top: 42px;
+
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
