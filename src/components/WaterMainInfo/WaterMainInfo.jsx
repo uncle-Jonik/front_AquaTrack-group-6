@@ -6,7 +6,14 @@ import { AddWaterBtn } from "../AddWaterBtn/AddWaterBtn";
 export const WaterMainInfo = () => {
   return (
     <div className={css.wrapper}>
-      <Logo />
+      <div className={css.logoBox}>
+        <Logo />
+      </div>
+
+      <div className={css.dailyNorma}>
+        <b>100L</b>
+        <p>My daily norma</p>
+      </div>
 
       <div className={css.statusBar}>
         <p>Today</p>
