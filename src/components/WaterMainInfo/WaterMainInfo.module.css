@@ -62,3 +62,10 @@
   line-height: 100%;
   color: rgba(47, 47, 47, 0.6);
 }
+.btnContainer {
+  margin-top: 42px;
+
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}

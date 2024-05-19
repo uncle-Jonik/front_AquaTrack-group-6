@@ -27,7 +27,9 @@ export const WaterMainInfo = () => {
         </div>
       </div>
 
-      <AddWaterBtn section="daily" />
+      <div className={css.btnContainer}>
+        <AddWaterBtn section="waterMain" />
+      </div>
     </div>
   );
 };
