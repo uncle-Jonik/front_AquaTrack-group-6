@@ -6,9 +6,15 @@ import { useWater } from "../../hooks/useWater.jsx";
 import { Loader } from "../../components/Loader/Loader.jsx";
 import { WaterMainInfo } from "../../components/WaterMainInfo/WaterMainInfo.jsx";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchWaterPerDay } from "../../redux/water/waterOperations.js";
+import {
+  fetchWaterPerDay,
+  fetchWaterPerMonth,
+} from "../../redux/water/waterOperations.js";
 import { useEffect } from "react";
-import { selectActiveDay } from "../../redux/water/waterSelectors.js";
+import {
+  selectActiveDay,
+  // selectWaterPerMonth,
+} from "../../redux/water/waterSelectors.js";
 
 export default function TrackerPage() {
   const refreshUser = useAuth().isRefreshing;
@@ -20,8 +26,10 @@ export default function TrackerPage() {
 
   useEffect(() => {
     dispatch(fetchWaterPerDay(activeDay));
+    dispatch(fetchWaterPerMonth(activeDay));
   }, [dispatch, activeDay]);
 
+  // console.log(useSelector(selectWaterPerMonth));
   return (
     <div className={css.wrapper}>
       {(refreshUser || refreshWater) && <Loader absolute={true} />}
