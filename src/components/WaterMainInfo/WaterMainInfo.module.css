@@ -56,13 +56,22 @@
   box-shadow: 0 4px 50px 0 rgba(0, 0, 0, 0.1);
 }
 
-.statusBar > p {
+.titleProsentBox {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+.titleProsentBox > p {
   font-weight: 700;
   font-size: 14px;
   line-height: 100%;
   color: #323f47;
-
-  margin-bottom: 8px;
+}
+.titleProsentBox > span {
+  font-size: 10px;
+  line-height: 100%;
+  color: #9be1a0;
 }
 .statusBar > input[type="range"] {
   width: 100%;

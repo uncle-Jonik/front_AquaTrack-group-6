@@ -3,8 +3,12 @@ import css from "./WaterMainInfo.module.css";
 import { Logo } from "../Logo";
 import { useAuth } from "../../hooks/useAuth";
 import { AddWaterBtn } from "../AddWaterBtn/AddWaterBtn";
+import { useSelector } from "react-redux";
+import { selectWaterPerDay } from "../../redux/water/waterSelectors";
 
 export const WaterMainInfo = () => {
+  const day = useSelector(selectWaterPerDay).waterRate.feasibility;
+
   const user = useAuth().user;
   return (
     <div className={css.wrapper}>
@@ -18,14 +22,17 @@ export const WaterMainInfo = () => {
       </div>
 
       <div className={css.statusBar}>
-        <p>Today</p>
+        <div className={css.titleProsentBox}>
+          <p>Today</p>
+          <span>{Math.round(day)}%</span>
+        </div>
 
         <input
           type="range"
           className={css.rangeInput}
           min="0"
           max="100"
-          value={50}
+          value={Math.round(day)}
           // onChange={(e) => setWaterLevel(e.target.value)}
         />
 
