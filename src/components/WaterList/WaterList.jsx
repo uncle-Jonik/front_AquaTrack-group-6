@@ -5,7 +5,7 @@ import { useRef, useEffect } from "react";
 
 export function WaterList() {
   const { waterRecord } = useWater().waterPerDay;
-
+  console.log(waterRecord);
   function useHorizontalScroll() {
     const elRef = useRef();
     useEffect(() => {

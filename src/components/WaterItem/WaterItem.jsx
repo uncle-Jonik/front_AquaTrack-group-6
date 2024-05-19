@@ -6,7 +6,6 @@ import { WaterModal } from "../WaterModal/WaterModal";
 
 export function WaterItem({ item }) {
   const [isOpen, setIsOpen] = useState(false);
-
   const openModal = () => {
     setIsOpen(true);
   };

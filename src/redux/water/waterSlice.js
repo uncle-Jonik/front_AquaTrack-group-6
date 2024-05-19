@@ -62,7 +62,7 @@ const waterSlice = createSlice({
         state.loading = false;
         state.error = false;
         const index = state.waters.waterPerDay.waterRecord.findIndex(
-          (water) => water.id === action.payload.waterRecord.id
+          (water) => water._id === action.payload.waterRecord._id
         );
         state.waters.waterPerDay.waterRecord.splice(index, 1);
       })
@@ -79,7 +79,7 @@ const waterSlice = createSlice({
         state.loading = false;
         state.error = false;
         const index = state.waters.waterPerDay.waterRecord.findIndex(
-          (water) => water.id === action.payload.waterRecord.id
+          (water) => water._id === action.payload.waterRecord._id
         );
         state.waters.waterPerDay.waterRecord[index] =
           action.payload.waterRecord;
