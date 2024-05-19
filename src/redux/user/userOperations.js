@@ -1,7 +1,8 @@
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-const SetAuthHeader = (token) => {
+export const SetAuthHeader = (token) => {
+  console.log(token);
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
 
@@ -9,9 +10,38 @@ const ClearAuthHeader = () => {
   axios.defaults.headers.common.Authorization = "";
 };
 
+// axios.defaults.baseURL = "https://back-aquatrack-group-6.onrender.com/api/";
 
+axios.defaults.baseURL = "http://localhost:3001/api/";
 
-axios.defaults.baseURL = "https://back-aquatrack-group-6.onrender.com/api/";
+axios.interceptors.response.use(res => res, async (err) => {
+  const originalRequest = err.config;
+
+  // Check if the error status is 401 and if the request hasn't been retried yet
+  if (err.response.status === 401 && !originalRequest._retry) {
+    originalRequest._retry = true;
+
+    const refreshToken = JSON.parse(localStorage.getItem("refreshToken"));
+    console.log(refreshToken);
+    if (refreshToken) {
+      try {
+        const res = await axios.post("/users/refresh", { refreshToken });
+
+        SetAuthHeader(res.data.accessToken);
+        localStorage.setItem("refreshToken", res.data.refreshToken);
+        originalRequest.headers.Authorization = `Bearer ${res.data.accessToken}`;
+
+        return axios(originalRequest);
+      } catch (refreshError) {
+        localStorage.setItem("refreshToken", null);
+        ClearAuthHeader();
+        return Promise.reject(refreshError);
+      }
+    }
+  }
+  return Promise.reject(err);
+});
+
 
 export const registerUser = createAsyncThunk(
   "auth/register",
@@ -54,8 +84,7 @@ export const refreshUser = createAsyncThunk(
   "auth/refresh",
   async (_, thunkAPI) => {
     ///////////////////
-    const state = thunkAPI.getState();
-    const persistedToken = state.user.refreshToken;
+    const persistedToken = localStorage.getItem("refreshToken");
 
     if (persistedToken === null) {
       return thunkAPI.rejectWithValue("Unable to fetch user");
@@ -70,6 +99,7 @@ export const refreshUser = createAsyncThunk(
 
       return res.data;
     } catch (e) {
+      localStorage.setItem("refreshToken", null);
       return thunkAPI.rejectWithValue(e.message);
     }
   }
