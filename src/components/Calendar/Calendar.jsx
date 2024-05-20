@@ -47,6 +47,7 @@ const Calendar = () => {
 
     const handleDayClick = (day) => {
         const formattedDay = `${String(day).padStart(2, '0')}.${String(month + 1).padStart(2, '0')}.${year}`;
+        
         dispatch(setActiveDay(formattedDay));
         dispatch(fetchWaterPerDay(formattedDay));
     };
