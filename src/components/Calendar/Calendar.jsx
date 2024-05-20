@@ -27,7 +27,7 @@ const Calendar = () => {
             totalValue += record.waterValue;
         });
 
-        const userWaterRate = Number(user.waterRate) * 1000; // Перетворюємо норму в мл
+        const userWaterRate = Number(user.waterRate) * 1000;
         if (totalValue >= userWaterRate) return 100;
 
         const feasibility = (totalValue / userWaterRate) * 100;
@@ -47,28 +47,33 @@ const Calendar = () => {
 
     const handleDayClick = (day) => {
         const formattedDay = `${String(day).padStart(2, '0')}.${String(month + 1).padStart(2, '0')}.${year}`;
+        
         dispatch(setActiveDay(formattedDay));
         dispatch(fetchWaterPerDay(formattedDay));
     };
 
     return (
         <div className={css.container}>
+            <ul className={css.list}>
             {daysArray.map(day => {
                 const dayKey = `${String(day).padStart(2, '0')}.${String(month + 1).padStart(2, '0')}.${year}`;
                 const dayData = waterPerMonth[dayKey] || [];
                 const feasibility = calculateFeasibility(dayData);
 
                 return (
-                    <CalendarItem 
-                        key={day} 
-                        day={day} 
-                        waterData={dayData} 
-                        feasibility={feasibility} 
-                        onClick={() => handleDayClick(day)}
-                        isActive={dayKey === activeDay}
-                    />
+                    <li key={day} className={css.item}>
+                        <CalendarItem 
+                            key={day} 
+                            day={day} 
+                            waterData={dayData} 
+                            feasibility={feasibility} 
+                            onClick={() => handleDayClick(day)}
+                            isActive={dayKey === activeDay}
+                        />
+                    </li>
                 );
             })}
+            </ul>
         </div>
     );
 };
