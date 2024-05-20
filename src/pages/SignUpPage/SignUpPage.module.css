@@ -29,3 +29,18 @@
     margin: 0;
   }
 }
+
+/* ----- */
+
+@media only screen and (min-width: 1440px) {
+  .signUpPageWrapper {
+    display: flex;
+    gap: 32px;
+  }
+}
+
+@media only screen and (max-width: 1439px) {
+  .AdvantagesSection_up {
+    display: none;
+  }
+}
