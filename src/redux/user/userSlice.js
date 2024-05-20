@@ -42,7 +42,7 @@ const userSlice = createSlice({
       .addCase(logoutUser.fulfilled, (state) => {
         state.isLoggedIn = false;
         state.accessToken = null;
-        localStorage.setItem("refreshToken", null);
+        localStorage.setItem("refreshToken", "");
       })
 
       .addCase(refreshUser.pending, (state, action) => {

@@ -2,7 +2,6 @@ import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
 export const SetAuthHeader = (token) => {
-  console.log(token);
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
 
@@ -12,13 +11,17 @@ const ClearAuthHeader = () => {
 
 axios.defaults.baseURL = "https://back-aquatrack-group-6.onrender.com/api/";
 
+// axios.defaults.baseURL = "http://localhost:3001/api";
+
 axios.interceptors.response.use(res => res, async (err) => {
   const originalRequest = err.config;
+
   if (err.response.status === 401 && !originalRequest._retry) {
     originalRequest._retry = true;
 
-    const refreshToken = JSON.parse(localStorage.getItem("refreshToken"));
-    if (refreshToken) {
+    const refreshToken = localStorage.getItem("refreshToken");
+
+    if (refreshToken.length > 0) {
       try {
         const res = await axios.post("/users/refresh", { refreshToken });
 
@@ -28,7 +31,7 @@ axios.interceptors.response.use(res => res, async (err) => {
 
         return axios(originalRequest);
       } catch (refreshError) {
-        localStorage.setItem("refreshToken", null);
+        localStorage.setItem("refreshToken", "");
         ClearAuthHeader();
         return Promise.reject(refreshError);
       }
@@ -94,7 +97,7 @@ export const refreshUser = createAsyncThunk(
 
       return res.data;
     } catch (e) {
-      localStorage.setItem("refreshToken", null);
+      localStorage.setItem("refreshToken", "");
       return thunkAPI.rejectWithValue(e.message);
     }
   }
