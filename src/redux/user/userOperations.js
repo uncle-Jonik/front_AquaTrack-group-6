@@ -9,8 +9,6 @@ const ClearAuthHeader = () => {
   axios.defaults.headers.common.Authorization = "";
 };
 
-
-
 axios.defaults.baseURL = "https://back-aquatrack-group-6.onrender.com/api/";
 
 export const registerUser = createAsyncThunk(
@@ -42,7 +40,7 @@ export const logoutUser = createAsyncThunk(
   "auth/logout",
   async (_, thunkAPI) => {
     try {
-      const res = await axios.post("/users/logout");
+      const res = await axios.get("/users/logout");
       ClearAuthHeader();
       return res.data;
     } catch (error) {
@@ -78,7 +76,7 @@ export const updateUser = createAsyncThunk(
   "auth/update",
   async (data, thunkAPI) => {
     try {
-      const res = await axios.put("users/current", data, {
+      const res = await axios.put("users/update", data, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
