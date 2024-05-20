@@ -17,5 +17,3 @@ const MonthInfo = () => {
 }
 
 export default MonthInfo;
-
-// Заголовок + Pagination + Calendar(Item)

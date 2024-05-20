@@ -1,24 +1,24 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { setActiveDay } from '../../redux/Calendar/CalendarSlice';
+import { useDispatch } from 'react-redux';
 import css from './CalendarItem.module.css';
+import { setActiveDay } from '../../redux/water/waterSlice';
 
-const CalendarItem = ({ percentage = 0, day }) => {
+const CalendarItem = ({ feasibility = 0, day, isActive, onClick }) => {
     const dispatch = useDispatch();
-    const activeDay = useSelector(state => state.calendar.activeDay);
 
     const containerStyle = {
-        backgroundColor: day === activeDay ? '#323f47' : (percentage < 100 ? 'rgba(50, 63, 71, 0.2)' : '#FFFFFF'),
-        color: day === activeDay && '#9be1a0'
+        backgroundColor: isActive ? '#323f47' : (feasibility < 100 ? 'rgba(50, 63, 71, 0.2)' : '#FFFFFF'),
+        color: isActive ? '#9be1a0' : '#000000'
     };
 
     const handleClick = () => {
         dispatch(setActiveDay(day));
+        onClick();
     };
 
     return (
-        <div className={css.container} >
+        <div className={css.container}>
             <button className={css.button} style={containerStyle} onClick={handleClick}>{day}</button>
-            <p className={css.text}>{percentage}%</p>
+            <p className={css.text}>{feasibility}%</p>
         </div>
     );
 };
