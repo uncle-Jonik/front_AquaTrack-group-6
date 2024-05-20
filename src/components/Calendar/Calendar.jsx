@@ -1,24 +1,74 @@
-import { useSelector } from "react-redux";
-import CalendarItem from "../CalendarItem/CalendarItem";
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import CalendarItem from '../CalendarItem/CalendarItem';
 import css from './Calendar.module.css';
+import { selectCurrentDate, selectWaterPerMonth } from '../../redux/water/waterSelectors';
+import { fetchWaterPerMonth, fetchWaterPerDay } from '../../redux/water/waterOperations';
+import { useAuth } from '../../hooks/useAuth';
+import { setActiveDay } from '../../redux/water/waterSlice';
 
 const daysInMonth = (month, year) => {
     return new Date(year, month + 1, 0).getDate();
 };
 
 const Calendar = () => {
-    const currentDate = useSelector(state => state.calendar.currentDate);
+    const dispatch = useDispatch();
+    const currentDate = useSelector(selectCurrentDate);
+    const waterPerMonth = useSelector(selectWaterPerMonth);
+    const activeDay = useSelector(state => state.water.activeDay);
+
+    const user = useAuth().user;
+
+    const calculateFeasibility = (dayData) => {
+        if (!dayData || dayData.length === 0) return 0;
+
+        let totalValue = 0;
+        dayData.forEach(record => {
+            totalValue += record.waterValue;
+        });
+
+        const userWaterRate = Number(user.waterRate) * 1000; // Перетворюємо норму в мл
+        if (totalValue >= userWaterRate) return 100;
+
+        const feasibility = (totalValue / userWaterRate) * 100;
+        return Math.round(feasibility);
+    };
+
     const month = new Date(currentDate).getMonth();
     const year = new Date(currentDate).getFullYear();
     const numberOfDays = daysInMonth(month, year);
 
+    useEffect(() => {
+        const localDate = new Date(currentDate).toLocaleDateString();
+        dispatch(fetchWaterPerMonth(localDate));
+    }, [dispatch, currentDate]);
+
     const daysArray = Array.from({ length: numberOfDays }, (_, index) => index + 1);
+
+    const handleDayClick = (day) => {
+        const formattedDay = `${String(day).padStart(2, '0')}.${String(month + 1).padStart(2, '0')}.${year}`;
+        dispatch(setActiveDay(formattedDay));
+        dispatch(fetchWaterPerDay(formattedDay));
+    };
 
     return (
         <div className={css.container}>
-            {daysArray.map(day => (
-                <CalendarItem key={day} day={day} />
-            ))}
+            {daysArray.map(day => {
+                const dayKey = `${String(day).padStart(2, '0')}.${String(month + 1).padStart(2, '0')}.${year}`;
+                const dayData = waterPerMonth[dayKey] || [];
+                const feasibility = calculateFeasibility(dayData);
+
+                return (
+                    <CalendarItem 
+                        key={day} 
+                        day={day} 
+                        waterData={dayData} 
+                        feasibility={feasibility} 
+                        onClick={() => handleDayClick(day)}
+                        isActive={dayKey === activeDay}
+                    />
+                );
+            })}
         </div>
     );
 };

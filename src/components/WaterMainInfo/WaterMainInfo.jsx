@@ -4,9 +4,32 @@ import { Logo } from "../Logo";
 import { useAuth } from "../../hooks/useAuth";
 import { AddWaterBtn } from "../AddWaterBtn/AddWaterBtn";
 import { Feasibility } from "../../helpers/feasibility";
+import { useSelector } from "react-redux";
+import { selectActiveDay } from "../../redux/water/waterSelectors";
 
 export const WaterMainInfo = () => {
   const day = Feasibility();
+
+  const currentDate = useSelector(selectActiveDay);
+
+    const localDate = () => {
+      const milliseconds = Date.now();
+      const date = new Date(milliseconds);
+    
+      return date.toLocaleDateString().replace(/\//g, '.');
+    };
+
+    const dayToday = currentDate.replace(/\//g, '.').split('.')[0];
+
+  
+
+    const months = [
+      "January", "February", "March", "April", "May", "June", 
+      "July", "August", "September", "October", "November", "December"
+    ];
+
+    const month = months[+currentDate.split('/')[1] -1];
+    const monthDot = months[+currentDate.split('.')[1] -1];
 
   const user = useAuth().user;
   return (
@@ -22,7 +45,7 @@ export const WaterMainInfo = () => {
 
       <div className={css.statusBar}>
         <div className={css.titleProsentBox}>
-          <p>Today</p>
+          <p>{currentDate.replace(/\//g, '.') === localDate() ? "Today" : `${dayToday}, ${month || monthDot}`}</p>
           <span>{Math.round(day) ? Math.round(day) : 0}%</span>
         </div>
 

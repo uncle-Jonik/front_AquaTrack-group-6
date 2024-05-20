@@ -7,3 +7,5 @@ export const selectLoading = (state) => state.water.loading;
 export const selectError = (state) => state.water.error;
 
 export const selectActiveDay = (state) => state.water.activeDay;
+
+export const selectCurrentDate = (state) => state.water.currentDate;
