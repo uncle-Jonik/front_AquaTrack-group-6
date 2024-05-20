@@ -10,19 +10,14 @@ const ClearAuthHeader = () => {
   axios.defaults.headers.common.Authorization = "";
 };
 
-// axios.defaults.baseURL = "https://back-aquatrack-group-6.onrender.com/api/";
-
-axios.defaults.baseURL = "http://localhost:3001/api/";
+axios.defaults.baseURL = "https://back-aquatrack-group-6.onrender.com/api/";
 
 axios.interceptors.response.use(res => res, async (err) => {
   const originalRequest = err.config;
-
-  // Check if the error status is 401 and if the request hasn't been retried yet
   if (err.response.status === 401 && !originalRequest._retry) {
     originalRequest._retry = true;
 
     const refreshToken = JSON.parse(localStorage.getItem("refreshToken"));
-    console.log(refreshToken);
     if (refreshToken) {
       try {
         const res = await axios.post("/users/refresh", { refreshToken });

@@ -19,8 +19,6 @@ export const initialState = {
   },
   isLoggedIn: false,
   isRefreshing: false,
-  // refreshToken: null,
-  // accessToken: null,
   error: "",
 };
 
@@ -38,15 +36,12 @@ const userSlice = createSlice({
         state.isRefreshing = false;
         state.accessToken = action.payload.accessToken;
         localStorage.setItem("refreshToken", action.payload.refreshToken);
-        // state.refreshToken = action.payload.refreshToken;
-
         state.userInfo = action.payload.user;
       })
 
       .addCase(logoutUser.fulfilled, (state) => {
         state.isLoggedIn = false;
         state.accessToken = null;
-        // state.refreshToken = null;
         localStorage.setItem("refreshToken", null);
       })
 
@@ -62,7 +57,6 @@ const userSlice = createSlice({
 
         state.accessToken = action.payload.accessToken;
         localStorage.setItem("refreshToken", action.payload.refreshToken);
-        // state.refreshToken = action.payload.refreshToken;
 
         state.userInfo.email = action.payload.user.email;
         state.userInfo.name = action.payload.user.name;
