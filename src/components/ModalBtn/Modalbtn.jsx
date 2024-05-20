@@ -5,6 +5,7 @@ export const ModalBtn = ({ text, onClick }) => {
     if (text === "Save") return css.saveBtn;
     if (text === "Log out") return css.logOutBtn;
     if (text === "Cancel") return css.cancelBtn;
+    if (text === "Delete") return css.logOutBtn;
     return "";
   };
 
@@ -12,7 +13,7 @@ export const ModalBtn = ({ text, onClick }) => {
     <button className={getButtonClass()} onClick={onClick} type="submit">
       <p
         className={
-          text === "Save" || text === "Log out"
+          text === "Save" || text === "Log out" || text === "Delete"
             ? css.saveBtnText
             : css.cancelBtnText
         }

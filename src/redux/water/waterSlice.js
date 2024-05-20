@@ -7,6 +7,13 @@ import {
   fetchWaterPerMonth,
 } from "./waterOperations";
 
+const localDate = () => {
+  const milliseconds = Date.now();
+  const date = new Date(milliseconds);
+
+  return date.toLocaleDateString();
+};
+
 function handleLoading(state) {
   state.loading = true;
   state.error = null;
@@ -16,6 +23,10 @@ function handleError(state, action) {
   state.error = action.payload;
   state.loading = false;
 }
+
+// function ifDayinMonth(date) {
+//   state.waterPerMonth.waterRecord[date];
+// }
 
 const waterSlice = createSlice({
   name: "water",
@@ -29,15 +40,18 @@ const waterSlice = createSlice({
     },
     loading: false,
     error: false,
+    activeDay: localDate(),
   },
   extraReducers: (builder) =>
     builder
       .addCase(fetchWaterPerDay.pending, handleLoading)
       .addCase(fetchWaterPerDay.fulfilled, (state, action) => {
         const { waterRate, waterRecord } = action.payload;
+
         state.error = false;
         state.loading = false;
-        state.waters.waterPerDay = { waterRate, waterRecord };
+        state.waters.waterPerDay.waterRate = waterRate;
+        state.waters.waterPerDay.waterRecord = waterRecord;
       })
       .addCase(fetchWaterPerDay.rejected, handleError)
       .addCase(fetchWaterPerMonth.pending, handleLoading)
@@ -52,9 +66,19 @@ const waterSlice = createSlice({
         state.loading = false;
         state.error = false;
         const index = state.waters.waterPerDay.waterRecord.findIndex(
-          (water) => water.id === action.payload.waterRecord.id
+          (water) => water._id === action.payload.waterRecord._id
         );
         state.waters.waterPerDay.waterRecord.splice(index, 1);
+        // if (
+        //   state.waterPerMonth.waterRecord[action.payload.waterRecord.localDate]
+        // ) {
+        //   const index = state.waterPerMonth.waterRecord[
+        //     action.payload.waterRecord.localDate
+        //   ].findIndex((water) => water._id === action.payload.waterRecord._id);
+        //   state.waterPerMonth.waterRecord[
+        //     action.payload.waterRecord.localDate
+        //   ].splice(index, 1);
+        // }
       })
       .addCase(deleteWater.rejected, handleError)
       .addCase(addWater.pending, handleLoading)
@@ -62,6 +86,13 @@ const waterSlice = createSlice({
         state.loading = false;
         state.error = false;
         state.waters.waterPerDay.waterRecord.push(action.payload.waterRecord);
+        // if (
+        //   state.waterPerMonth.waterRecord[action.payload.waterRecord.localDate]
+        // ) {
+        //   state.waterPerMonth.waterRecord[
+        //     action.payload.waterRecord.localDate
+        //   ].push(action.payload.waterRecord);
+        // }
       })
       .addCase(addWater.rejected, handleError)
       .addCase(changeWater.pending, handleLoading)
@@ -69,10 +100,21 @@ const waterSlice = createSlice({
         state.loading = false;
         state.error = false;
         const index = state.waters.waterPerDay.waterRecord.findIndex(
-          (water) => water.id === action.payload.waterRecord.id
+          (water) => water._id === action.payload.waterRecord._id
         );
         state.waters.waterPerDay.waterRecord[index] =
           action.payload.waterRecord;
+
+        // if (
+        //   state.waterPerMonth.waterRecord[action.payload.waterRecord.localDate]
+        // ) {
+        //   const index = state.waterPerMonth.waterRecord[
+        //     action.payload.waterRecord.localDate
+        //   ].findIndex((water) => water._id === action.payload.waterRecord._id);
+        //   state.waterPerMonth.waterRecord[action.payload.waterRecord.localDate][
+        //     index
+        //   ] = action.payload.waterRecord;
+        // }
       })
       .addCase(changeWater.rejected, handleError),
 });

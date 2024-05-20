@@ -1,12 +1,13 @@
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import toast from "react-hot-toast";
 import { HiPlus, HiMinus } from "react-icons/hi2";
 
 import { addWater, changeWater } from "../../redux/water/waterOperations";
 import css from "./WaterForm.module.css";
+import { selectActiveDay } from "../../redux/water/waterSelectors";
 
 const schema = Yup.object().shape({
   waterValue: Yup.number()
@@ -22,7 +23,8 @@ const getTimeFormat = () => {
   const hours = date.getHours();
   const min = date.getMinutes();
 
-  const timeFormatting = hours.toString().padStart(2, "0") + ":" + min.toString().padStart(2, "0");
+  const timeFormatting =
+    hours.toString().padStart(2, "0") + ":" + min.toString().padStart(2, "0");
 
   return timeFormatting;
 };
@@ -48,6 +50,7 @@ export const WaterForm = ({ mode, onClose, water = {} }) => {
     },
   });
 
+  const activeDay = useSelector(selectActiveDay);
   const dispatch = useDispatch();
 
   const handleClickMinus = () => {
@@ -61,19 +64,24 @@ export const WaterForm = ({ mode, onClose, water = {} }) => {
   };
 
   const onSubmit = () => {
-    console.log(watch("waterValue"));
+    // console.log(watch("waterValue"));
     const newData = {
+      localDate: activeDay,
       waterValue: watch("waterValue"),
       localTime: watch("localTime"),
     };
-    console.log("newData", newData);
+    // console.log("newData", newData);
     try {
       if (mode === "add") {
         dispatch(addWater(newData));
-        toast.success(`The amount of water consumed has been added successfully.`);
+        toast.success(
+          `The amount of water consumed has been added successfully.`
+        );
       } else if (mode === "edit") {
-        dispatch(changeWater(newData));
-        toast.success("The amount of water consumed has been successfully updated.");
+        dispatch(changeWater({ _id: water._id, ...newData }));
+        toast.success(
+          "The amount of water consumed has been successfully updated."
+        );
       }
       onClose();
     } catch (error) {
@@ -97,10 +105,16 @@ export const WaterForm = ({ mode, onClose, water = {} }) => {
         {/* <span className={css.amountValue}>{`${watch("waterValue")} ml`}</span> */}
         <span className={css.amountValue}>
           {watch("waterValue") >= 999
-            ? `${(Math.round((watch("waterValue") / 1000) * 100) / 100).toFixed(2)} L`
+            ? `${(Math.round((watch("waterValue") / 1000) * 100) / 100).toFixed(
+                2
+              )} L`
             : `${watch("waterValue")} ml`}
         </span>
-        <button type="button" className={css.quantityBtn} onClick={handleClickPlus}>
+        <button
+          type="button"
+          className={css.quantityBtn}
+          onClick={handleClickPlus}
+        >
           <HiPlus size="22" />
         </button>
       </div>
@@ -117,7 +131,9 @@ export const WaterForm = ({ mode, onClose, water = {} }) => {
             name="localTime"
             id="localTime"
           />
-          {errors.localTime && <span className={css.error}>{errors.localTime.message}</span>}
+          {errors.localTime && (
+            <span className={css.error}>{errors.localTime.message}</span>
+          )}
         </div>
 
         <div className={css.valueDiv}>
@@ -130,10 +146,14 @@ export const WaterForm = ({ mode, onClose, water = {} }) => {
             step={50}
             name="value"
             id="value"
-            onChange={(e) => setValue("waterValue", Math.max(Number(e.target.value), 0))}
+            onChange={(e) =>
+              setValue("waterValue", Math.max(Number(e.target.value), 0))
+            }
           />
 
-          {errors.waterValue && <span className={css.error}>{errors.waterValue.message}</span>}
+          {errors.waterValue && (
+            <span className={css.error}>{errors.waterValue.message}</span>
+          )}
         </div>
       </div>
       <button className={css.btnSubmit} type="submit">

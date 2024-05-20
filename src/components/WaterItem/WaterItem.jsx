@@ -3,15 +3,24 @@ import css from "./WaterItem.module.css";
 import sprite from "../../assets/sprite.svg";
 import { BaseModal } from "../BaseModal/BaseModal";
 import { WaterModal } from "../WaterModal/WaterModal";
+import { DeleteModal } from "../DeleteModal/DeleteModal";
+import { GlobalModal } from "../globalModal/globalModal";
 
 export function WaterItem({ item }) {
   const [isOpen, setIsOpen] = useState(false);
-
   const openModal = () => {
     setIsOpen(true);
   };
   const closeModal = () => {
     setIsOpen(false);
+  };
+
+  const [isOpenDelete, setIsOpenDelete] = useState(false);
+  const openModalDelete = () => {
+    setIsOpenDelete(true);
+  };
+  const closeModalDelete = () => {
+    setIsOpenDelete(false);
   };
 
   const water =
@@ -34,7 +43,7 @@ export function WaterItem({ item }) {
             <use href={sprite + "#icon-edit"}></use>
           </svg>
         </button>
-        <button className={css.button} type="button">
+        <button className={css.button} type="button" onClick={openModalDelete}>
           <svg className={css.btnIcon}>
             <use href={sprite + "#icon-trash"}></use>
           </svg>
@@ -46,6 +55,14 @@ export function WaterItem({ item }) {
           <WaterModal mode={"edit"} onClose={closeModal} water={item} />
         </BaseModal>
       </div>
+
+      <GlobalModal
+        isOpen={isOpenDelete}
+        title={"Delete"}
+        onRequestClose={closeModalDelete}
+      >
+        <DeleteModal onRequestClose={closeModalDelete} water={item} />
+      </GlobalModal>
     </div>
   );
 }
