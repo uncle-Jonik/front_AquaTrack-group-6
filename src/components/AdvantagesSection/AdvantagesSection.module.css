@@ -1,376 +1,201 @@
-/* --------- Mobile styles --------- */
-
-.advantagesSection {
-  margin-top: 16px;
+.advantages_main {
+  background-image: url(../../assets/img/women.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 353px;
+  border-radius: 30px;
+  margin: 16px 16px 32px 16px;
+  position: relative;
+}
+.advantages_users {
+  display: inline-flex;
+  margin-bottom: 8px;
   margin-left: 16px;
+  margin-top: 209px;
+  width: 160px;
+  padding: 10px 14px;
+  align-items: center;
+  border-radius: 30px;
+  background: white;
+  box-shadow: 0px 4px 50px 0px rgba(0, 0, 0, 0.1);
+}
+.advantages_point {
+  height: 28px;
+  width: 28px;
+  border-radius: 50%;
+  border: 2px solid white;
+  overflow: hidden;
+}
+.user {
+  width: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.advantages_usersImg {
+  display: flex;
+}
+.advantages_point:nth-child(1) {
+  z-index: 3;
+  position: relative;
+}
+.advantages_point:nth-child(2) {
+  z-index: 2;
+  left: -10px;
+  position: relative;
+}
+.advantages_point:nth-child(3) {
+  z-index: 1;
+  left: -20px;
+  position: relative;
+}
+.advantagesText {
+  color: #323f47;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.16;
+  margin-left: -18px;
+}
+.textSpan {
+  color: #9be1a0;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 14px;
+}
+.ellipse {
+  border-radius: 50%;
+  width: 8px;
+  height: 8px;
+  background-color: #9be1a0;
+}
+.advantages_habits {
+  display: flex;
+  padding: 9px 12px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 30px;
+}
+
+*,
+:before,
+:after {
+  box-sizing: border-box;
+}
+
+.advantages_habits:nth-child(2) {
+  background: #9be1a0;
+  width: 83px;
+}
+.advantages_habits:nth-child(1) {
+  background: #323f47;
+  width: 81px;
+  gap: 4px;
+}
+.advantages_habits:nth-child(3) {
+  background: white;
+  width: 108px;
+}
+
+.habit_1 {
+  color: white;
+  text-align: center;
+  font-size: 8px;
+  font-weight: 700;
+  line-height: 8px;
+  letter-spacing: -0.08px;
+}
+.habit_2_3 {
+  color: #323f47;
+  text-align: center;
+  font-size: 8px;
+  font-weight: 700;
+  line-height: 8px;
+  letter-spacing: -0.08px;
+}
+.advantagesTabs {
+  max-width: 168px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+.advantagesGroup_habits {
+  display: flex;
+  justify-content: flex-end;
   margin-right: 16px;
 }
-
-.advantagesPhoto {
-  position: relative;
-  margin-bottom: 16px;
-}
-
-.advantagesUsers {
-  position: absolute;
-  left: 32px;
-  top: 640px;
-  /* bottom: -96px;
-  transform: translateX(50%); */
-
-  background-color: white;
-  border-radius: 30px;
-  width: 200px;
-}
-
-.advantagesBlock {
-  padding: 10px 14px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.advantagesText {
-  font-family: 'Poppins';
-  color: #323f47;
-  font-weight: 700;
-  font-size: 12px;
-  margin-left: 4px;
-  columns: 66px 2;
-}
-
-.advantagesSpan {
-  color: #9be1a0;
-}
-
-/* --------- */
-
-.advantagesHabits {
-  position: absolute;
-  left: 90px;
-  top: 720px;
-}
-
-.advantagesHabits_inoneline {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 4px;
-}
-
-.advantagesHabits_1 {
-  background-color: #323f47;
-  color: #ffffff;
-  border-radius: 30px;
-  padding: 9px 12px;
-  height: 26px;
-  width: 100px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 4px;
-}
-
-.advantagesHabits_1_sircle {
-  background-color: #9be1a0;
-  border-radius: 360px;
-  width: 12px;
-  height: 12px;
-}
-
-.advantagesHabits_1_text {
-  font-size: 12px;
-  font-weight: 700;
-}
-
-/* ------- */
-
-.advantagesHabits_2 {
-  background-color: #9be1a0;
-  color: #323f47;
-  border-radius: 30px;
-  padding: 9px 12px;
-  height: 26px;
-  width: 104px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.advantagesHabits_2_text {
-  font-size: 12px;
-  font-weight: 700;
-}
-
-/* ------- */
-
-.advantagesHabits_3 {
-  background-color: #ffffff;
-  color: #323f47;
-  border-radius: 30px;
-  padding: 9px 12px;
-  height: 26px;
-  width: 130px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 4px;
-}
-
-.advantagesHabits_3_text {
-  font-size: 12px;
-  font-weight: 700;
-}
-
-/* --------- Tablet styles --------- */
-
-@media only screen and (min-width: 768px) {
-  .advantagesSection {
-    margin-top: 16px;
+@media screen and (min-width: 768px) {
+  .advantages_main {
+    height: 446px;
+    margin: 16px 32px 32px 32px;
+  }
+  .advantages_users {
+    display: inline-flex;
+    margin-bottom: 0;
+    margin-top: 283px;
     margin-left: 32px;
-    margin-right: 32px;
-  }
-
-  .advantagesPhoto {
-    position: relative;
-    /* <------ */
-    width: 704px;
-    /* <------ */
-    margin-bottom: 32px;
-  }
-
-  .advantagesUsers {
-    position: absolute;
-    left: 80px;
-    top: 1000px;
-    /* bottom: -96px;
-  transform: translateX(50%); */
-
-    background-color: white;
-    border-radius: 30px;
-    width: 260px;
-  }
-
-  .advantagesBlock {
+    width: 237px;
     padding: 10px 20px;
-    /* display: flex;
-    align-items: center;
-    justify-content: center; */
+  }
+  .advantages_point {
+    height: 47px;
+    width: 47px;
   }
 
   .advantagesText {
-    /* font-family: 'Poppins';
-    color: #323f47; */
-    font-weight: 700;
-    font-size: 19px;
-    margin-left: 4px;
-    columns: 66px 2;
+    font-size: 15px;
+    line-height: 1.49;
   }
-
-  /* .advantagesSpan {
-    color: #9be1a0;
-  } */
-
-  /* --------- */
-
-  .advantagesHabits {
+  span {
+    font-size: 15px;
+    line-height: 1.49;
+  }
+  .advantagesGroup_habits {
     position: absolute;
-    left: 400px;
-    top: 1100px;
+    right: 32px;
+    bottom: 32px;
+    margin-right: 32px;
   }
-
-  .advantagesHabits_inoneline {
-    /* display: flex;
-    align-items: center;
-    justify-content: center; */
+  .advantagesTabs {
     gap: 10px;
+    max-width: 242px;
   }
-
-  .advantagesHabits_1 {
-    /* background-color: #323f47;
-    color: #ffffff; */
-    border-radius: 30px;
+  .advantages_habits {
     padding: 11px 16px;
-    height: 26px;
-    width: 110px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  }
+  .advantages_habits:nth-child(2) {
+    width: 121px;
+  }
+  .advantages_habits:nth-child(1) {
+    width: 111px;
     gap: 4px;
   }
-
-  /* .advantagesHabits_1_sircle {
-    background-color: #9be1a0;
-    border-radius: 360px;
-    width: 12px;
-    height: 12px;
-  } */
-
-  .advantagesHabits_1_text {
-    font-size: 16px;
-    font-weight: 700;
+  .advantages_habits:nth-child(3) {
+    width: 158px;
   }
-
-  /* ------- */
-
-  .advantagesHabits_2 {
-    /* background-color: #9be1a0;
-    color: #323f47; */
-    border-radius: 30px;
-    padding: 11px 16px;
-    width: 120px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  .habit_1 {
+    font-size: 12px;
+    line-height: 1;
+    letter-spacing: -0.12px;
   }
-
-  .advantagesHabits_2_text {
-    font-size: 16px;
-    font-weight: 700;
-  }
-
-  /* ------- */
-
-  .advantagesHabits_3 {
-    /* background-color: #ffffff;
-    color: #323f47; */
-    border-radius: 30px;
-    padding: 11px 16px;
-    height: 26px;
-    width: 180px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 10px;
-  }
-
-  .advantagesHabits_3_text {
-    font-size: 16px;
-    font-weight: 700;
+  .habit_2_3 {
+    font-size: 12px;
+    line-height: 1;
+    letter-spacing: -0.12px;
   }
 }
 
-/* --------- Desctop styles --------- */
-
-@media only screen and (min-width: 1440px) {
-  .advantagesSection {
-    margin-top: 32px;
-    margin-left: 0;
-    margin-right: 32px;
-  }
-
-  .advantagesPhoto {
-    position: relative;
-    /* <------ */
-    width: 704px;
+@media screen and (min-width: 1440px) {
+  .advantages_main {
+    margin: 32px 32px 32px 16px;
+    min-width: 672px;
     height: 736px;
-    /* <------ */
   }
-
-  .advantagesUsers {
-    position: absolute;
-    left: 770px;
-    top: 560px;
-    background-color: white;
-    border-radius: 30px;
-    width: 260px;
+  .advantages_users {
+    margin-top: 537px;
+    margin-left: 32px;
   }
-
-  /* .advantagesBlock {
-    padding: 10px 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  } */
-
-  .advantagesText {
-    /* font-family: 'Poppins';
-    color: #323f47; */
-    font-weight: 700;
-    font-size: 19px;
-    margin-left: 4px;
-    columns: 66px 2;
-  }
-
-  /* .advantagesSpan {
-    color: #9be1a0;
-  } */
-
-  /* --------- */
-
-  .advantagesHabits {
-    position: absolute;
-    left: 1080px;
-    top: 600px;
-  }
-
-  .advantagesHabits_inoneline {
-    /* display: flex;
-    align-items: center;
-    justify-content: center; */
-    gap: 10px;
-  }
-
-  .advantagesHabits_1 {
-    /* background-color: #323f47;
-    color: #ffffff; */
-    border-radius: 30px;
-    padding: 11px 16px;
-    height: 26px;
-    width: 110px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 4px;
-  }
-
-  /* .advantagesHabits_1_sircle {
-    background-color: #9be1a0;
-    border-radius: 360px;
-    width: 12px;
-    height: 12px;
-  } */
-
-  .advantagesHabits_1_text {
-    font-size: 16px;
-    font-weight: 700;
-  }
-
-  /* ------- */
-
-  .advantagesHabits_2 {
-    /* background-color: #9be1a0;
-    color: #323f47; */
-    border-radius: 30px;
-    padding: 11px 16px;
-    width: 120px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .advantagesHabits_2_text {
-    font-size: 16px;
-    font-weight: 700;
-  }
-
-  /* ------- */
-
-  .advantagesHabits_3 {
-    /* background-color: #ffffff;
-    color: #323f47; */
-    border-radius: 30px;
-    padding: 11px 16px;
-    height: 26px;
-    width: 180px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 10px;
-  }
-
-  .advantagesHabits_3_text {
-    font-size: 16px;
-    font-weight: 700;
+  .advantagesGroup_habits {
+    bottom: 64px;
   }
 }
