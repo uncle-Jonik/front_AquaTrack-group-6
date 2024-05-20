@@ -1,7 +1,7 @@
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-const SetAuthHeader = (token) => {
+export const SetAuthHeader = (token) => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
 
@@ -9,9 +9,37 @@ const ClearAuthHeader = () => {
   axios.defaults.headers.common.Authorization = "";
 };
 
-
-
 axios.defaults.baseURL = "https://back-aquatrack-group-6.onrender.com/api/";
+
+// axios.defaults.baseURL = "http://localhost:3001/api";
+
+axios.interceptors.response.use(res => res, async (err) => {
+  const originalRequest = err.config;
+
+  if (err.response.status === 401 && !originalRequest._retry) {
+    originalRequest._retry = true;
+
+    const refreshToken = localStorage.getItem("refreshToken");
+
+    if (refreshToken.length > 0) {
+      try {
+        const res = await axios.post("/users/refresh", { refreshToken });
+
+        SetAuthHeader(res.data.accessToken);
+        localStorage.setItem("refreshToken", res.data.refreshToken);
+        originalRequest.headers.Authorization = `Bearer ${res.data.accessToken}`;
+
+        return axios(originalRequest);
+      } catch (refreshError) {
+        localStorage.setItem("refreshToken", "");
+        ClearAuthHeader();
+        return Promise.reject(refreshError);
+      }
+    }
+  }
+  return Promise.reject(err);
+});
+
 
 export const registerUser = createAsyncThunk(
   "auth/register",
@@ -42,7 +70,7 @@ export const logoutUser = createAsyncThunk(
   "auth/logout",
   async (_, thunkAPI) => {
     try {
-      const res = await axios.post("/users/logout");
+      const res = await axios.get("/users/logout");
       ClearAuthHeader();
       return res.data;
     } catch (error) {
@@ -54,8 +82,7 @@ export const refreshUser = createAsyncThunk(
   "auth/refresh",
   async (_, thunkAPI) => {
     ///////////////////
-    const state = thunkAPI.getState();
-    const persistedToken = state.user.refreshToken;
+    const persistedToken = localStorage.getItem("refreshToken");
 
     if (persistedToken === null) {
       return thunkAPI.rejectWithValue("Unable to fetch user");
@@ -70,6 +97,7 @@ export const refreshUser = createAsyncThunk(
 
       return res.data;
     } catch (e) {
+      localStorage.setItem("refreshToken", "");
       return thunkAPI.rejectWithValue(e.message);
     }
   }
@@ -78,7 +106,7 @@ export const updateUser = createAsyncThunk(
   "auth/update",
   async (data, thunkAPI) => {
     try {
-      const res = await axios.put("users/current", data, {
+      const res = await axios.put("users/update", data, {
         headers: {
           "Content-Type": "multipart/form-data",
         },

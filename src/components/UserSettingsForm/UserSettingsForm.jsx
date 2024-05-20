@@ -63,23 +63,23 @@ const UserSettingsForm = ({ onClose }) => {
   } = useForm({
     resolver: yupResolver(schema),
     defaultValues: {
-      name: user.name,
-      email: user.email,
+      name: user.name || "",
+      email: user.email || "",
       gender: user.gender,
-      weight: user.weight,
-      sportsActivity: user.sportsActivity,
-      waterRate: user.waterRate,
+      weight: user.weight || "",
+      sportsActivity: user.sportsActivity || "",
+      waterRate: user.waterRate || "",
     },
   });
 
   useEffect(() => {
     reset({
-      name: user.name,
-      email: user.email,
+      name: user.name || "",
+      email: user.email || "",
       gender: user.gender,
-      weight: user.weight,
-      sportsActivity: user.sportsActivity,
-      waterRate: user.waterRate,
+      weight: user.weight || "",
+      sportsActivity: user.sportsActivity || "",
+      waterRate: user.waterRate || "",
     });
   }, [user, reset]);
 

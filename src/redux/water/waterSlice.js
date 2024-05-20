@@ -56,7 +56,7 @@ const waterSlice = createSlice({
       .addCase(fetchWaterPerMonth.fulfilled, (state, action) => {
         state.error = false;
         state.loading = false;
-        state.waters.waterPerMonth = action.payload.waterRecord;
+        state.waters.waterPerMonth.waterRecord = action.payload.waterRecord;
       })
       .addCase(fetchWaterPerMonth.rejected, handleError)
       .addCase(deleteWater.pending, handleLoading)
@@ -74,6 +74,7 @@ const waterSlice = createSlice({
         state.loading = false;
         state.error = false;
         state.waters.waterPerDay.waterRecord.push(action.payload.waterRecord);
+
         
         const { localDate } = action.meta.arg;
         const [day, month, year] = localDate.split('.');
@@ -93,6 +94,21 @@ const waterSlice = createSlice({
           (water) => water._id === action.payload.waterRecord._id
         );
         state.waters.waterPerDay.waterRecord[index] = action.payload.waterRecord;
+        state.waters.waterPerDay.waterRecord[index] =
+          action.payload.waterRecord;
+
+        if (
+          state.waters.waterPerMonth.waterRecord[
+            action.payload.waterRecord.localDate
+          ]
+        ) {
+          const index = state.waters.waterPerMonth.waterRecord[
+            action.payload.waterRecord.localDate
+          ].findIndex((water) => water._id === action.payload.waterRecord._id);
+          state.waters.waterPerMonth.waterRecord[
+            action.payload.waterRecord.localDate
+          ][index] = action.payload.waterRecord;
+        }
       })
       .addCase(changeWater.rejected, handleError),
 });

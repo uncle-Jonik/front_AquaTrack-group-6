@@ -19,21 +19,13 @@ export const initialState = {
   },
   isLoggedIn: false,
   isRefreshing: false,
-  refreshToken: null,
-  accessToken: null,
   error: "",
 };
 
 const userSlice = createSlice({
   name: "user",
   initialState,
-  reducers: {
-    onLogoutUser: (state) => {
-      state.accessToken = null;
-      state.refreshToken = null;
-    }
-  },
-
+  reducers: {},
   extraReducers: (builder) =>
     builder
       .addCase(registerUser.fulfilled, (state, action) => {
@@ -43,14 +35,14 @@ const userSlice = createSlice({
         state.isLoggedIn = true;
         state.isRefreshing = false;
         state.accessToken = action.payload.accessToken;
-        state.refreshToken = action.payload.refreshToken;
-
+        localStorage.setItem("refreshToken", action.payload.refreshToken);
         state.userInfo = action.payload.user;
       })
 
       .addCase(logoutUser.fulfilled, (state) => {
         state.isLoggedIn = false;
-        //////////////////////////////
+        state.accessToken = null;
+        localStorage.setItem("refreshToken", "");
       })
 
       .addCase(refreshUser.pending, (state, action) => {
@@ -60,13 +52,11 @@ const userSlice = createSlice({
       })
 
       .addCase(refreshUser.fulfilled, (state, action) => {
-        //////////////////////////////
-        state.user = action.payload;
         state.isLoggedIn = true;
         state.isRefreshing = false;
 
         state.accessToken = action.payload.accessToken;
-        state.refreshToken = action.payload.refreshToken;
+        localStorage.setItem("refreshToken", action.payload.refreshToken);
 
         state.userInfo.email = action.payload.user.email;
         state.userInfo.name = action.payload.user.name;
@@ -77,7 +67,7 @@ const userSlice = createSlice({
         state.userInfo.waterRate = action.payload.user.waterRate;
       })
 
-      .addCase(updateUser.pending, (state, action) => {
+      .addCase(updateUser.pending, (state) => {
         //////////////////////////////
         // ТУТ МАЄ ВАШ ЛОУДЕР;
         state.isRefreshing = true;
@@ -106,7 +96,7 @@ const userSlice = createSlice({
 });
 
 export const {
-  onLogoutUser
+  ///////
 } = userSlice.actions;
 
 export const userReducer = userSlice.reducer;

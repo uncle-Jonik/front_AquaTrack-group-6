@@ -17,7 +17,7 @@ import { waterReducer } from "./water/waterSlice.js";
 const userPersistConfig = {
   key: "user",
   storage,
-  whitelist: ["accessToken", "refreshToken"],
+  whitelist: [],
 };
 
 const waterPersistConfig = {
@@ -40,3 +40,6 @@ export const store = configureStore({
 });
 
 export const persistor = persistStore(store);
+
+
+
