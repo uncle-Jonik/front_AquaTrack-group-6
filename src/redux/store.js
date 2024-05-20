@@ -18,7 +18,7 @@ import { calendarReducer } from "./Calendar/CalendarSlice.js";
 const userPersistConfig = {
   key: "user",
   storage,
-  whitelist: ["accessToken", "refreshToken"],
+  whitelist: [],
 };
 
 const waterPersistConfig = {
@@ -48,3 +48,6 @@ export const store = configureStore({
 });
 
 export const persistor = persistStore(store);
+
+
+
