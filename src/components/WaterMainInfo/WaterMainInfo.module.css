@@ -11,6 +11,17 @@
   background-size: auto;
 }
 
+@media only screen and (min-width: 768px) {
+  .wrapper {
+    padding: 32px 32px 64px;
+  }
+}
+@media only screen and (min-width: 1440px) {
+  .wrapper {
+    width: calc((100% - 32px) / 2);
+  }
+}
+
 @media only screen and (min-resolution: 192dpi) {
   .wrapper {
     background-image: url(../../assets/img/bottle_for_water@2x.png);
@@ -21,29 +32,62 @@
 .logoBox {
   margin-bottom: 78px;
 }
+@media only screen and (min-width: 768px) {
+  .logoBox {
+    margin-bottom: 101px;
+  }
+}
 
 .dailyNorma {
+  box-sizing: border-box;
   border-radius: 15px;
   padding: 12px;
-  max-width: 78px;
+  max-width: 102px;
 
   box-shadow: 0 4px 50px 0 rgba(0, 0, 0, 0.1);
   background: #ffffff;
 
   margin-bottom: 49px;
 }
+@media only screen and (min-width: 768px) {
+  .dailyNorma {
+    padding: 14px 18px;
+    max-width: 129px;
+    margin-bottom: 87px;
+  }
+}
+@media only screen and (min-width: 1440px) {
+  .dailyNorma {
+    margin-bottom: 215px;
+  }
+}
 .dailyNorma > b {
   font-weight: 700;
   font-size: 14px;
-  line-height: 100%;
+  line-height: 1;
   color: #323f47;
 
   margin-bottom: 6px;
 }
+@media only screen and (min-width: 768px) {
+  .dailyNorma > b {
+    font-size: 15px;
+    line-height: 1.5;
+    margin-bottom: 4px;
+  }
+}
 .dailyNorma > p {
+  font-weight: 400;
   font-size: 10px;
-  line-height: 100%;
+  line-height: 1;
   color: rgba(47, 47, 47, 0.6);
+}
+
+@media only screen and (min-width: 768px) {
+  .dailyNorma > p {
+    font-size: 12px;
+    line-height: 1.9;
+  }
 }
 
 .statusBar {
@@ -55,12 +99,19 @@
   background: #ffffff;
   box-shadow: 0 4px 50px 0 rgba(0, 0, 0, 0.1);
 }
+@media only screen and (min-width: 768px) {
+  .statusBar {
+    padding: 20px;
+
+    max-width: 295px;
+  }
+}
 
 .titleProsentBox {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 8px;
+  /* margin-bottom: 8px; */
 }
 .titleProsentBox > p {
   font-weight: 700;
@@ -75,8 +126,28 @@
 }
 .statusBar > input[type="range"] {
   width: 100%;
+  -webkit-appearance: none;
+  appearance: none;
+  border-radius: 9px;
+  height: 6px;
 
   margin: 0;
+}
+@media only screen and (min-width: 768px) {
+  .statusBar > input[type="range"] {
+    height: 8px;
+  }
+}
+
+.rangeInput::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  background: #ffffff;
+  border-radius: 100%;
+  border: 1px solid #9be1a0;
+  width: 12px;
+  height: 12px;
+  /* margin-top: -2px; */
 }
 .labels {
   display: flex;
@@ -93,4 +164,14 @@
   display: flex;
   justify-content: flex-end;
   align-items: center;
+}
+@media only screen and (min-width: 768px) {
+  .btnContainer {
+    margin-top: 26px;
+  }
+}
+@media only screen and (min-width: 1440px) {
+  .btnContainer {
+    margin-top: 56px;
+  }
 }

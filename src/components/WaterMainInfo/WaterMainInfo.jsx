@@ -12,24 +12,32 @@ export const WaterMainInfo = () => {
 
   const currentDate = useSelector(selectActiveDay);
 
-    const localDate = () => {
-      const milliseconds = Date.now();
-      const date = new Date(milliseconds);
-    
-      return date.toLocaleDateString().replace(/\//g, '.');
-    };
+  const localDate = () => {
+    const milliseconds = Date.now();
+    const date = new Date(milliseconds);
 
-    const dayToday = currentDate.replace(/\//g, '.').split('.')[0];
+    return date.toLocaleDateString().replace(/\//g, ".");
+  };
 
-  
+  const dayToday = currentDate.replace(/\//g, ".").split(".")[0];
 
-    const months = [
-      "January", "February", "March", "April", "May", "June", 
-      "July", "August", "September", "October", "November", "December"
-    ];
+  const months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
 
-    const month = months[+currentDate.split('/')[1] -1];
-    const monthDot = months[+currentDate.split('.')[1] -1];
+  const month = months[+currentDate.split("/")[1] - 1];
+  const monthDot = months[+currentDate.split(".")[1] - 1];
 
   const user = useAuth().user;
   return (
@@ -45,7 +53,11 @@ export const WaterMainInfo = () => {
 
       <div className={css.statusBar}>
         <div className={css.titleProsentBox}>
-          <p>{currentDate.replace(/\//g, '.') === localDate() ? "Today" : `${dayToday}, ${month || monthDot}`}</p>
+          <p>
+            {currentDate.replace(/\//g, ".") === localDate()
+              ? "Today"
+              : `${dayToday}, ${month || monthDot}`}
+          </p>
           <span>{Math.round(day) ? Math.round(day) : 0}%</span>
         </div>
 
@@ -54,6 +66,14 @@ export const WaterMainInfo = () => {
           className={css.rangeInput}
           min="0"
           max="100"
+          style={{
+            background: `linear-gradient(
+    to right,
+    #9be1a0 0%,
+    #9be1a0 ${Math.round(day) ? Math.round(day) : 0}%,
+    #f0eff4 ${Math.round(day) ? Math.round(day) : 0}%,
+    #f0eff4 100%`,
+          }}
           value={Math.round(day) ? Math.round(day) : 0}
           readOnly={true}
         />
