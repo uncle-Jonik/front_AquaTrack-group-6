@@ -4,6 +4,15 @@
   background-color: var(--bacground);
 
   padding: 209px 16px 32px;
+  background-image: url(../../assets/img/baner@1x.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+@media only screen and (min-resolution: 192dpi) {
+  .advantages_main {
+    background-image: url(../../assets/img/baner@2x.png);
+  }
 }
 
 .advantages_users {
@@ -29,4 +38,48 @@
 }
 .textSpan {
   color: var(--accent);
+}
+
+.advantagesGroup_habits {
+  max-width: 168px;
+  margin-left: 143px;
+}
+.advantagesTabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+.advantages_habits {
+  padding: 9px 12px;
+  border-radius: 30px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+}
+.ellipse {
+  border-radius: 50%;
+  background-color: var(--accent);
+  width: 8px;
+  height: 8px;
+}
+.advantages_habits > p {
+  font-weight: 700;
+  font-size: 8px;
+  line-height: 100%;
+  letter-spacing: -0.01em;
+  text-align: center;
+}
+.advantages_habits:nth-child(1) {
+  background: #323f47;
+  color: var(--main-white);
+}
+.advantages_habits:nth-child(2) {
+  background: #9be1a0;
+  color: var(--main);
+}
+.advantages_habits:nth-child(3) {
+  background: white;
+  color: var(--main);
 }
