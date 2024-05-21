@@ -53,12 +53,11 @@ export const GlobalModal = ({ isOpen, onRequestClose, children, title }) => {
           <MdClose onClick={onRequestClose} size={"24px"} />
         </div>
       </div>
-      {title === "Log out" ||
-        (title === "Delete" && (
-          <div className={css.textBox}>
-            <p className={css.titleHeader}>{title}</p>
-          </div>
-        ))}
+      {(title === "Log out" || title === "Delete") && (
+        <div className={css.textBox}>
+          <p className={css.titleHeader}>{title}</p>
+        </div>
+      )}
       <div className={css.modalContent}>{children}</div>
     </Modal>
   );
