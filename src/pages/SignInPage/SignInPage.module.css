@@ -1,0 +1,11 @@
+@media only screen and (min-width: 1440px) {
+  .generalSignInForm {
+    display: flex;
+  }
+}
+
+@media only screen and (max-width: 1439px) {
+  .AdvantagesSection_in {
+    display: none;
+  }
+}
