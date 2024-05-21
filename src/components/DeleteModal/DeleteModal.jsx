@@ -2,12 +2,21 @@ import css from "./DeleteModal.module.css";
 import { useDispatch } from "react-redux";
 import { ModalBtn } from "../ModalBtn/Modalbtn";
 import { deleteWater } from "../../redux/water/waterOperations";
+import toast from "react-hot-toast";
 
 export const DeleteModal = ({ onRequestClose, water }) => {
   const dispatch = useDispatch();
 
   const onDelete = () => {
-    dispatch(deleteWater(water._id));
+
+    try {
+      dispatch(deleteWater(water._id));
+      toast.success(
+        "The amount of water consumed has been successfully deleted."
+      );
+    } catch (error) {
+      toast.error("Something went wrong. Please try again.");
+    }
   };
 
   return (
