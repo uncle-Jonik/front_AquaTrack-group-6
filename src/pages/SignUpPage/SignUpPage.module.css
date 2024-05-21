@@ -1,9 +1,12 @@
 .signUpPageWrapper {
-  margin: 16px;
+  padding: 16px;
+  margin: 0 auto;
+  max-width: 343px;
 }
 @media only screen and (min-width: 768px) {
   .signUpPageWrapper {
-    margin: 32px;
+    padding: 32px;
+    max-width: 704px;
   }
 }
 
@@ -36,6 +39,7 @@
   .signUpPageWrapper {
     display: flex;
     gap: 32px;
+    max-width: 1376px;
   }
 }
 
