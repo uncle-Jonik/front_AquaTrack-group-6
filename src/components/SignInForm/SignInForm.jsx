@@ -7,8 +7,8 @@ import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 
 import { loginUser } from "../../redux/user/userOperations";
-// import { useState } from "react";
-// import sprite from "../../assets/sprite.svg";
+import { useState } from "react";
+import sprite from "../../assets/sprite.svg";
 
 const schema = yup.object().shape({
   email: yup
@@ -36,7 +36,7 @@ export const SignInForm = () => {
     },
   });
   const dispatch = useDispatch();
-  // const [showPassword, setShowPassword] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   return (
     <div className={css.loginContainer}>
@@ -75,30 +75,17 @@ export const SignInForm = () => {
             <input
               className={`${css.input} ${errors.password ? css.error : ""}`}
               required="true"
-              // type={showPassword ? "text" : "password"}
-              type={"password"}
+              type={showPassword ? "text" : "password"}
+              // type={"password"}
               {...register("password")}
               placeholder="Enter your Password"
             />
             {errors.password && (
               <span className={css.errors}>{errors.password.message}</span>
             )}
-            {/* {!showPassword && (
+            {!showPassword && (
               <svg
                 className={css.icon_eye}
-                onClick={() => setShowPassword(!showPassword)}
-              >
-                <use
-                  width={20}
-                  height={20}
-                  xlinkHref={`${sprite}#icon-eye`}
-                ></use>
-              </svg>
-            )} */}
-
-            {/* {showPassword && (
-              <svg
-                className={css.eyeIconOff}
                 onClick={() => setShowPassword(!showPassword)}
               >
                 <use
@@ -107,7 +94,20 @@ export const SignInForm = () => {
                   xlinkHref={`${sprite}#icon-eye-off`}
                 ></use>
               </svg>
-            )} */}
+            )}
+
+            {showPassword && (
+              <svg
+                className={css.eyeIconOff}
+                onClick={() => setShowPassword(!showPassword)}
+              >
+                <use
+                  width={20}
+                  height={20}
+                  xlinkHref={`${sprite}#icon-eye`}
+                ></use>
+              </svg>
+            )}
           </div>
 
           <button className={css.button} type="submit">
