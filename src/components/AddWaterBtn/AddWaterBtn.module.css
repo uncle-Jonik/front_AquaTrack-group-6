@@ -33,6 +33,7 @@
   transition: fill var(--animation);
 }
 .plusIcon.daily {
+  box-sizing: content-box;
   padding: 8px;
   border-radius: 30px;
   background-color: #9be1a0;
