@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { Logo } from "../Logo";
 import css from "./SignUpForm.module.css";
 import React from "react";
 import * as yup from "yup";
@@ -46,6 +47,7 @@ export function SignUpForm() {
 
   return (
     <div className={css.wrapper}>
+      <Logo />
       <div className={css.formContainer}>
         <p className={css.title}>Sign Up</p>
         <form
@@ -180,7 +182,9 @@ onSubmit={handleSubmit( async (data) => {
         </form>
         <p className={css.description}>
           Already have an account?&nbsp;
-          <Link to={"/signin"}>Sign In</Link>
+          <Link className={css.link} to={"/signin"}>
+            Sign In
+          </Link>
         </p>
       </div>
     </div>

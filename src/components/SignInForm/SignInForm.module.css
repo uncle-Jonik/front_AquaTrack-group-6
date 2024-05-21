@@ -1,14 +1,11 @@
 .loginContainer {
-  height: 780px;
-  margin: 16px;
   border-radius: 30px;
-  opacity: 0px;
   background-color: #f0eff4;
   padding: 24px 16px;
 }
 
 .formContainer {
-  padding: 172px 0 216px;
+  padding: 172px 0 192px;
 }
 .title {
   font-weight: 700;
@@ -16,8 +13,8 @@
   line-height: 32px;
   letter-spacing: -0.01em;
   text-align: left;
-  color: #323f47;
   margin-bottom: 32px;
+  color: #323f47;
 }
 
 .form {
@@ -128,13 +125,10 @@
 
 @media screen and (min-width: 768px) {
   .loginContainer {
-    height: 960px;
-    margin: 32px;
     padding: 32px;
   }
   .formContainer {
-    opacity: 0px;
-    padding: 171px 102px 227px;
+    padding: 171px 102px 249px;
   }
 
   .title {
@@ -169,10 +163,10 @@
 }
 @media screen and (min-width: 1440px) {
   .loginContainer {
-    height: 736px;
-    width: 672px;
+    max-width: 608px;
+    width: 100%;
   }
   .formContainer {
-    padding: 113px 85px 169px;
+    padding: 113px 85px 137px;
   }
 }

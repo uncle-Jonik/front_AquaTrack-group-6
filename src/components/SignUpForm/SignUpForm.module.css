@@ -1,11 +1,11 @@
-.loginContainer {
+.wrapper {
   border-radius: 30px;
-  opacity: 0px;
   background-color: #f0eff4;
+  padding: 24px 16px;
 }
 
 .formContainer {
-  padding: 126px 0 170px;
+  padding: 126px 0 146px;
 }
 .title {
   font-weight: 700;
@@ -22,13 +22,6 @@
   margin-bottom: 16px;
 }
 
-.field {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-
-  margin-bottom: 16px;
-}
 .label {
   font-weight: 700;
   font-size: 14px;
@@ -37,17 +30,20 @@
   color: #2f2f2f;
   margin-bottom: 8px;
 }
+.input_field {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 16px;
 
+  position: relative;
+}
 .input {
-  background-color: transparent;
-  border-radius: 15px;
   padding: 16px;
+  border-radius: 15px;
   border: 1px solid #2f2f2f33;
-
-  background-color: inherit;
-  opacity: 0px;
-  width: 100%;
   outline: none;
+  background-color: #f0eff4;
 }
 
 .input:placeholder-shown {
@@ -99,14 +95,11 @@
 }
 
 @media screen and (min-width: 768px) {
-  .loginContainer {
-    margin: 32px;
+  .wrapper {
     padding: 32px;
   }
   .formContainer {
-    opacity: 0px;
-
-    padding: 171px 102px 227px;
+    padding: 171px 102px 195px;
   }
 
   .title {
@@ -139,12 +132,12 @@
   }
 }
 @media screen and (min-width: 1440px) {
-  .loginContainer {
-    height: 736px;
-    /* width: 672px; */
+  .wrapper {
+    max-width: 608px;
+    width: 100%;
   }
   .formContainer {
-    padding: 113px 85px 169px;
+    padding: 72px 86px 66px;
   }
 }
 .eyeIconOff,
