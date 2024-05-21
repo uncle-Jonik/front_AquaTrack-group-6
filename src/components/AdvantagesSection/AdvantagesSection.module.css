@@ -189,7 +189,7 @@
   .advantages_main {
     margin: 32px 32px 32px 16px;
     min-width: 672px;
-    height: 736px;
+    height: calc(100vh - 60px);
   }
   .advantages_users {
     margin-top: 537px;
