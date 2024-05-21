@@ -160,6 +160,7 @@
 }
 .input_field {
   position: relative;
+  margin-bottom: 16px;
 }
 .errors {
   font-size: 14px;
@@ -169,7 +170,8 @@
 
   color: #ef5050;
 }
-.error {
+.error,
+.error::placeholder {
   border-color: #ef5050;
   color: #ef5050;
 }

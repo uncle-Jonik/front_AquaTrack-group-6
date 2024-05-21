@@ -66,21 +66,22 @@ export function SignUpForm() {
           })}
         >
           <label className={css.label}>Email</label>
-          <input
-            className={`${css.input} ${errors.email ? css.error : ""}`}
-            type="email"
-            {...register("email", {
-              pattern: {
-                value: /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/,
-                message: "Please enter valid email",
-              },
-            })}
-            placeholder="Enter your email"
-          />
-          {errors.email && (
-            <span className={css.errors}>{errors.email.message}</span>
-          )}
-
+          <div className={css.input_field}>
+            <input
+              className={`${css.input} ${errors.email ? css.error : ""}`}
+              type="email"
+              {...register("email", {
+                pattern: {
+                  value: /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/,
+                  message: "Please enter valid email",
+                },
+              })}
+              placeholder="Enter your email"
+            />
+            {errors.email && (
+              <span className={css.errors}>{errors.email.message}</span>
+            )}
+          </div>
           <label className={css.label}>Password</label>
           <div className={css.input_field}>
             <input
