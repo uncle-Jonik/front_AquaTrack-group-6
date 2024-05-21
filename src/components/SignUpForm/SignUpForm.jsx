@@ -24,7 +24,6 @@ const schema = yup.object().shape({
 });
 export function SignUpForm() {
   const [showPassword, setShowPassword] = useState(false);
-  const [showPasswords, setShowPasswords] = useState(false);
   const {
     register,
     handleSubmit,
@@ -68,7 +67,7 @@ export function SignUpForm() {
         >
           <label className={css.label}>Email</label>
           <input
-            className={`${css.input} ${errors.password ? css.error : ""}`}
+            className={`${css.input} ${errors.email ? css.error : ""}`}
             type="email"
             {...register("email", {
               pattern: {
