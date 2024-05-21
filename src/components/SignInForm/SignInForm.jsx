@@ -5,18 +5,20 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
+
 import { loginUser } from "../../redux/user/userOperations";
-import sprite from "../../assets/sprite.svg";
+// import { useState } from "react";
+// import sprite from "../../assets/sprite.svg";
 
 const schema = yup.object().shape({
   email: yup
     .string()
-    .email("Введіть дійсну email адресу")
-    .required("Поле Email є обов'язковим"),
+    .email("Please enter valid email")
+    .required("Email field is required"),
   password: yup
     .string()
-    .required("Поле Password є обов'язковим")
-    .min(6, "Пароль має містити принаймні 6 символів"),
+    .required("Password field is required")
+    .min(6, "Password must contain at least 6 characters"),
 });
 export const SignInForm = () => {
   const {
@@ -34,6 +36,8 @@ export const SignInForm = () => {
     },
   });
   const dispatch = useDispatch();
+  // const [showPassword, setShowPassword] = useState(false);
+
   return (
     <div className={css.loginContainer}>
       <Logo />
@@ -48,38 +52,63 @@ export const SignInForm = () => {
           })}
         >
           <label className={css.label}>Email</label>
-          <input
-            className={css.input}
-            type="email"
-            {...register("email", {
-              pattern: {
-                value: /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/,
-                message: "Please enter valid email",
-              },
-            })}
-            placeholder="Enter your email"
-            autoComplete="on"
-          />
-          {errors.email && (
-            <span style={{ color: "red" }}>{errors.email.message}</span>
-          )}
-
-          <label className={css.label}>Password</label>
-
-          <input
-            className={css.input}
-            type="password"
-            {...register("password")}
-            placeholder="Enter your Password"
-          />
-          <div className={css.messageInput}>
-            {/* <svg className={css.eyeIcon}>
-              <use width={20} height={20} xlinkHref={`${sprite}#icon-eye`} />
-            </svg> */}
+          <div className={css.input_field}>
+            <input
+              className={`${css.input} ${errors.email ? css.error : ""}`}
+              required="true"
+              type="email"
+              {...register("email", {
+                pattern: {
+                  value: /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/,
+                  message: "Please enter valid email",
+                },
+              })}
+              placeholder="Enter your email"
+              autoComplete="on"
+            />
+            {errors.email && (
+              <span className={css.errors}>{errors.email.message}</span>
+            )}
           </div>
-          {errors.password && (
-            <span style={{ color: "red" }}>{errors.password.message}</span>
-          )}
+          <label className={css.label}>Password</label>
+          <div className={css.input_field}>
+            <input
+              className={`${css.input} ${errors.password ? css.error : ""}`}
+              required="true"
+              // type={showPassword ? "text" : "password"}
+              type={"password"}
+              {...register("password")}
+              placeholder="Enter your Password"
+            />
+            {errors.password && (
+              <span className={css.errors}>{errors.password.message}</span>
+            )}
+            {/* {!showPassword && (
+              <svg
+                className={css.icon_eye}
+                onClick={() => setShowPassword(!showPassword)}
+              >
+                <use
+                  width={20}
+                  height={20}
+                  xlinkHref={`${sprite}#icon-eye`}
+                ></use>
+              </svg>
+            )} */}
+
+            {/* {showPassword && (
+              <svg
+                className={css.eyeIconOff}
+                onClick={() => setShowPassword(!showPassword)}
+              >
+                <use
+                  width={20}
+                  height={20}
+                  xlinkHref={`${sprite}#icon-eye-off`}
+                ></use>
+              </svg>
+            )} */}
+          </div>
 
           <button className={css.button} type="submit">
             Sign In
