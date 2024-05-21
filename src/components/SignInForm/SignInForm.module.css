@@ -41,6 +41,8 @@
   flex-direction: column;
   justify-content: center;
   margin-bottom: 16px;
+
+  position: relative;
 }
 .input {
   padding: 16px;
@@ -50,20 +52,26 @@
   outline: none;
   background-color: #f0eff4;
 }
-/* .icon_eye {
+.icon_eye {
   fill: none;
   stroke: #2f2f2f;
-  position: relative;
-  top: 0;
-  left: 0;
-}
-.icon-eye-off {
-  stroke: #2f2f2f;
+  position: absolute;
+  top: 16px;
+  right: 16px;
 
-  position: relative;
-  top: 0;
-  left: 0;
-} */
+  width: 20px;
+  height: 20px;
+}
+.eyeIconOff {
+  fill: none;
+  stroke: #2f2f2f;
+  position: absolute;
+  top: 16px;
+  right: 16px;
+
+  width: 20px;
+  height: 20px;
+}
 .input::placeholder {
   font-size: 14px;
   line-height: 18px;
