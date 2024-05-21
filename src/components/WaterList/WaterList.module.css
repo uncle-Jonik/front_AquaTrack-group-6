@@ -20,9 +20,14 @@
 }
 .empty {
   padding: 26px;
-  margin: 6.65px auto;
+  margin: 1px auto;
   border-radius: 15px;
   background: #ffffff;
+}
+@media only screen and (min-width: 768px) {
+  .empty {
+    margin: 6.65px auto;
+  }
 }
 
 .empty > p {
