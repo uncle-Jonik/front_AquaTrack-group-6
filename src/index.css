@@ -8,6 +8,12 @@
   --second-font: "Gilroy", sans-serif;
   /* animation */
   --animation: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  /* color */
+  --main: #323f47;
+  --main-text: #2f2f2f;
+  --accent: #9be1a0;
+  --bacground: #f0eff4;
+  --main-white: #ffffff;
 }
 
 body {
