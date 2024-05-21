@@ -7,10 +7,26 @@
 }
 
 .advantages_users {
-  background-color: var();
+  max-width: 160px;
+  background-color: var(--main-white);
   display: flex;
+  gap: 4px;
   margin-bottom: 8px;
+  padding: 10px 14px;
+  border-radius: 30px;
 }
 .advantages_usersImg {
   display: flex;
+}
+.advantages_point:not(:first-child) {
+  margin-left: -10px;
+}
+.advantagesText {
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 117%;
+  color: var(--main);
+}
+.textSpan {
+  color: var(--accent);
 }
