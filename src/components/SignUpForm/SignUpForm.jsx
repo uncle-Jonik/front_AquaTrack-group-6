@@ -50,7 +50,12 @@ export function SignUpForm() {
         <p className={css.title}>Sign Up</p>
         <form
           className={css.form}
-          onSubmit={handleSubmit( async (data) => {
+
+
+
+
+
+onSubmit={handleSubmit( async (data) => {
             
             try {
               const resultAction = await dispatch(registerUser(data)).then((res) => {
@@ -70,6 +75,7 @@ export function SignUpForm() {
               toast.error('Unexpected error. Please try again.');
             }
           })}
+
         >
           <label className={css.label}>Email</label>
           <div className={css.input_field}>

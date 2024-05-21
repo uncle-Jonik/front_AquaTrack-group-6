@@ -46,6 +46,7 @@ export const SignInForm = () => {
         <h1 className={css.title}>Sign In</h1>
         <form
           className={css.form}
+
           onSubmit={handleSubmit(async (data) => {
             try {
               const resultAction = await dispatch(loginUser(data));
@@ -60,7 +61,7 @@ export const SignInForm = () => {
               toast.error('Unexpected error. Please try again.');
             }
             
-            
+
           })}
         >
           <label className={css.label}>Email</label>

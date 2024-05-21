@@ -16,6 +16,7 @@ import photo from "../../assets/img/avatar-default.svg";
 import { useDispatch, useSelector } from "react-redux";
 import { updateUser } from "../../redux/user/userOperations";
 import { selectUser, selectUserAvatar } from "../../redux/user/userSelectors";
+import toast from "react-hot-toast";
 
 const schema = yup.object().shape({
   avatar: yup.mixed().notRequired(),
@@ -144,8 +145,17 @@ const UserSettingsForm = ({ onClose }) => {
       hasChanged("waterRate") ||
       hasChanged("sportsActivity")
     ) {
-      dispatch(updateUser(formData));
-      onClose();
+
+      try {
+        dispatch(updateUser(formData));
+        toast.success(
+          "The settings has been updated successfully!"
+        );
+        onClose();
+      } catch (error) {
+        toast.error("Something went wrong. Please try again.");
+      }
+      
     }
   };
 
