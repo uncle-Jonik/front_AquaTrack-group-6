@@ -50,26 +50,32 @@ export function SignUpForm() {
         <p className={css.title}>Sign Up</p>
         <form
           className={css.form}
-          onSubmit={handleSubmit((data) => {
+
+
+
+
+
+onSubmit={handleSubmit( async (data) => {
             
             try {
-              dispatch(registerUser(data))
-              .then((res) => {
+              const resultAction = await dispatch(registerUser(data)).then((res) => {
                 if (res.type === "auth/register/rejected")
                   throw new Error(res.payload);
                 dispatch(loginUser(data));
-              })
-              .catch((err) => {
-                console.log(err);
+                toast.success("You were successfully signed up!");
               });
-              toast.success(
-                "You was successfully signed up!"
-              );
-              reset();
+        
+              if (registerUser.fulfilled.match(resultAction)) {
+                toast.success("You were successfully signed up!");
+                reset(); 
+              } else if (registerUser.rejected.match(resultAction)) {
+                toast.error('Something went wrong. Please try again.');
+              }
             } catch (error) {
-              toast.error("Something went wrong. Please try again.");
+              toast.error('Unexpected error. Please try again.');
             }
           })}
+
         >
           <label className={css.label}>Email</label>
           <div className={css.input_field}>

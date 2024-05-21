@@ -46,17 +46,22 @@ export const SignInForm = () => {
         <h1 className={css.title}>Sign In</h1>
         <form
           className={css.form}
-          onSubmit={handleSubmit((data) => {
+
+          onSubmit={handleSubmit(async (data) => {
             try {
-              dispatch(loginUser(data));
-              toast.success(
-                "You was successfully signed in!"
-              );
-              reset();
+              const resultAction = await dispatch(loginUser(data));
+        
+              if (loginUser.fulfilled.match(resultAction)) {
+                toast.success("You were successfully signed in!");
+                reset(); 
+              } else if (loginUser.rejected.match(resultAction)) {
+                toast.error('Something went wrong. Please try again.');
+              }
             } catch (error) {
-              toast.error("Something went wrong. Please try again.");
+              toast.error('Unexpected error. Please try again.');
             }
             
+
           })}
         >
           <label className={css.label}>Email</label>
