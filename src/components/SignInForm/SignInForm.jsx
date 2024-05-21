@@ -9,6 +9,7 @@ import { useDispatch } from "react-redux";
 import { loginUser } from "../../redux/user/userOperations";
 import { useState } from "react";
 import sprite from "../../assets/sprite.svg";
+import toast from "react-hot-toast";
 
 const schema = yup.object().shape({
   email: yup
@@ -45,10 +46,21 @@ export const SignInForm = () => {
         <h1 className={css.title}>Sign In</h1>
         <form
           className={css.form}
-          onSubmit={handleSubmit((data) => {
-            console.log(data);
-            dispatch(loginUser(data));
-            reset();
+          onSubmit={handleSubmit(async (data) => {
+            try {
+              const resultAction = await dispatch(loginUser(data));
+        
+              if (loginUser.fulfilled.match(resultAction)) {
+                toast.success("You were successfully signed in!");
+                reset(); 
+              } else if (loginUser.rejected.match(resultAction)) {
+                toast.error('Something went wrong. Please try again.');
+              }
+            } catch (error) {
+              toast.error('Unexpected error. Please try again.');
+            }
+            
+            
           })}
         >
           <label className={css.label}>Email</label>
