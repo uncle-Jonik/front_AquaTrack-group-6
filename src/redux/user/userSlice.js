@@ -48,12 +48,14 @@ const userSlice = createSlice({
       .addCase(refreshUser.pending, (state, action) => {
         //////////////////////////////
         // ТУТ МАЄ ВАШ ЛОУДЕР;
-        state.isRefreshing = true;
+        
+        // state.isRefreshing = true;
+        state.isLoggedIn = true;
       })
 
       .addCase(refreshUser.fulfilled, (state, action) => {
-        state.isLoggedIn = true;
-        state.isRefreshing = false;
+        
+        
 
         state.accessToken = action.payload.accessToken;
         localStorage.setItem("refreshToken", action.payload.refreshToken);
@@ -65,11 +67,15 @@ const userSlice = createSlice({
         state.userInfo.weight = action.payload.user.weight;
         state.userInfo.sportsActivity = action.payload.user.sportsActivity;
         state.userInfo.waterRate = action.payload.user.waterRate;
+
+        state.isLoggedIn = true;
+        state.isRefreshing = false;
       })
 
       .addCase(updateUser.pending, (state) => {
         //////////////////////////////
         // ТУТ МАЄ ВАШ ЛОУДЕР;
+        state.isLoggedIn = true;
         state.isRefreshing = true;
       })
 

@@ -42,7 +42,7 @@ export const App = () => {
       <div>
         <Suspense
           fallback={
-            <div>
+            <div style={{ position: "relative" }}>
               <Loader absolute={true} />
             </div>
           }
