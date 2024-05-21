@@ -1,4 +1,7 @@
-import css from './AdvantagesSection.module.css'
+import css from "./AdvantagesSection.module.css";
+import user_1 from "../../assets/img/user-1.png";
+import user_2 from "../../assets/img/user-2.png";
+import user_3 from "../../assets/img/user-3.png";
 
 export const AdvantagesSection = () => {
   return (
@@ -6,27 +9,15 @@ export const AdvantagesSection = () => {
       <div className={css.advantages_users}>
         <ul className={css.advantages_usersImg}>
           <li className={css.advantages_point}>
-            <img
-              className={css.user}
-              src="../../../src/assets/img/user-1.png"
-              alt="user1"
-            />
+            <img className={css.user} src={user_1} alt="user1" />
           </li>
 
           <li className={css.advantages_point}>
-            <img
-              className={css.user}
-              src="../../../src/assets/img/user-2.png"
-              alt="user2"
-            />
+            <img className={css.user} src={user_2} alt="user2" />
           </li>
 
           <li className={css.advantages_point}>
-            <img
-              className={css.user}
-              src="../../../src/assets/img/user-3.png"
-              alt="user3"
-            />
+            <img className={css.user} src={user_3} alt="user3" />
           </li>
         </ul>
 
@@ -50,5 +41,5 @@ export const AdvantagesSection = () => {
         </ul>
       </div>
     </div>
-  )
-}
+  );
+};
