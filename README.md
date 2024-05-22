@@ -9,7 +9,12 @@ The application is built using React and utilizes the following libraries:
  5. axios.
 
 The project itself was set up using [Vite](https://vitejs.dev/) and deployed on [Versel](https://vercel.com/).
-
+|  |  |
+|--|--|
+|Live page|https://front-aqua-track-group-6.vercel.app/
+|Backend repositories|https://github.com/uncle-Jonik/back_AquaTrack-group-6
+|Frontend repositories|https://github.com/uncle-Jonik/front_AquaTrack-group-6
+|Swagger documentation|https://back-aquatrack-group-6.onrender.com/api-docs/
 ## Team 
  - [TROSHCHYNSKYI YEVHENII](https://github.com/uncle-Jonik)
  - [DEMCHENKO YELEZAVETA](https://github.com/yd1224)
@@ -33,7 +38,12 @@ The project itself was set up using [Vite](https://vitejs.dev/) and deployed on 
  5. axios.
 
 Сам проєкт був розгорнутися на через [Vite](https://vitejs.dev/) та задеплоєний на [Versel](https://vercel.com/).
-
+|  |  |
+|--|--|
+|Live page|https://front-aqua-track-group-6.vercel.app/
+|Backend repositories|https://github.com/uncle-Jonik/back_AquaTrack-group-6
+|Frontend repositories|https://github.com/uncle-Jonik/front_AquaTrack-group-6
+|Swagger documentation|https://back-aquatrack-group-6.onrender.com/api-docs/
 ## Команда 
  - [Трощинський Євгеній](https://github.com/uncle-Jonik)
  - [Демченко Єлезавета](https://github.com/yd1224)
