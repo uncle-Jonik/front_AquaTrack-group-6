@@ -8,13 +8,7 @@ export const NotFoundComponent = () => {
     <div className={css.welcomeBox}>
       <Logo />
       <div className={css.welcomeBox2}>
-        <img
-          src={cactus}
-          alt="Cactus"
-          width={200}
-          height={200}
-          className={css.img}
-        />
+        <img src={cactus} alt="Cactus" className={css.img} />
         <h1 className={css.welcomeName}>Page not found</h1>
         <h1 className={css.welcomeName2}>404</h1>
         <div className={css.welcomeButton_blok}>
