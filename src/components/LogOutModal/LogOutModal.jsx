@@ -2,12 +2,21 @@ import css from "./LogOutModal.module.css";
 import { useDispatch } from "react-redux";
 import { logoutUser } from "../../redux/user/userOperations";
 import { ModalBtn } from "../ModalBtn/Modalbtn";
+import toast from "react-hot-toast";
 
 export const LogOutModal = ({ onRequestClose }) => {
   const dispatch = useDispatch();
 
   const onLogOut = () => {
-    dispatch(logoutUser());
+    
+    try {
+      dispatch(logoutUser());
+      toast.success(
+        "Successfully log out!"
+      );
+    } catch (error) {
+      toast.error("Something went wrong. Please try again.");
+    }
   };
 
   return (

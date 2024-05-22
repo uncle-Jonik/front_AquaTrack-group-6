@@ -85,7 +85,7 @@ export const WaterForm = ({ mode, onClose, water = {} }) => {
       }
       onClose();
     } catch (error) {
-      toast.success("Failed to save water data. Please try again.");
+      toast.error("Failed to save water data. Please try again.");
     }
   };
 
