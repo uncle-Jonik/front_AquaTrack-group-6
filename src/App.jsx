@@ -24,10 +24,9 @@ export const App = () => {
   const { isRefreshing } = useSelector(selectIsRefreshing);
 
   useEffect(() => {
-    dispatch(refreshUser());
+    if (localStorage.getItem("refreshToken") !== "") dispatch(refreshUser());
 
     if (error.length > 0) {
-      console.log(error);
       toast.error(error);
     }
   }, [dispatch, error]);

@@ -52,36 +52,32 @@ export function SignUpForm() {
         <p className={css.title}>Sign Up</p>
         <form
           className={css.form}
-
-
-
-
-
-onSubmit={handleSubmit( async (data) => {
-            
+          onSubmit={handleSubmit(async (data) => {
             try {
-              const resultAction = await dispatch(registerUser(data)).then((res) => {
-                if (res.type === "auth/register/rejected")
-                  throw new Error(res.payload);
-                dispatch(loginUser(data));
-                toast.success("You were successfully signed up!");
-              });
-        
+              const resultAction = await dispatch(registerUser(data)).then(
+                (res) => {
+                  if (res.type === "auth/register/rejected")
+                    throw new Error(res.payload);
+                  dispatch(loginUser(data));
+                  toast.success("You were successfully signed up!");
+                }
+              );
+
               if (registerUser.fulfilled.match(resultAction)) {
                 toast.success("You were successfully signed up!");
-                reset(); 
+                reset();
               } else if (registerUser.rejected.match(resultAction)) {
-                toast.error('Something went wrong. Please try again.');
+                toast.error("Something went wrong. Please try again.");
               }
             } catch (error) {
-              toast.error('Unexpected error. Please try again.');
+              toast.error("Unexpected error. Please try again.");
             }
           })}
-
         >
           <label className={css.label}>Email</label>
           <div className={css.input_field}>
             <input
+              required={true}
               className={`${css.input} ${errors.email ? css.error : ""}`}
               type="email"
               {...register("email", {
@@ -99,6 +95,7 @@ onSubmit={handleSubmit( async (data) => {
           <label className={css.label}>Password</label>
           <div className={css.input_field}>
             <input
+              required={true}
               className={`${css.input} ${errors.password ? css.error : ""}`}
               type={showPassword ? "text" : "password"}
               {...register("password")}
@@ -136,6 +133,7 @@ onSubmit={handleSubmit( async (data) => {
           <label className={css.label}>Repeat Password</label>
           <div className={css.input_field}>
             <input
+              required={true}
               className={`${css.input} ${
                 errors.repeatPassword ? css.error : ""
               }`}

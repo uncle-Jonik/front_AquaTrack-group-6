@@ -1,47 +1,46 @@
-import { useSelector } from 'react-redux';
+import { useSelector } from "react-redux";
 import css from "./ChooseDate.module.css";
-import { selectActiveDay } from '../../redux/water/waterSelectors';
-
-
+import { selectActiveDay } from "../../redux/water/waterSelectors";
 
 export function ChooseDate() {
-    const currentDate = useSelector(selectActiveDay);
+  const currentDate = useSelector(selectActiveDay);
 
-    const localDate = () => {
-      const milliseconds = Date.now();
-      const date = new Date(milliseconds);
-    
-      return date.toLocaleDateString().replace(/\//g, '.');
-    };
+  const localDate = () => {
+    const milliseconds = Date.now();
+    const date = new Date(milliseconds);
 
-    // console.log(localDate())
-    
+    return date.toLocaleDateString().replace(/\//g, ".");
+  };
 
-    let day;
+  let day;
 
-    day = currentDate.replace(/\//g, '.').split('.')[0];
+  day = currentDate.replace(/\//g, ".").split(".")[0];
 
-    // if(currentDate.indexOf('/') > 0){
-    //   day = currentDate.split('/')[0];
-    // } else {
-    //   day = currentDate.split('.')[0]
-    // }
+  const months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
 
-    const months = [
-      "January", "February", "March", "April", "May", "June", 
-      "July", "August", "September", "October", "November", "December"
-    ];
+  const month = months[+currentDate.split("/")[1] - 1];
+  const monthDot = months[+currentDate.split(".")[1] - 1];
 
-    const month = months[+currentDate.split('/')[1] -1];
-    const monthDot = months[+currentDate.split('.')[1] -1];
-
-    return (
-        <>
-            <h2 className={css.date}>
-              {currentDate.replace(/\//g, '.') === localDate() ? "Today" : `${day}, ${month || monthDot}`}
-              
-              
-            </h2>
-        </>
-    );
+  return (
+    <>
+      <h2 className={css.date}>
+        {currentDate.replace(/\//g, ".") === localDate()
+          ? "Today"
+          : `${day}, ${month || monthDot}`}
+      </h2>
+    </>
+  );
 }

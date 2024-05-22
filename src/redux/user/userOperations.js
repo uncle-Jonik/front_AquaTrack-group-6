@@ -11,7 +11,6 @@ const ClearAuthHeader = () => {
 
 axios.defaults.baseURL = "https://back-aquatrack-group-6.onrender.com/api/";
 
-// axios.defaults.baseURL = "http://localhost:3001/api";
 
 axios.interceptors.response.use(res => res, async (err) => {
   const originalRequest = err.config;

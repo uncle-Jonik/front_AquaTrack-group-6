@@ -48,7 +48,6 @@ export const changeWater = createAsyncThunk(
   "water/change",
   async ({ localDate, localTime, _id, waterValue }, thunkAPI) => {
     try {
-      console.log("operation", _id);
       const response = await axios.patch(`/water/day/${_id}`, {
         localDate,
         localTime,

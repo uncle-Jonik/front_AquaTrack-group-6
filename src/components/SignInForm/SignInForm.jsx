@@ -46,29 +46,26 @@ export const SignInForm = () => {
         <h1 className={css.title}>Sign In</h1>
         <form
           className={css.form}
-
           onSubmit={handleSubmit(async (data) => {
             try {
               const resultAction = await dispatch(loginUser(data));
-        
+
               if (loginUser.fulfilled.match(resultAction)) {
                 toast.success("You were successfully signed in!");
-                reset(); 
+                reset();
               } else if (loginUser.rejected.match(resultAction)) {
-                toast.error('Something went wrong. Please try again.');
+                toast.error("Something went wrong. Please try again.");
               }
             } catch (error) {
-              toast.error('Unexpected error. Please try again.');
+              toast.error("Unexpected error. Please try again.");
             }
-            
-
           })}
         >
           <label className={css.label}>Email</label>
           <div className={css.input_field}>
             <input
               className={`${css.input} ${errors.email ? css.error : ""}`}
-              required="true"
+              required={true}
               type="email"
               {...register("email", {
                 pattern: {
@@ -87,7 +84,7 @@ export const SignInForm = () => {
           <div className={css.input_field}>
             <input
               className={`${css.input} ${errors.password ? css.error : ""}`}
-              required="true"
+              required={true}
               type={showPassword ? "text" : "password"}
               // type={"password"}
               {...register("password")}

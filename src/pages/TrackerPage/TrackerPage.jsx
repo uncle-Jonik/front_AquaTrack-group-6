@@ -29,7 +29,6 @@ export default function TrackerPage() {
     dispatch(fetchWaterPerMonth(activeDay));
   }, [dispatch, activeDay]);
 
-  // console.log(useSelector(selectWaterPerMonth));
   return (
     <div className={css.wrapper}>
       {(refreshUser || refreshWater) && <Loader absolute={true} />}

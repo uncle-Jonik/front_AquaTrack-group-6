@@ -145,17 +145,13 @@ const UserSettingsForm = ({ onClose }) => {
       hasChanged("waterRate") ||
       hasChanged("sportsActivity")
     ) {
-
       try {
         dispatch(updateUser(formData));
-        toast.success(
-          "The settings has been updated successfully!"
-        );
+        toast.success("The settings has been updated successfully!");
         onClose();
       } catch (error) {
         toast.error("Something went wrong. Please try again.");
       }
-      
     }
   };
 
@@ -296,7 +292,7 @@ const UserSettingsForm = ({ onClose }) => {
             </p>
           </div>
           <div className={css.formGroup}>
-            <label htmlFor="waterRate" className={css.titleText}>
+            <label id="waterRate" className={css.titleText}>
               Write down how much water you will drink:
             </label>
             <input type="text" {...register("waterRate")} placeholder="1.8" />
