@@ -1,0 +1,96 @@
+.welcomeBox {
+  border-radius: 30px;
+  background-color: var(--bacground);
+
+  padding: 24px 16px;
+}
+@media only screen and (min-width: 768px) {
+  .welcomeBox {
+    padding: 32px;
+  }
+}
+.welcomeBox2 > img {
+  margin: 0 auto;
+  width: 150px;
+  height: 150px;
+}
+
+.welcomeBox2 {
+  padding: 74px 0 51px;
+}
+@media only screen and (min-width: 768px) {
+  .welcomeBox2 > img {
+    width: 150px;
+    height: 150px;
+  }
+  .welcomeBox2 {
+    padding: 32px 0 32px;
+  }
+}
+.welcomeButton_blok {
+  margin-top: 9px;
+}
+.welcomeName,
+.welcomeName2 {
+  font-size: 38px;
+  line-height: 100%;
+  letter-spacing: -0.01em;
+  text-align: center;
+  margin: 0 auto;
+  color: var(--main);
+}
+@media only screen and (min-width: 768px) {
+  .welcomeName,
+  .welcomeName2 {
+    font-size: 64px;
+  }
+}
+
+.welcomeButton_blok > a {
+  border-radius: 30px;
+  padding: 14px 19px;
+
+  font-family: var(--main-font);
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 129%;
+  letter-spacing: -0.01em;
+  text-align: center;
+  color: var(--main);
+
+  transition: var(--animation);
+}
+
+@media only screen and (min-width: 768px) {
+  .welcomeButton_blok > a {
+    padding: 18px 40px;
+    font-size: 16px;
+    line-height: 150%;
+  }
+}
+
+.welcomeButton_tracker {
+  margin-top: 16px;
+  background-color: var(--accent);
+  margin: 0 auto;
+  display: block;
+}
+.welcomeButton_tracker:hover,
+.welcomeButton_tracker:focus {
+  background-color: #87d28d;
+}
+
+@media only screen and (min-width: 1440px) {
+  .welcomeBox {
+    max-width: 608px;
+    width: 100%;
+  }
+  .welcomeButton_blok {
+  }
+  .welcomeBox2 {
+    padding: 132px 0 156px;
+  }
+  .welcomeButton_tracker {
+    margin-top: 32px;
+  }
+}
