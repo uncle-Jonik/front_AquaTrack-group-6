@@ -1,47 +1,49 @@
-.monthSectionInfo{
-    width: 100%;
-    background-color: #f0eff4;
+.monthSectionInfo {
+  width: 100%;
+  background-color: #f0eff4;
 }
 
-.monthTitle{
-    font-family: 'Poppins', sans-serif;
-    font-weight: 700;
-    font-size: 20px;
-    line-height: 120%;
-    letter-spacing: -0.01em;
-    color: #323f47;
+.monthTitle {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 120%;
+  letter-spacing: -0.01em;
+  color: #323f47;
 }
 
-.monthPaginationContainer{
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 24px;
+.monthPaginationContainer {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 24px;
 }
-
 
 @media only screen and (min-width: 320px) and (max-width: 374px) {
-
 }
 
 @media only screen and (min-width: 375px) {
-    
 }
 
 @media only screen and (min-width: 768px) {
-    .monthSectionInfo{
+  .monthSectionInfo {
+  }
 
-    }
-    
-    .monthTitle{
-        font-size: 28px;
-        line-height: 114%;
-    }
+  .monthTitle {
+    font-size: 28px;
+    line-height: 114%;
+  }
 }
 
 @media only screen and (min-width: 1440px) {
-    .monthSectionInfo{
-     
-    }
+  .monthSectionInfo {
+  }
+}
+/* =============================== */
+.pag_btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
 }
