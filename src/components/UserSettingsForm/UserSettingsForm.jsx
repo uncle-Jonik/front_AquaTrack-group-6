@@ -21,7 +21,11 @@ import toast from "react-hot-toast";
 const schema = yup.object().shape({
   avatar: yup.mixed().notRequired(),
   gender: yup.string().oneOf(["male", "female"]).notRequired(),
-  name: yup.string().notRequired(),
+  name: yup
+    .string()
+    .min(3, "Name must be at least 3 characters")
+    .max(13, "Name must be no more than 13 characters")
+    .notRequired(),
   email: yup.string().email("Invalid email format").notRequired(),
   weight: yup
     .number()
