@@ -23,33 +23,21 @@ const schema = yup.object().shape({
   gender: yup.string().oneOf(["male", "female"]).notRequired(),
   name: yup
     .string()
-    .min(3, "Name must be at least 3 characters")
-    .max(13, "Name must be no more than 13 characters")
+    .min(2, "Name must be at least 3 characters")
+    .max(30, "Name must be no more than 20 characters")
     .notRequired(),
   email: yup.string().email("Invalid email format").notRequired(),
   weight: yup
-    .number()
-    .typeError("Weight must be a number")
-    .transform((value, originalValue) =>
-      originalValue.trim() === "" ? null : parseFloat(originalValue)
-    )
-    .positive("Weight must be a positive number")
+    .string()
+    .matches(/^[0-9]*$/, "Weight must be a number")
     .notRequired(),
   sportsActivity: yup
-    .number()
-    .typeError("Active minutes must be a number")
-    .transform((value, originalValue) =>
-      originalValue.trim() === "" ? null : parseFloat(originalValue)
-    )
-    .positive("Active minutes must be a positive number")
+    .string()
+    .matches(/^[0-9]*$/, "Active time must be a number")
     .notRequired(),
   waterRate: yup
-    .number()
-    .typeError("Water consumption must be a number")
-    .transform((value, originalValue) =>
-      originalValue.trim() === "" ? null : parseFloat(originalValue)
-    )
-    .positive("Water consumption must be a positive number")
+    .string()
+    .matches(/^[0-9]*$/, "Water consumption must be a number")
     .notRequired(),
 });
 

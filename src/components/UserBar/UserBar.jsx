@@ -37,7 +37,7 @@ export function UserBar() {
         className={css.button}
         onClick={() => setShowPopOver(!showPopOver)}
       >
-        <span className={css.name}>{user.name}</span>
+        <p className={css.name}>{user.name}</p>
 
         {
           <img

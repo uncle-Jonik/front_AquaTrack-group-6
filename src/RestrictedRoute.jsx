@@ -4,7 +4,7 @@ import { useAuth } from "./hooks/useAuth.jsx";
 export const RestrictedRoute = ({ component: Component, redirectTo = "/" }) => {
   const { isLoggedIn, isRefreshing } = useAuth();
 
-  if (isRefreshing) {
+  if (isRefreshing && localStorage.getItem("refreshToken")) {
     return null;
   }
 
