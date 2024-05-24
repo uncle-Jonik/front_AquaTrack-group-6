@@ -30,15 +30,15 @@ const schema = yup.object().shape({
   email: yup.string().email("Invalid email format").notRequired(),
   weight: yup
     .string()
-    .matches(/^[0-9]*$/, "Weight must be a number")
+    .matches(/^[0-9]*\.?[0-9]+$/, "Weight must be a number")
     .notRequired(),
   sportsActivity: yup
     .string()
-    .matches(/^[0-9]*$/, "Active time must be a number")
+    .matches(/^[0-9]*\.?[0-9]+$/, "Active time must be a number")
     .notRequired(),
   waterRate: yup
     .string()
-    .matches(/^[0-9]*$/, "Water consumption must be a number")
+    .matches(/^[0-9]*\.?[0-9]+$/, "Water consumption must be a number")
     .notRequired(),
 });
 
