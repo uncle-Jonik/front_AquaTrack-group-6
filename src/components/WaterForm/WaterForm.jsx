@@ -23,8 +23,7 @@ const getTimeFormat = () => {
   const hours = date.getHours();
   const min = date.getMinutes();
 
-  const timeFormatting =
-    hours.toString().padStart(2, "0") + ":" + min.toString().padStart(2, "0");
+  const timeFormatting = hours.toString().padStart(2, "0") + ":" + min.toString().padStart(2, "0");
 
   return timeFormatting;
 };
@@ -72,14 +71,10 @@ export const WaterForm = ({ mode, onClose, water = {} }) => {
     try {
       if (mode === "add") {
         dispatch(addWater(newData));
-        toast.success(
-          `The amount of water consumed has been added successfully.`
-        );
+        toast.success(`The amount of water consumed has been added successfully.`);
       } else if (mode === "edit") {
         dispatch(changeWater({ _id: water._id, ...newData }));
-        toast.success(
-          "The amount of water consumed has been successfully updated."
-        );
+        toast.success("The amount of water consumed has been successfully updated.");
       }
       onClose();
     } catch (error) {
@@ -103,16 +98,10 @@ export const WaterForm = ({ mode, onClose, water = {} }) => {
         {/* <span className={css.amountValue}>{`${watch("waterValue")} ml`}</span> */}
         <span className={css.amountValue}>
           {watch("waterValue") >= 999
-            ? `${(Math.round((watch("waterValue") / 1000) * 100) / 100).toFixed(
-                2
-              )} L`
+            ? `${(Math.round((watch("waterValue") / 1000) * 100) / 100).toFixed(2)} L`
             : `${watch("waterValue")} ml`}
         </span>
-        <button
-          type="button"
-          className={css.quantityBtn}
-          onClick={handleClickPlus}
-        >
+        <button type="button" className={css.quantityBtn} onClick={handleClickPlus}>
           <HiPlus size="22" />
         </button>
       </div>
@@ -129,9 +118,7 @@ export const WaterForm = ({ mode, onClose, water = {} }) => {
             name="localTime"
             id="localTime"
           />
-          {errors.localTime && (
-            <span className={css.error}>{errors.localTime.message}</span>
-          )}
+          {errors.localTime && <span className={css.error}>{errors.localTime.message}</span>}
         </div>
 
         <div className={css.valueDiv}>
@@ -145,13 +132,14 @@ export const WaterForm = ({ mode, onClose, water = {} }) => {
             name="value"
             id="value"
             onChange={(e) =>
-              setValue("waterValue", Math.max(Number(e.target.value), 0))
+              setValue(
+                "waterValue",
+                isNaN(e.target.value) ? 0 : Math.max(Number(e.target.value), 0)
+              )
             }
           />
 
-          {errors.waterValue && (
-            <span className={css.error}>{errors.waterValue.message}</span>
-          )}
+          {errors.waterValue && <span className={css.error}>{errors.waterValue.message}</span>}
         </div>
       </div>
       <button className={css.btnSubmit} type="submit">
