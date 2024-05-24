@@ -15,7 +15,7 @@ export const initialState = {
     avatar: null,
     weight: null,
     sportsActivity: null,
-    waterRate: null
+    waterRate: null,
   },
   isLoggedIn: false,
   isRefreshing: false,
@@ -94,5 +94,9 @@ const userSlice = createSlice({
         //////////////////////////////
       }),
 });
+
+export const {
+  ///////
+} = userSlice.actions;
 
 export const userReducer = userSlice.reducer;
