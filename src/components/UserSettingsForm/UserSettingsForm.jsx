@@ -23,8 +23,8 @@ const schema = yup.object().shape({
   gender: yup.string().oneOf(["male", "female"]).notRequired(),
   name: yup
     .string()
-    .min(2, "Name must be at least 3 characters")
-    .max(30, "Name must be no more than 20 characters")
+    .min(2, "Name must be at least 2 characters")
+    .max(30, "Name must be no more than 30 characters")
     .notRequired(),
   email: yup.string().email("Invalid email format").notRequired(),
   weight: yup
