@@ -26,6 +26,7 @@ const schema = yup.object().shape({
     .min(2, "Name must be at least 2 characters")
     .max(30, "Name must be no more than 30 characters")
     .notRequired(),
+
   email: yup.string().email("Invalid email format").notRequired(),
   weight: yup
     .string()
